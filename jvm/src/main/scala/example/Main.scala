@@ -1,7 +1,9 @@
 package example
 
 import mathlib.demos.VertexCover._
+import mathlib.fpt.BoundedSearchTree
 import mathlib.graph._
+import mathlib.set.SetTheory.ImplSet
 
 
 object Main {
@@ -27,14 +29,33 @@ object Main {
       N("C") ~ N("E") +
       N("C") ~ N("F")
 
-    println("exhaustive search")
-    vertexCover(graph, 3).foreach(println)
+//    println("exhaustive search")
+//    vertexCover(graph, 3).foreach(println)
+//
+//    println("fpt algorithm")
+//    fptVertexCover(graph, 3, Set.empty).foreach(println)
+//
+//    println("templated bounded search tree")
+//    fptvc(graph, 3, Set.empty).foreach(println)
 
-    println("fpt algorithm")
-    fptVertexCover(graph, 3, Set.empty).foreach(println)
+    def fptvc2(graph: Graph[String], k: Int): Graph[(Graph[String], Set[Node[String]])] = {
+      def branch(graph: Graph[String]): Set[(Graph[String], Node[String])] = {
+        val edge = graph.edges.random
+        if(edge.isEmpty) Set.empty
+        else {
+          val left = edge.get.v1
+          val right = edge.get.v2
+          val leftGraph = graph - left
+          val rightGraph = graph - right
 
-    println("templated bounded search tree")
-    fptvc(graph, 3, Set.empty).foreach(println)
+          Set((leftGraph, left), (rightGraph, right))
+        }
+      }
+
+      BoundedSearchTree(k, branch).constructFullTree(graph, k)
+    }
+
+    println(fptvc2(graph, k = 3))
 
     println(s"Using a JVM version ${System.getProperty("java.vm.version")}")
   }

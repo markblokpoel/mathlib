@@ -1,5 +1,6 @@
 package mathlib.demos
 
+import mathlib.fpt.BoundedSearchTree
 import mathlib.graph.{Graph, Node}
 import mathlib.set.SetTheory._
 
@@ -12,23 +13,6 @@ object VertexCover {
 
     powersetUp(graph.vertices, k)
       .build(isVC)
-  }
-
-  case class BoundedSearchTree[T, S](bound: Int, branch: T => Set[(T, S)]) {
-    def search(state: T, depth: Int = 0, acc: Set[S] = Set.empty): Set[Set[S]] = {
-      if(depth > bound) Set.empty
-      else {
-         val branches = branch(state)
-         if(branches.isEmpty) Set(acc)
-         else {
-           branches.flatMap(branch => {
-             val nextState = branch._1
-             val solutionPart = branch._2
-             search(nextState, depth + 1, acc + solutionPart)
-           })
-         }
-      }
-    }
   }
 
   // Bounded search tree, using generic class
