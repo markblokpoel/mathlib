@@ -5,6 +5,44 @@ import mathlib.set.SetTheory._
 
 object Coherence {
 
+  case class Variable(label: String, value: Boolean) {
+    def T: Variable = Variable(label, value = true)
+    def F: Variable = Variable(label, value = false)
+
+    override def toString: String = s"$label = $value"
+  }
+
+  def coherence(beliefs: Set[Variable],
+                positiveConstraints: Set[(Variable, Variable)],
+                negativeConstraints: Set[(Variable, Variable)]): Set[Variable] = {
+
+    val negativeConstraintBeliefs =
+      beliefs.build(b => negativeConstraints.exists(nc => nc._1 == b || nc._2 == b))
+
+    val negativeConstrainsBeliefsValueAssignment = {
+      negativeConstraintBeliefs.allBijections(Set(true, false))
+        .map(va => {
+          va.keys.map(v => Variable(v.label, va(v))).toSet
+        })
+    }
+
+    def assign(va: Set[Variable], constraints: Set[(Variable, Variable)]): Set[(Variable, Variable)] = {
+      constraints.map(pair => (va.find(_.label == pair._1.label), va.find(_.label == pair._2.label)))
+        .map(pair => (pair._1.get, pair._2.get))
+    }
+
+    val bla = negativeConstrainsBeliefsValueAssignment
+      .map(va => assign(va, negativeConstraints))
+      .argMax(va => va.map(nc => {
+        if (nc._1.value != nc._2.value) 1
+        else 0
+      }).sum
+      )
+
+
+    ???
+  }
+
 //  def combine[D, R](f1: D => Option[R], f2: D => Option[R])(el: D): Option[R] = {
 //    if(f1(el).isDefined) f1(el)
 //    else if(f2(el).isDefined) f2(el)
