@@ -80,6 +80,8 @@ object SetTheory {
 
     def build(f: A => Boolean): Set[A] = set.filter(f(_))
 
+    def |(f: A => Boolean): Set[A] = set build f
+
     def \(set2: Set[A]): Set[A] = set.diff(set2)
 
     def cardinalProduct[B](set2: Set[B]): Set[(A, B)] =
@@ -143,6 +145,7 @@ object SetTheory {
     // Example (set, set2) build((a: Int, b: Int) => a/2==0 && b%2==0)
     def build(f: (A, B) => Boolean): Set[(A, B)] =
       (sets._1 cardinalProduct sets._2) build Function.tupled(f)
+    def |(f: (A, B) => Boolean): Set[(A, B)] = sets build f
   }
 
   implicit class ImplSetSet[A](setOfSets: Set[Set[A]]) {
@@ -153,16 +156,16 @@ object SetTheory {
       if (setOfSets.nonEmpty) setOfSets.reduce(_ intersect _) else Set.empty
   }
 
-  implicit class ImplBooleanFunc[A](f: A => Boolean) {
-    def build(set: Set[A]): Set[A] = set.filter(f)
-    def |(set: Set[A]): Set[A] = f build set
-  }
-
-  implicit class Impl2BooleanFunc[A, B](f: (A, B) => Boolean) {
-    def build(sets: (Set[A], Set[B])): Set[(A, B)] =
-      (sets._1 cardinalProduct sets._2) build Function.tupled(f)
-    def |(sets: (Set[A], Set[B])): Set[(A, B)] = build(sets)
-  }
+//  implicit class ImplBooleanFunc[A](f: A => Boolean) {
+//    def build(set: Set[A]): Set[A] = set.filter(f)
+//    def |(set: Set[A]): Set[A] = f build set
+//  }
+//
+//  implicit class Impl2BooleanFunc[A, B](f: (A, B) => Boolean) {
+//    def build(sets: (Set[A], Set[B])): Set[(A, B)] =
+//      (sets._1 cardinalProduct sets._2) build Function.tupled(f)
+//    def |(sets: (Set[A], Set[B])): Set[(A, B)] = build(sets)
+//  }
 
   def requirement(b: Boolean, msg: String): Unit =
     if (!b) {
