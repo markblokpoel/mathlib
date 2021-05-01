@@ -91,6 +91,10 @@ object SetTheory {
     def pairs: Set[(A, A)] = for (x <- set; y <- set) yield (x, y)
 
     def uniquePairs: Set[(A, A)] = for (x <- set; y <- set if x != y) yield (x, y)
+    
+    def unorderedPairs: Set[Set[A]] = for (x <- set; y <- set) yield Set(x, y)
+
+    def unorderedUniquePairs: Set[Set[A]] = for (x <- set; y <- set if x != y) yield Set(x, y)
 
     def powerset: Set[Set[A]] = SetTheory.powerset(set)
     def P: Set[Set[A]] = SetTheory.powerset(set)
@@ -156,16 +160,6 @@ object SetTheory {
       if (setOfSets.nonEmpty) setOfSets.reduce(_ intersect _) else Set.empty
   }
 
-//  implicit class ImplBooleanFunc[A](f: A => Boolean) {
-//    def build(set: Set[A]): Set[A] = set.filter(f)
-//    def |(set: Set[A]): Set[A] = f build set
-//  }
-//
-//  implicit class Impl2BooleanFunc[A, B](f: (A, B) => Boolean) {
-//    def build(sets: (Set[A], Set[B])): Set[(A, B)] =
-//      (sets._1 cardinalProduct sets._2) build Function.tupled(f)
-//    def |(sets: (Set[A], Set[B])): Set[(A, B)] = build(sets)
-//  }
 
   def requirement(b: Boolean, msg: String): Unit =
     if (!b) {
