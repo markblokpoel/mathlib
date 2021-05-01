@@ -1,5 +1,6 @@
 package mathlib.set
 
+import scala.annotation.tailrec
 import scala.util.Random
 
 /**
@@ -79,6 +80,8 @@ object SetTheory {
 
     def build(f: A => Boolean): Set[A] = set.filter(f(_))
 
+    def |(f: A => Boolean): Set[A] = set build f
+
     def \(set2: Set[A]): Set[A] = set.diff(set2)
 
     def cardinalProduct[B](set2: Set[B]): Set[(A, B)] =
@@ -88,6 +91,10 @@ object SetTheory {
     def pairs: Set[(A, A)] = for (x <- set; y <- set) yield (x, y)
 
     def uniquePairs: Set[(A, A)] = for (x <- set; y <- set if x != y) yield (x, y)
+    
+    def unorderedPairs: Set[Set[A]] = for (x <- set; y <- set) yield Set(x, y)
+
+    def unorderedUniquePairs: Set[Set[A]] = for (x <- set; y <- set if x != y) yield Set(x, y)
 
     def powerset: Set[Set[A]] = SetTheory.powerset(set)
     def P: Set[Set[A]] = SetTheory.powerset(set)
@@ -120,6 +127,21 @@ object SetTheory {
         .map(_.toMap)
       bijections
     }
+
+    def allMappings[B](coDomain: Set[B]): Set[Map[A, B]] = {
+      @tailrec
+      def allMappingsRec(domain: Set[A], coDomain: Set[B], acc: Set[Map[A,B]] = Set(Map[A,B]())): Set[Map[A, B]] = {
+        if(domain.isEmpty) acc
+        else if(coDomain.isEmpty) acc
+        else {
+          val newMappings: Set[(A, B)] = coDomain.map(domain.head -> _)
+          val newAcc = acc.flatMap(oldMapping => newMappings.map(oldMapping + _))
+          allMappingsRec(domain.tail, coDomain, newAcc)
+        }
+      }
+
+      allMappingsRec(set, coDomain)
+    }
     
     def random: Option[A] = SetTheory.random(set)
   }
@@ -127,6 +149,7 @@ object SetTheory {
     // Example (set, set2) build((a: Int, b: Int) => a/2==0 && b%2==0)
     def build(f: (A, B) => Boolean): Set[(A, B)] =
       (sets._1 cardinalProduct sets._2) build Function.tupled(f)
+    def |(f: (A, B) => Boolean): Set[(A, B)] = sets build f
   }
 
   implicit class ImplSetSet[A](setOfSets: Set[Set[A]]) {
@@ -137,16 +160,6 @@ object SetTheory {
       if (setOfSets.nonEmpty) setOfSets.reduce(_ intersect _) else Set.empty
   }
 
-  implicit class ImplBooleanFunc[A](f: A => Boolean) {
-    def build(set: Set[A]): Set[A] = set.filter(f)
-    def |(set: Set[A]): Set[A] = f build set
-  }
-
-  implicit class Impl2BooleanFunc[A, B](f: (A, B) => Boolean) {
-    def build(sets: (Set[A], Set[B])): Set[(A, B)] =
-      (sets._1 cardinalProduct sets._2) build Function.tupled(f)
-    def |(sets: (Set[A], Set[B])): Set[(A, B)] = build(sets)
-  }
 
   def requirement(b: Boolean, msg: String): Unit =
     if (!b) {
