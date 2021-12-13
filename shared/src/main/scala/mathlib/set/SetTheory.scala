@@ -38,8 +38,11 @@ object SetTheory {
 
 
   def argMax[A, T](set: Set[A], f: A => T)(implicit ord: Ordering[T]): Set[A] = {
-    val max = set.map(f).max  // find max value
-    set.filter(f(_) == max)           // return all elems with max value
+    if(set.isEmpty) set
+    else {
+      val max = set.map(f).max  // find max value
+      set.filter(f(_) == max)   // return all elems with max value
+    }
   }
 
   def sum[T](set: Set[T])(implicit nso: NumberSetOps[T]): T = nso.sumElements(set)
