@@ -190,10 +190,8 @@ fabric.properties
 
 ### Java template
 # Compiled class file
-*.class
 
 # Log file
-*.log
 
 # BlueJ files
 *.ctxt
@@ -253,3 +251,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+!/.idea/
