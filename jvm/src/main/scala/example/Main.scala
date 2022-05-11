@@ -38,8 +38,5 @@ object Main {
     fptvc(graph, 3, Set.empty).foreach(println)
 
     println(s"Using a JVM version ${System.getProperty("java.vm.version")}")
-
-    println(Set("a","b","c") allMappings Set(true, false))
-    println(Set("a","b","c") allBijections Set(true, false))
   }
 }
