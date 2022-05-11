@@ -131,19 +131,19 @@ object SetTheory {
       bijections
     }
 
-    def allMappings[B](coDomain: Set[B]): Set[Map[A, B]] = {
+    def allBijections[B](coDomain: Set[B]): Set[Map[A, B]] = {
       @tailrec
-      def allMappingsRec(domain: Set[A], coDomain: Set[B], acc: Set[Map[A,B]] = Set(Map[A,B]())): Set[Map[A, B]] = {
+      def allBijectionsRec(domain: Set[A], coDomain: Set[B], acc: Set[Map[A,B]] = Set(Map[A,B]())): Set[Map[A, B]] = {
         if(domain.isEmpty) acc
         else if(coDomain.isEmpty) acc
         else {
           val newMappings: Set[(A, B)] = coDomain.map(domain.head -> _)
           val newAcc = acc.flatMap(oldMapping => newMappings.map(oldMapping + _))
-          allMappingsRec(domain.tail, coDomain, newAcc)
+          allBijectionsRec(domain.tail, coDomain, newAcc)
         }
       }
 
-      allMappingsRec(set, coDomain)
+      allBijectionsRec(set, coDomain)
     }
     
     def random: Option[A] = SetTheory.random(set)
