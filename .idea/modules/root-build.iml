@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="root-build" external.linked.project.path="$MODULE_DIR$/../../project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="SUB:DOLLARbd9a219ee17e6bb8caab.`mathlib`, SUB:DOLLARbd9a219ee17e6bb8caab.`root`, _root_.sbt.Keys._, _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._, _root_.scalajscrossproject.ScalaJSCrossPlugin.autoImport._, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._, _root_.sbtcrossproject.CrossPlugin.autoImport._, _root_.sbt._, _root_.sbt.nio.Keys._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.org.scalajs.sbtplugin.ScalaJSJUnitPlugin, _root_.org.scalajs.sbtplugin.ScalaJSPlugin, _root_.scalajscrossproject.ScalaJSCrossPlugin, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin, _root_.sbtcrossproject.CrossPlugin, _root_.scala.xml.{TopScope=&amp;gt;SUB:DOLLARscope}" sbt.resolvers="https://repo1.maven.org/maven2/|maven|public, file:/C:/Users/Mark/.sbt/preloaded|maven|local-preloaded, C:\Users\Mark\.ivy2\cache|ivy|Local cache" type="SBT_MODULE" version="4">
+<module external.linked.project.id="root-build" external.linked.project.path="$MODULE_DIR$/../../project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="SUB:DOLLARbd9a219ee17e6bb8caab.`mathlib`, SUB:DOLLARbd9a219ee17e6bb8caab.`root`, _root_.sbt.Keys._, _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._, _root_.scalajscrossproject.ScalaJSCrossPlugin.autoImport._, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._, _root_.sbtcrossproject.CrossPlugin.autoImport._, _root_.sbt._, _root_.sbt.nio.Keys._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.org.scalajs.sbtplugin.ScalaJSJUnitPlugin, _root_.org.scalajs.sbtplugin.ScalaJSPlugin, _root_.scalajscrossproject.ScalaJSCrossPlugin, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin, _root_.sbtcrossproject.CrossPlugin, _root_.scala.xml.{TopScope=&amp;amp;gt;SUB:DOLLARscope}" sbt.resolvers="https://repo1.maven.org/maven2/|maven|public, file:/C:/Users/Mark/.sbt/preloaded|maven|local-preloaded, C:\Users\Mark\.ivy2\cache|ivy|Local cache" type="SBT_MODULE" version="4">
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/../../project/target/idea-classes" />
     <output-test url="file://$MODULE_DIR$/../../project/target/idea-test-classes" />
@@ -11,15 +11,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="sbt: sbt-and-plugins">
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="sbt: sbt-1.4.3">
         <CLASSES>
-          <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/jansi.jar!/" />
-          <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/jline.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/scala-compiler.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/scala-library.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/scala-reflect.jar!/" />
-          <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/scala-xml_2.12.jar!/" />
+          <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/lib/scala-xml_2.12-1.0.6.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/actions_2.12-1.4.3.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/caffeine-2.8.5.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/checker-qual-3.4.1.jar!/" />
@@ -69,6 +67,8 @@
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/sbinary_2.12-0.5.1.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/sbt-1.4.3.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/scala-collection-compat_2.12-2.2.0.jar!/" />
+          <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/scala-compiler-2.12.12.jar!/" />
+          <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/scala-library-2.12.12.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/scala-parser-combinators_2.12-1.1.2.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/scala-reflect-2.12.12.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/scala-xml_2.12-1.3.0.jar!/" />
@@ -104,19 +104,19 @@
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/zinc-persist-core-assembly-1.4.3.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/zinc-persist_2.12-1.4.3.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.12/org.scala-sbt/sbt/1.4.3/zinc_2.12-1.4.3.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.portable-scala/sbt-crossproject/scala_2.12/sbt_1.0/1.0.0/jars/sbt-crossproject.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.portable-scala/sbt-platform-deps/scala_2.12/sbt_1.0/1.0.0/jars/sbt-platform-deps.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.portable-scala/sbt-scalajs-crossproject/scala_2.12/sbt_1.0/1.0.0/jars/sbt-scalajs-crossproject.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scala-js/sbt-scalajs/scala_2.12/sbt_1.0/1.3.1/jars/sbt-scalajs.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/com/google/jimfs/jimfs/1.1/jimfs-1.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-env-nodejs_2.12/1.1.1/scalajs-env-nodejs_2.12-1.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-ir_2.12/1.3.1/scalajs-ir_2.12-1.3.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-js-envs_2.12/1.1.1/scalajs-js-envs_2.12-1.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-linker-interface_2.12/1.3.1/scalajs-linker-interface_2.12-1.3.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-logging_2.12/1.1.1/scalajs-logging_2.12-1.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-sbt-test-adapter_2.12/1.3.1/scalajs-sbt-test-adapter_2.12-1.3.1.jar!/" />
-          <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.portable-scala/sbt-crossproject/scala_2.12/sbt_1.0/1.0.0/jars/sbt-crossproject.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.portable-scala/sbt-platform-deps/scala_2.12/sbt_1.0/1.0.0/jars/sbt-platform-deps.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.portable-scala/sbt-scalajs-crossproject/scala_2.12/sbt_1.0/1.0.0/jars/sbt-scalajs-crossproject.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scala-js/sbt-scalajs/scala_2.12/sbt_1.0/1.3.1/jars/sbt-scalajs.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/google/jimfs/jimfs/1.1/jimfs-1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-env-nodejs_2.12/1.1.1/scalajs-env-nodejs_2.12-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-ir_2.12/1.3.1/scalajs-ir_2.12-1.3.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-js-envs_2.12/1.1.1/scalajs-js-envs_2.12-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-linker-interface_2.12/1.3.1/scalajs-linker-interface_2.12-1.3.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-logging_2.12/1.1.1/scalajs-logging_2.12-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-sbt-test-adapter_2.12/1.3.1/scalajs-sbt-test-adapter_2.12-1.3.1.jar!/" />
+          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -124,7 +124,8 @@
     </orderEntry>
   </component>
   <component name="SbtModule">
-    <option name="buildForURI" value="file:/$MODULE_DIR$/../../" />
-    <option name="imports" value="SUB:DOLLARbd9a219ee17e6bb8caab.`mathlib`, SUB:DOLLARbd9a219ee17e6bb8caab.`root`, _root_.sbt.Keys._, _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._, _root_.scalajscrossproject.ScalaJSCrossPlugin.autoImport._, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._, _root_.sbtcrossproject.CrossPlugin.autoImport._, _root_.sbt._, _root_.sbt.nio.Keys._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.org.scalajs.sbtplugin.ScalaJSJUnitPlugin, _root_.org.scalajs.sbtplugin.ScalaJSPlugin, _root_.scalajscrossproject.ScalaJSCrossPlugin, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin, _root_.sbtcrossproject.CrossPlugin, _root_.scala.xml.{TopScope=&gt;SUB:DOLLARscope}" />
+    <option name="buildForURI" value="file:$MODULE_DIR$/../../" />
+    <option name="imports" value="SUB:DOLLAR4739dd14f4fd960facdb.`mathlib`, SUB:DOLLAR4739dd14f4fd960facdb.`root`, _root_.sbt.Keys._, _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._, _root_.scalajscrossproject.ScalaJSCrossPlugin.autoImport._, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._, _root_.sbtcrossproject.CrossPlugin.autoImport._, _root_.sbt._, _root_.sbt.nio.Keys._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.org.scalajs.sbtplugin.ScalaJSJUnitPlugin, _root_.org.scalajs.sbtplugin.ScalaJSPlugin, _root_.scalajscrossproject.ScalaJSCrossPlugin, _root_.org.portablescala.sbtplatformdeps.PlatformDepsPlugin, _root_.sbtcrossproject.CrossPlugin, _root_.scala.xml.{TopScope=&gt;SUB:DOLLARscope}" />
+    <option name="resolvers" value="$USER_HOME$/.ivy2/cache|ivy|true|Local cache, https://repo1.maven.org/maven2/|maven|public" />
   </component>
 </module>
