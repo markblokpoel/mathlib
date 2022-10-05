@@ -11,7 +11,7 @@ lazy val mathlib = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     // Shared settings
     name := "mathlib",
-    version := "0.1-SNAPSHOT",
+    version := "0.8.0",
     libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.9.2",
   ).
   jvmSettings(
