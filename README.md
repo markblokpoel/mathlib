@@ -1,6 +1,4 @@
-# MATHLIB
-
-<img src="docs/mathlib-logo-full.png" alt="MATHLIB logo" title="MATHLIB" width="50%"/>
+<img src="docs/mathlib-logo-full.png" alt="MATHLIB logo" title="MATHLIB" style="width: 100%; max-width: 400px;" />
 
 ```mathlib``` is a supporting library for programming computer simulations for theoretical models. Models are expected to be formally defined using math (e.g., set, graph or probability theory). ```mathlib``` supports the programmer in writing code that is easier to:
 
