@@ -1,13 +1,9 @@
 ThisBuild / scalaVersion := "2.13.4"
 
-lazy val root = project.in(file(".")).
-  aggregate(mathlib.js, mathlib.jvm).
-  settings(
-    publish := {},
-    publishLocal := {},
-  )
+lazy val mathlib = project.in(file(".")).
+  aggregate(mathlibCrossProjects.js, mathlibCrossProjects.jvm)
 
-lazy val mathlib = crossProject(JSPlatform, JVMPlatform).in(file(".")).
+lazy val mathlibCrossProjects = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     // Shared settings
     name := "mathlib",

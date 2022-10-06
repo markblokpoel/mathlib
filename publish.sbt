@@ -5,7 +5,7 @@ ThisBuild / organizationHomepage := Some(url("https://www.markblokpoel.com"))
 ThisBuild / scmInfo := Some(
   ScmInfo(
     url("https://github.com/markblokpoel/mathlib"),
-    "scm:git@github.markblokpoel/mathlib.git"
+    "scm:git@github.com:markblokpoel/mathlib.git"
   )
 )
 
