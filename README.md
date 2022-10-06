@@ -25,7 +25,3 @@ This library is still under development. Here is the status of each component:
 ## License
 
 This software is licensed under the [GNU General Public License v3.0](LICENSE).
-
-```mathlib``` has the following dependencies:
-
-* [Scalatags](https://com-lihaoyi.github.io/scalatags/), MIT License (MIT) Copyright (c) 2013
