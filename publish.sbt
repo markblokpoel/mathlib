@@ -1,4 +1,4 @@
-ThisBuild / organization := "com.markblokpoel.mathlib"
+ThisBuild / organization := "com.markblokpoel"
 ThisBuild / organizationName := "markblokpoel"
 ThisBuild / organizationHomepage := Some(url("https://www.markblokpoel.com"))
 
