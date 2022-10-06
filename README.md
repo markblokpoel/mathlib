@@ -1,5 +1,8 @@
 <img src="docs/mathlib-logo-full.png" alt="MATHLIB logo" title="MATHLIB" style="width: 100%; max-width: 400px;" />
 
+[![mathlib Scala version support](https://index.scala-lang.org/markblokpoel/mathlib/mathlib/latest.svg)](https://index.scala-lang.org/markblokpoel/mathlib/mathlib)
+[![license](https://img.shields.io/badge/license-%20GPL--3.0-blue)](https://github.com/markblokpoel/mathlib/blob/master/LICENSE)
+
 ```mathlib``` is a supporting library for programming computer simulations for theoretical models. Models are expected to be formally defined using math (e.g., set, graph or probability theory). ```mathlib``` supports the programmer in writing code that is easier to:
 
 * 🕶 read: ```mathlib``` syntax closely resembles mathematical notation
