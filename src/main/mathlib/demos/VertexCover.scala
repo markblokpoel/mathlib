@@ -4,6 +4,27 @@ import mathlib.graph.{Graph, Node}
 import mathlib.set.SetTheory._
 
 object VertexCover {
+  def main(args: Array[String]): Unit = {
+    // Vertex cover demo
+    import mathlib.graph.GraphImplicits._
+
+    val graph = Graph.empty +
+      N("A") ~ N("B") +
+      N("A") ~ N("C") +
+      N("B") ~ N("C") +
+      N("C") ~ N("D") +
+      N("C") ~ N("E") +
+      N("C") ~ N("F")
+
+    println("exhaustive search")
+    vertexCover(graph, 3).foreach(println)
+
+    println("fpt algorithm")
+    fptVertexCover(graph, 3, Set.empty).foreach(println)
+
+    println("templated bounded search tree")
+    fptvc(graph, 3, Set.empty).foreach(println)
+  }
 
   // Example of bounded exhaustive search
   def vertexCover(graph: Graph[String], k: Int): Set[Set[Node[String]]] = {

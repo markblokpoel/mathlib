@@ -15,6 +15,5 @@
     <orderEntry type="library" name="sbt: com.lihaoyi:sourcecode_2.13:0.2.1:jar" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="sbt: org.scala-js:scalajs-stubs_2.13:1.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.4:jar" level="project" />
-    <orderEntry type="module" module-name="mathlib-sources" exported="" />
   </component>
 </module>

@@ -3,21 +3,10 @@ package mathlib.demos
 import mathlib.set.SetTheory._
 
 object SubsetChoice {
-
-  type Item = String
-
-  def subsetChoice(stuff: Set[Item],
-                   f: (Item => Double),
-                   f2: ((Item, Item) => Double)): Set[Set[Item]] = {
-
-    def value(subset: Set[Item]): Double = sum(subset, f) + sum(subset.uniquePairs, f2)
-
-    argMax(powerset(stuff), value)
-  }
-
   def main(args: Array[String]): Unit = {
 
     val objects = Set("coffee", "sugar", "salt", "cookie", "milk")
+
     def value(item: Item): Double = item match {
       case "coffee" => 4.0
       case "sugar" => 2.0
@@ -26,6 +15,7 @@ object SubsetChoice {
       case "milk" => 3.0
       case _ => 0.0
     }
+
     def value2(item1: Item, item2: Item): Double = (item2, item1) match {
       case ("coffee", "sugar") => -3.0
       case ("sugar", "coffee") => -3.0
@@ -52,6 +42,17 @@ object SubsetChoice {
 
     println(subsetChoice(objects, value, value2))
 
+  }
+
+  type Item = String
+
+  def subsetChoice(stuff: Set[Item],
+                   f: (Item => Double),
+                   f2: ((Item, Item) => Double)): Set[Set[Item]] = {
+
+    def value(subset: Set[Item]): Double = sum(subset, f) + sum(subset.uniquePairs, f2)
+
+    argMax(powerset(stuff), value)
   }
 
 }
