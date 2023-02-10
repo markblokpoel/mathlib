@@ -27,7 +27,7 @@ ThisBuild / pomIncludeRepository := { _ => false }
 
 ThisBuild / publishTo := Some(
   {
-    if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
+    if (isSnapshot.value) Opts.resolver.sonatypeOssSnapshots.head
     else Opts.resolver.sonatypeStaging
   }
 )
