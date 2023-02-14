@@ -1,4 +1,4 @@
-package mathlib.probability.datastructures
+package mathlib.probability_multi.datastructures
 
 sealed trait DiscreteDomain[A] extends Set[DiscreteValue[A]] {
 

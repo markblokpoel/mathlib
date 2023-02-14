@@ -1,7 +1,7 @@
 package mathlib.probability_multi
 
 import mathlib.probability_multi.Implicits.ImplBigNaturalDouble
-import mathlib.probability_multi.datastructures.{BigNatural, ProbabilityTree}
+import mathlib.probability_multi.datastructures.{BigNatural, DiscreteDomain, GivenDistribution, ProbabilityTree}
 
 import scala.reflect.ClassTag
 import scala.util.Random
@@ -203,6 +203,8 @@ case class DiscreteDistribution[A](
       )
     })
   }
+
+  override def is(value: A): GivenDistribution = ???
 }
 
 /** Factory for [[Distribution]] instances. */
