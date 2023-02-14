@@ -1,11 +1,11 @@
 package mathlib.probability_multi
-import mathlib.probability_multi.datastructures.{BigNatural, GivenDistribution}
+import mathlib.probability_multi.datastructures.{BigNatural,DiscreteConditionalDistributionValueAssignment}
 import mathlib.probability_multi.Implicits._
 
 case class DiscreteConditionalDistribution[A](
     id: String,
     domain: Set[A],
-    conditions: Seq[Distribution[_]]
+    conditions: Distribution[_]*
 ) extends Distribution[A] {
 
   /** @param value
@@ -112,5 +112,6 @@ case class DiscreteConditionalDistribution[A](
   /** Prints the distribution in a histogram. */
   override def hist(): Unit = ???
 
-  override def is(value: A): GivenDistribution = ???
+  override def is(value: A): DiscreteConditionalDistributionValueAssignment[A] =
+    DiscreteConditionalDistributionValueAssignment(this, value)
 }

@@ -1,6 +1,6 @@
 package mathlib.probability_multi
 
-import mathlib.probability_multi.datastructures.{BigNatural, GivenDistribution}
+import mathlib.probability_multi.datastructures.{BigNatural, DistributionValueAssignment}
 
 trait Distribution[A] {
 
@@ -29,7 +29,7 @@ trait Distribution[A] {
 
   def -(other: D): D
 
-  def is(value: A): GivenDistribution
+  def is(value: A): DistributionValueAssignment[A]
 
   /** Inversely scales the distribution according to a scalar: pr(domain) * 1 /
     * scalar = pr(domain) / scalar

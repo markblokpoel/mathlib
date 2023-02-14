@@ -1,7 +1,7 @@
 package mathlib.probability_multi
 
 import mathlib.probability_multi.Implicits.ImplBigNaturalDouble
-import mathlib.probability_multi.datastructures.{BigNatural, DiscreteDomain, GivenDistribution, ProbabilityTree}
+import mathlib.probability_multi.datastructures.{BigNatural, DiscreteDistributionValueAssignment, DiscreteDomain, DistributionValueAssignment, ProbabilityTree}
 
 import scala.reflect.ClassTag
 import scala.util.Random
@@ -204,7 +204,7 @@ case class DiscreteDistribution[A](
     })
   }
 
-  override def is(value: A): GivenDistribution = ???
+  override def is(value: A): DiscreteDistributionValueAssignment[A] = DiscreteDistributionValueAssignment(this, value)
 }
 
 /** Factory for [[Distribution]] instances. */
