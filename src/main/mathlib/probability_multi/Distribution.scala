@@ -44,21 +44,6 @@ trait Distribution[A] {
   @throws[IllegalArgumentException]
   def /(scalar: BigNatural): Distribution[A]
 
-  /** Draws a sample from the distribution, proportionate to the probabilities.
-    *
-    * @return
-    *   A sample
-    */
-  def sample: A
-
-  /** Returns an iterator containing {{{n}}} samples.
-    *
-    * @param n
-    *   The number of samples to return.
-    * @return
-    */
-  def sample(n: Int): Iterator[A]
-
   def isNormalized: Boolean
 
   def error: BigNatural

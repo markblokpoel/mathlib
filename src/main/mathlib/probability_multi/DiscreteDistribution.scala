@@ -107,7 +107,7 @@ case class DiscreteDistribution[A](
     * @return
     *   A sample
     */
-  override def sample: A = pTree(BigNatural(Random.nextDouble()) * sum)
+  def sample: A = pTree(BigNatural(Random.nextDouble()) * sum)
 
   /** Returns an iterator containing {{{n}}} samples.
     *
@@ -115,7 +115,7 @@ case class DiscreteDistribution[A](
     *   The number of samples to return.
     * @return
     */
-  override def sample(n: Int): Iterator[A] = new Iterator[A]() {
+  def sample(n: Int): Iterator[A] = new Iterator[A]() {
     private var sampleCount = 0
 
     override def hasNext: Boolean = sampleCount < n

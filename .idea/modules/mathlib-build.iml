@@ -101,41 +101,41 @@
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.17/org.scala-sbt/sbt/1.8.2/zinc-persist-core-assembly-1.8.0.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.17/org.scala-sbt/sbt/1.8.2/zinc-persist_2.12-1.8.0.jar!/" />
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.12.17/org.scala-sbt/sbt/1.8.2/zinc_2.12-1.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/gigahorse-core_2.12/0.3.0/gigahorse-core_2.12-0.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/gigahorse-okhttp_2.12/0.3.0/gigahorse-okhttp_2.12-0.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/github/sbt/pgp-library_2.12/2.1.2/pgp-library_2.12-2.1.2.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/github/sbt/sbt-pgp_2.12_1.0/2.1.2/sbt-pgp-2.1.2.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/3.7.0/okhttp-3.7.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/squareup/okio/okio/1.12.0/okio-1.12.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.2.0/config-1.2.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/ssl-config-core_2.12/0.2.2/ssl-config-core_2.12-0.2.2.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.5/httpclient-4.3.5.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/bouncycastle/bcpg-jdk15on/1.60/bcpg-jdk15on-1.60.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.60/bcprov-jdk15on-1.60.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/fusesource/hawtbuf/hawtbuf-proto/1.9/hawtbuf-proto-1.9.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/fusesource/hawtbuf/hawtbuf/1.9/hawtbuf-1.9.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/msgpack/msgpack-core/0.9.0/msgpack-core-0.9.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.0/reactive-streams-1.0.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.12/2.5.0/scala-collection-compat_2.12-2.5.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.0.5/scala-parser-combinators_2.12-1.0.5.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/1.7.7/jcl-over-slf4j-1.7.7.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/sonatype/spice/zapper/spice-zapper/1.3/spice-zapper-1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-codec_2.12/21.8.0/airframe-codec_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-control_2.12/21.8.0/airframe-control_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-http_2.12/21.8.0/airframe-http_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-json_2.12/21.8.0/airframe-json_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-log_2.12/21.8.0/airframe-log_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-metrics_2.12/21.8.0/airframe-metrics_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-msgpack_2.12/21.8.0/airframe-msgpack_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-rx_2.12/21.8.0/airframe-rx_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-surface_2.12/21.8.0/airframe-surface_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-ulid_2.12/21.8.0/airframe-ulid_2.12-21.8.0.jar!/" />
-          <root url="jar://$USER_HOME$/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/xerial/sbt/sbt-sonatype_2.12_1.0/3.9.9/sbt-sonatype-3.9.9.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/gigahorse-core_2.12/0.3.0/gigahorse-core_2.12-0.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/gigahorse-okhttp_2.12/0.3.0/gigahorse-okhttp_2.12-0.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/sbt/pgp-library_2.12/2.1.2/pgp-library_2.12-2.1.2.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/sbt/sbt-pgp_2.12_1.0/2.1.2/sbt-pgp-2.1.2.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/3.7.0/okhttp-3.7.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/squareup/okio/okio/1.12.0/okio-1.12.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.2.0/config-1.2.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/ssl-config-core_2.12/0.2.2/ssl-config-core_2.12-0.2.2.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.5/httpclient-4.3.5.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/bouncycastle/bcpg-jdk15on/1.60/bcpg-jdk15on-1.60.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.60/bcprov-jdk15on-1.60.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/fusesource/hawtbuf/hawtbuf-proto/1.9/hawtbuf-proto-1.9.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/fusesource/hawtbuf/hawtbuf/1.9/hawtbuf-1.9.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/msgpack/msgpack-core/0.9.0/msgpack-core-0.9.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.0/reactive-streams-1.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.12/2.5.0/scala-collection-compat_2.12-2.5.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.0.5/scala-parser-combinators_2.12-1.0.5.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/1.7.7/jcl-over-slf4j-1.7.7.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/sonatype/spice/zapper/spice-zapper/1.3/spice-zapper-1.3.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-codec_2.12/21.8.0/airframe-codec_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-control_2.12/21.8.0/airframe-control_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-http_2.12/21.8.0/airframe-http_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-json_2.12/21.8.0/airframe-json_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-log_2.12/21.8.0/airframe-log_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-metrics_2.12/21.8.0/airframe-metrics_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-msgpack_2.12/21.8.0/airframe-msgpack_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-rx_2.12/21.8.0/airframe-rx_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-surface_2.12/21.8.0/airframe-surface_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/wvlet/airframe/airframe-ulid_2.12/21.8.0/airframe-ulid_2.12-21.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/xerial/sbt/sbt-sonatype_2.12_1.0/3.9.9/sbt-sonatype-3.9.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -144,7 +144,7 @@
   </component>
   <component name="SbtModule">
     <option name="buildForURI" value="file:$MODULE_DIR$/../../" />
-    <option name="imports" value="SUB:DOLLAR9735bfefd472f57a6251.`mathlib`, _root_.sbt.Keys._, _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.JUnitXmlReportPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.xerial.sbt.Sonatype.autoImport._, _root_.com.jsuereth.sbtpgp.SbtPgp.autoImport._, _root_.sbt._, _root_.sbt.nio.Keys._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.xerial.sbt.Sonatype, _root_.com.jsuereth.sbtpgp.SbtPgp, _root_.scala.xml.{TopScope=&gt;SUB:DOLLARscope}" />
+    <option name="imports" value="SUB:DOLLAR2be062d2eba7b24ce51c.`mathlib`, _root_.sbt.Keys._, _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.JUnitXmlReportPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.xerial.sbt.Sonatype.autoImport._, _root_.com.jsuereth.sbtpgp.SbtPgp.autoImport._, _root_.sbt._, _root_.sbt.nio.Keys._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.xerial.sbt.Sonatype, _root_.com.jsuereth.sbtpgp.SbtPgp, _root_.scala.xml.{TopScope=&gt;SUB:DOLLARscope}" />
     <option name="resolvers" value="$USER_HOME$/.ivy2/cache|ivy|true|Local cache, https://repo1.maven.org/maven2/|maven|public" />
   </component>
 </module>

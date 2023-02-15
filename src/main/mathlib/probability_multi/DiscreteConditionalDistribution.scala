@@ -5,6 +5,7 @@ import mathlib.probability_multi.Implicits._
 case class DiscreteConditionalDistribution[A](
     id: String,
     domain: Set[A],
+    distribution: Map[(A, Seq[Distribution[_]]), BigNatural],
     conditions: Distribution[_]*
 ) extends Distribution[A] {
 
@@ -27,17 +28,56 @@ case class DiscreteConditionalDistribution[A](
     * @return
     *   The scaled distribution.
     */
-  override def *(scalar: BigNatural): Distribution[A] = ???
+  override def *(scalar: BigNatural): Distribution[A] = DiscreteConditionalDistribution(
+    id,
+    domain,
+    distribution.view.mapValues(_ * scalar).toMap,
+    conditions:_*
+  )
 
   override type D = this.type
 
   override def +(
       other: DiscreteConditionalDistribution.this.type
-  ): DiscreteConditionalDistribution.this.type = ???
+  ): DiscreteConditionalDistribution.this.type = {
+    require(
+      domain == other.domain,
+      "addition for conditional distributions requires the same domains"
+    )
+    require(
+      conditions == other.conditions,
+      "addition for conditional distributions requires the same conditional variables"
+    )
+    DiscreteConditionalDistribution(
+      id,
+      domain,
+      distribution.keySet.map(key => {
+        key -> (distribution(key) + other.distribution(key))
+      }).toMap,
+      conditions: _*
+    )
+  }
 
   override def -(
       other: DiscreteConditionalDistribution.this.type
-  ): DiscreteConditionalDistribution.this.type = ???
+  ): DiscreteConditionalDistribution.this.type = {
+    require(
+      domain == other.domain,
+      "subtraction for conditional distributions requires the same domains"
+    )
+    require(
+      conditions == other.conditions,
+      "subtraction for conditional distributions requires the same conditional variables"
+    )
+    DiscreteConditionalDistribution(
+      id,
+      domain,
+      distribution.keySet.map(key => {
+        key -> (distribution(key) - other.distribution(key))
+      }).toMap,
+      conditions: _*
+    )
+  }
 
   /** Inversely scales the distribution according to a scalar: pr(domain) * 1 /
     * scalar = pr(domain) / scalar
@@ -49,22 +89,12 @@ case class DiscreteConditionalDistribution[A](
     * @return
     *   The scaled distribution.
     */
-  override def /(scalar: BigNatural): Distribution[A] = ???
-
-  /** Draws a sample from the distribution, proportionate to the probabilities.
-    *
-    * @return
-    *   A sample
-    */
-  override def sample: A = ???
-
-  /** Returns an iterator containing {{{n}}} samples.
-    *
-    * @param n
-    *   The number of samples to return.
-    * @return
-    */
-  override def sample(n: Int): Iterator[A] = ???
+  override def /(scalar: BigNatural): Distribution[A] = DiscreteConditionalDistribution(
+    id,
+    domain,
+    distribution.view.mapValues(_ / scalar).toMap,
+    conditions: _*
+  )
 
   override def isNormalized: Boolean = ???
 
