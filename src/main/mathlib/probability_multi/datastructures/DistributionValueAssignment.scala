@@ -20,7 +20,7 @@ case class DiscreteDistributionValueAssignment[A](
 
   override def or(value2: A): DiscreteDistributionValueAssignment[A] = DiscreteDistributionValueAssignment(
     distribution,
-    (value2 +: values): _*
+    value2 +: values: _*
   )
 }
 
@@ -36,6 +36,9 @@ case class DiscreteConditionalDistributionValueAssignment[A](
   override def or(value2: A): DiscreteConditionalDistributionValueAssignment[A] =
     DiscreteConditionalDistributionValueAssignment(
       distribution,
-      (value2 +: values): _*
+      value2 +: values: _*
     )
+
+  def |(conditionalValueAssignments: DistributionValueAssignment[_]*): DiscreteConditional[A] =
+    DiscreteConditional(this, conditionalValueAssignments:_*)
 }
