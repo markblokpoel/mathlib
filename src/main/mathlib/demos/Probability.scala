@@ -2,6 +2,7 @@ package mathlib.demos
 
 import mathlib.probability_multi.{DiscreteConditionalDistribution, DiscreteDistribution}
 import mathlib.probability_multi.Implicits._
+import mathlib.probability_multi.datastructures.BigNatural
 
 
 object Probability {
@@ -12,9 +13,9 @@ object Probability {
       id = "Letter",
       Set("a", "b", "c"),
       Map(
-        "a" -> 0.2.bigNatural,
-        "b" -> 0.5.bigNatural,
-        "c" -> 0.3.bigNatural
+        "a" -> BigNatural(0.2),
+        "b" -> BigNatural(0.5),
+        "c" -> BigNatural(0.3)
       )
     )
 
@@ -22,21 +23,23 @@ object Probability {
 
     val prior = letters is "a" or "c"
 
-    val names = DiscreteConditionalDistribution(
-      id = "Name",
-      domain = Set(
-        "mark",
-        "steffie"
-      ),
-      Map(
+    println(prior)
 
-      ),
-      letters:.*
-    )
-
-    val bla = (names is "mark") | (letters is "a" or "c")
-
-    println(bla)
+//    val names = DiscreteConditionalDistribution(
+//      id = "Name",
+//      domain = Set(
+//        "mark",
+//        "steffie"
+//      ),
+//      Map(
+//
+//      ),
+//      letters:.*
+//    )
+//
+//    val bla = (names is "mark") | (letters is "a" or "c")
+//
+//    println(bla)
 
   }
 }

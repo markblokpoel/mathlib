@@ -1,13 +1,20 @@
 package mathlib.probability_multi
 
 import mathlib.probability_multi.Implicits._
-import mathlib.probability_multi.datastructures.{BigNatural, Conditional, DiscreteDistributionValueAssignment, DiscreteDomain, DistributionValueAssignment, ProbabilityTree}
+import mathlib.probability_multi.datastructures.{
+  BigNatural,
+  Conditional,
+  DiscreteDistributionValueAssignment,
+  DiscreteDomain,
+  DistributionValueAssignment,
+  ProbabilityTree
+}
 
 import scala.reflect.ClassTag
 import scala.util.Random
 
-/** Implements a generic probability distribution. The probabilities are
-  * represented by Double for increased accuracy.
+/** Implements a generic probability distribution. The probabilities are represented by Double for
+  * increased accuracy.
   *
   * @param domain
   *   The set of values that span this distribution.
@@ -22,8 +29,9 @@ case class DiscreteDistribution[A](
     distribution: Map[A, BigNatural]
 ) extends Distribution[A] {
 
-  type D = DiscreteDistribution[A]
-  type DVA = DiscreteDistributionValueAssignment[A]
+  override type D = this.type
+  override type DVA1 = DiscreteDistributionValueAssignment[A]
+  override type DVA2 = DiscreteDistributionValueAssignment[A]
 
   /** @param valueAssignment
    * A value within the domain.
@@ -31,13 +39,16 @@ case class DiscreteDistribution[A](
    * The probability of the value.
    */
   override def pr(valueAssignment: DiscreteDistributionValueAssignment[A]): BigNatural = {
-        val seq: Seq[BigNatural] = valueAssignment.values.map(value => distribution(value))
-        seq.sum
-      }
-
-  override def allValueAssignments: Set[DiscreteDistributionValueAssignment[A]] = {
-    domain.map(value => DiscreteDistributionValueAssignment(this, value))
+    val seq: Seq[BigNatural] =
+      valueAssignment.values.map(value => distribution(value))
+    seq.sum
   }
+
+  override def is(value: A): DiscreteDistributionValueAssignment[A] =
+    DiscreteDistributionValueAssignment(this, value)
+
+  override def allValueAssignments: Set[DiscreteDistributionValueAssignment[A]] =
+    domain.map(value => DiscreteDistributionValueAssignment(distribution = this, value))
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *
@@ -54,7 +65,6 @@ case class DiscreteDistribution[A](
       domain,
       distribution.view.mapValues(_ * scalar).toMap
     )
-
 
   override def +(other: D): D = {
     require(
@@ -86,8 +96,8 @@ case class DiscreteDistribution[A](
     )
   }
 
-  /** Inversely scales the distribution according to a scalar: pr(domain) * 1 /
-    * scalar = pr(domain) / scalar
+  /** Inversely scales the distribution according to a scalar: pr(domain) * 1 / scalar = pr(domain)
+    * / scalar
     *
     * This may de-normalize the distribution.
     *
@@ -138,8 +148,8 @@ case class DiscreteDistribution[A](
 
   override def error: BigNatural = BigNatural(1.0) - sum
 
-  /** Returns the value in the domain with the maximum probability. If multiple
-    * maxima exist, it returns one of those at random.
+  /** Returns the value in the domain with the maximum probability. If multiple maxima exist, it
+    * returns one of those at random.
     *
     * @return
     *   Most probable value in the domain
@@ -173,25 +183,23 @@ case class DiscreteDistribution[A](
 
   /** Returns the Shannon information entropy of this distribution.
     *
-    * For distributions that deviate from probability assumptions (i.e., the sum
-    * of the values equals 1.0), Shannon information entropy is ill-defined.
+    * For distributions that deviate from probability assumptions (i.e., the sum of the values
+    * equals 1.0), Shannon information entropy is ill-defined.
     *
     * @return
     *   Entropy of the distribution
     */
   override def entropy: BigNatural = {
-    distribution.values.foldLeft(BigNatural(0.0))(
-      (e: BigNatural, p: BigNatural) =>
-        e - (if (p > 0) p * p.log / BigNatural(2).log else BigNatural(0.0))
+    distribution.values.foldLeft(BigNatural(0.0))((e: BigNatural, p: BigNatural) =>
+      e - (if (p > 0) p * p.log / BigNatural(2).log else BigNatural(0.0))
     )
   }
 
   /** @return
     *   The sum of the probabilities, i.e., the probability mass.
     */
-  override def sum: BigNatural = distribution.values.fold(BigNatural(0.0))(
-    (acc: BigNatural, p: BigNatural) => acc + p
-  )
+  override def sum: BigNatural =
+    distribution.values.fold(BigNatural(0.0))((acc: BigNatural, p: BigNatural) => acc + p)
 
   override def toString: String = distribution.mkString("{", ", ", "}")
 
@@ -211,8 +219,6 @@ case class DiscreteDistribution[A](
       )
     })
   }
-
-  override def is(value: A): DiscreteDistributionValueAssignment[A] = DiscreteDistributionValueAssignment(this, value)
 
 
 }

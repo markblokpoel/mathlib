@@ -1,23 +1,33 @@
 package mathlib.probability_multi
-import mathlib.probability_multi.datastructures.{BigNatural, DiscreteConditionalDistributionValueAssignment, DistributionValueAssignment}
+import mathlib.probability_multi.datastructures.{BigNatural, DiscreteConditionalDistributionValueAssignment, DiscreteDistributionValueAssignment, DistributionValueAssignment}
 import mathlib.probability_multi.Implicits._
 
 case class DiscreteConditionalDistribution[A](
     id: String,
     domain: Set[A],
-    distribution: Map[(DistributionValueAssignment[A], Seq[DistributionValueAssignment[_]]), BigNatural],
+    distribution: Map[(A, Seq[DistributionValueAssignment[_]]), BigNatural],
     conditions: Distribution[_]*
 ) extends Distribution[A] {
+
+  override type D = this.type
+  override type DVA1 = DiscreteDistributionValueAssignment[A]
+  override type DVA2 = DiscreteConditionalDistributionValueAssignment[A]
 
   /** @param value
     *   A value within the domain.
     * @return
     *   The probability of the value.
     */
-  override def pr(value: DistributionValueAssignment[A]): BigNatural = conditions.foldLeft(0.bigNatural) {
-    (acc: Double, conditional: Distribution[_]) => acc + pr(value | conditional)
-
+  override def pr(value: DiscreteDistributionValueAssignment[A]): BigNatural = conditions.foldLeft(BigNatural(0)) {
+//    (acc: Double, conditional: Distribution[_]) => acc + pr(value | conditional)
+    ???
   }
+
+  override def is(value: A): DiscreteConditionalDistributionValueAssignment[A] =
+    DiscreteConditionalDistributionValueAssignment(this, value)
+
+  override def allValueAssignments: Set[DiscreteConditionalDistributionValueAssignment[A]] =
+    domain.map(value => DiscreteConditionalDistributionValueAssignment(distribution = this, value))
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *
@@ -28,14 +38,13 @@ case class DiscreteConditionalDistribution[A](
     * @return
     *   The scaled distribution.
     */
-  override def *(scalar: BigNatural): Distribution[A] = DiscreteConditionalDistribution(
+  override def *(scalar: BigNatural): DiscreteConditionalDistribution[A] = DiscreteConditionalDistribution(
     id,
     domain,
     distribution.view.mapValues(_ * scalar).toMap,
     conditions:_*
   )
 
-  override type D = this.type
 
   override def +(
       other: DiscreteConditionalDistribution.this.type
@@ -89,7 +98,7 @@ case class DiscreteConditionalDistribution[A](
     * @return
     *   The scaled distribution.
     */
-  override def /(scalar: BigNatural): Distribution[A] = DiscreteConditionalDistribution(
+  override def /(scalar: BigNatural): DiscreteConditionalDistribution[A] = DiscreteConditionalDistribution(
     id,
     domain,
     distribution.view.mapValues(_ / scalar).toMap,
@@ -108,9 +117,9 @@ case class DiscreteConditionalDistribution[A](
     */
   override def argMax: A = ???
 
-  override def exp: Distribution[A] = ???
+  override def exp: D = ???
 
-  override def log: Distribution[A] = ???
+  override def log: D = ???
 
   /** Returns the softmaxed distribution
     *
@@ -122,7 +131,7 @@ case class DiscreteConditionalDistribution[A](
     *   See this Wikipedia page for a mathmatical definition of soft argmax
     *   [[https://en.wikipedia.org/wiki/Softmax_function]].
     */
-  override def softmax(beta: BigNatural): Distribution[A] = ???
+  override def softmax(beta: BigNatural): D = ???
 
   /** Returns the Shannon information entropy of this distribution.
     *
@@ -142,6 +151,5 @@ case class DiscreteConditionalDistribution[A](
   /** Prints the distribution in a histogram. */
   override def hist(): Unit = ???
 
-  override def is(value: A): DiscreteConditionalDistributionValueAssignment[A] =
-    DiscreteConditionalDistributionValueAssignment(this, value)
+
 }

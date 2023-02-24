@@ -5,15 +5,15 @@ import mathlib.probability_multi.datastructures.{BigNatural, Conditional, Distri
 trait Distribution[A] {
 
   type D <: Distribution[A]
-
-  type DVA <: DistributionValueAssignment[A]
+  type DVA1 >: DistributionValueAssignment[A]
+  type DVA2 >: DistributionValueAssignment[A]
 
   /** @param valueAssignment
     *   A value within the domain.
     * @return
     *   The probability of the value.
     */
-  def pr(valueAssignment: DVA): BigNatural
+  def pr(valueAssignment: DVA1): BigNatural
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *
@@ -30,7 +30,9 @@ trait Distribution[A] {
 
   def -(other: D): D
 
-  def is(value: A): DVA
+  def is(value: A): DVA2
+
+  def allValueAssignments: Set[DVA2]
 
   /** Inversely scales the distribution according to a scalar: pr(domain) * 1 /
     * scalar = pr(domain) / scalar
@@ -89,7 +91,6 @@ trait Distribution[A] {
     */
   def sum: BigNatural
 
-  def allValueAssignments: Set[DVA]
 
   def toString: String
 
