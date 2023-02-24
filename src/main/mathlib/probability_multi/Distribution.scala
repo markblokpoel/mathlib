@@ -5,8 +5,8 @@ import mathlib.probability_multi.datastructures.{BigNatural, Conditional, Distri
 trait Distribution[A] {
 
   type D <: Distribution[A]
-  type DVA1 >: DistributionValueAssignment[A]
-  type DVA2 >: DistributionValueAssignment[A]
+  type DVA1 <: DistributionValueAssignment[A]
+  type DVA2 <: DistributionValueAssignment[A]
 
   /** @param valueAssignment
     *   A value within the domain.

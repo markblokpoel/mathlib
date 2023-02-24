@@ -29,7 +29,7 @@ case class DiscreteDistribution[A](
     distribution: Map[A, BigNatural]
 ) extends Distribution[A] {
 
-  override type D = this.type
+  override type D = DiscreteDistribution[A]
   override type DVA1 = DiscreteDistributionValueAssignment[A]
   override type DVA2 = DiscreteDistributionValueAssignment[A]
 
