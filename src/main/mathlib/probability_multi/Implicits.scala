@@ -24,10 +24,15 @@ object Implicits {
     override def toFloat(x: BigNatural): Float                   = x.toFloat
     override def toDouble(x: BigNatural): Double                 = x.toDouble
     override def compare(x: BigNatural, y: BigNatural): Int      = x compare y
-    override def parseString(str: String): Option[BigNatural]    = Some(
+    override def parseString(str: String): Option[BigNatural] = Some(
       BigNatural(BigDecimal(str))
     )
   }
+
+  implicit def toInt(b: BigNatural): Int = b.toInt
+  implicit def toDouble(b: BigNatural): Double = b.toDouble
+  implicit def toFloat(b: BigNatural): Float = b.toFloat
+  implicit def toLong(b: BigNatural): Long = b.toLong
 
   implicit class ImplGivenDiscreteDistribution[A](
       distribution: DiscreteDistribution[A]

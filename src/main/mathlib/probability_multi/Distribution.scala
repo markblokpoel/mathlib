@@ -4,13 +4,16 @@ import mathlib.probability_multi.datastructures.{BigNatural, Conditional, Distri
 
 trait Distribution[A] {
 
-  /** @param value
+  type D <: Distribution[A]
+
+  type DVA <: DistributionValueAssignment[A]
+
+  /** @param valueAssignment
     *   A value within the domain.
     * @return
     *   The probability of the value.
     */
-  @throws[NoSuchElementException]
-  def pr(valueAssignment: DistributionValueAssignment[A]): BigNatural
+  def pr(valueAssignment: DVA): BigNatural
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *
@@ -21,15 +24,13 @@ trait Distribution[A] {
     * @return
     *   The scaled distribution.
     */
-  def *(scalar: BigNatural): Distribution[A]
-
-  type D <: Distribution[A]
+  def *(scalar: BigNatural): D
 
   def +(other: D): D
 
   def -(other: D): D
 
-  def is(value: A): DistributionValueAssignment[A]
+  def is(value: A): DVA
 
   /** Inversely scales the distribution according to a scalar: pr(domain) * 1 /
     * scalar = pr(domain) / scalar
@@ -42,7 +43,7 @@ trait Distribution[A] {
     *   The scaled distribution.
     */
   @throws[IllegalArgumentException]
-  def /(scalar: BigNatural): Distribution[A]
+  def /(scalar: BigNatural): D
 
   def isNormalized: Boolean
 
@@ -57,9 +58,9 @@ trait Distribution[A] {
   @throws[IndexOutOfBoundsException]
   def argMax: A
 
-  def exp: Distribution[A]
+  def exp: D
 
-  def log: Distribution[A]
+  def log: D
 
   /** Returns the softmaxed distribution
     *
@@ -71,7 +72,7 @@ trait Distribution[A] {
     *   See this Wikipedia page for a mathmatical definition of soft argmax
     *   [[https://en.wikipedia.org/wiki/Softmax_function]].
     */
-  def softmax(beta: BigNatural): Distribution[A]
+  def softmax(beta: BigNatural): D
 
   /** Returns the Shannon information entropy of this distribution.
     *
@@ -88,7 +89,7 @@ trait Distribution[A] {
     */
   def sum: BigNatural
 
-  def allValueAssignments: Seq[Conditional]
+  def allValueAssignments: Set[DVA]
 
   def toString: String
 

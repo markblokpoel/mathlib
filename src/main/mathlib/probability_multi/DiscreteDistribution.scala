@@ -1,7 +1,7 @@
 package mathlib.probability_multi
 
 import mathlib.probability_multi.Implicits._
-import mathlib.probability_multi.datastructures.{BigNatural, DiscreteDistributionValueAssignment, DiscreteDomain, DistributionValueAssignment, ProbabilityTree}
+import mathlib.probability_multi.datastructures.{BigNatural, Conditional, DiscreteDistributionValueAssignment, DiscreteDomain, DistributionValueAssignment, ProbabilityTree}
 
 import scala.reflect.ClassTag
 import scala.util.Random
@@ -22,15 +22,21 @@ case class DiscreteDistribution[A](
     distribution: Map[A, BigNatural]
 ) extends Distribution[A] {
 
-  /** @param value
-    *   A value within the domain.
-    * @return
-    *   The probability of the value.
-    */
-  @throws[NoSuchElementException]
-  def pr(valueAssignment: DiscreteDistributionValueAssignment[A]): BigNatural = {
-    val seq: Seq[BigNatural] = valueAssignment.values.map(value => distribution(value))
-    seq.sum
+  type D = DiscreteDistribution[A]
+  type DVA = DiscreteDistributionValueAssignment[A]
+
+  /** @param valueAssignment
+   * A value within the domain.
+   * @return
+   * The probability of the value.
+   */
+  override def pr(valueAssignment: DiscreteDistributionValueAssignment[A]): BigNatural = {
+        val seq: Seq[BigNatural] = valueAssignment.values.map(value => distribution(value))
+        seq.sum
+      }
+
+  override def allValueAssignments: Set[DiscreteDistributionValueAssignment[A]] = {
+    domain.map(value => DiscreteDistributionValueAssignment(this, value))
   }
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
@@ -49,7 +55,6 @@ case class DiscreteDistribution[A](
       distribution.view.mapValues(_ * scalar).toMap
     )
 
-  type D = DiscreteDistribution[A]
 
   override def +(other: D): D = {
     require(
@@ -208,6 +213,8 @@ case class DiscreteDistribution[A](
   }
 
   override def is(value: A): DiscreteDistributionValueAssignment[A] = DiscreteDistributionValueAssignment(this, value)
+
+
 }
 
 /** Factory for [[Distribution]] instances. */
