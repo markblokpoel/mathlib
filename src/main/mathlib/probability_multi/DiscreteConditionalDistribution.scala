@@ -1,11 +1,11 @@
 package mathlib.probability_multi
-import mathlib.probability_multi.datastructures.{BigNatural,DiscreteConditionalDistributionValueAssignment}
+import mathlib.probability_multi.datastructures.{BigNatural, DiscreteConditionalDistributionValueAssignment, DistributionValueAssignment}
 import mathlib.probability_multi.Implicits._
 
 case class DiscreteConditionalDistribution[A](
     id: String,
     domain: Set[A],
-    distribution: Map[(A, Seq[Distribution[_]]), BigNatural],
+    distribution: Map[(DistributionValueAssignment[A], Seq[DistributionValueAssignment[_]]), BigNatural],
     conditions: Distribution[_]*
 ) extends Distribution[A] {
 
@@ -14,9 +14,9 @@ case class DiscreteConditionalDistribution[A](
     * @return
     *   The probability of the value.
     */
-  override def pr(value: A): BigNatural = conditions.foldLeft(0.bigNatural) {
-//    (acc: Double, conditional: Distribution[_]) => acc + pr(value | conditional)
-    ???
+  override def pr(value: DistributionValueAssignment[A]): BigNatural = conditions.foldLeft(0.bigNatural) {
+    (acc: Double, conditional: Distribution[_]) => acc + pr(value | conditional)
+
   }
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar

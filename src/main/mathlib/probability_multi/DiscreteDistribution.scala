@@ -1,6 +1,6 @@
 package mathlib.probability_multi
 
-import mathlib.probability_multi.Implicits.ImplBigNaturalDouble
+import mathlib.probability_multi.Implicits._
 import mathlib.probability_multi.datastructures.{BigNatural, DiscreteDistributionValueAssignment, DiscreteDomain, DistributionValueAssignment, ProbabilityTree}
 
 import scala.reflect.ClassTag
@@ -28,7 +28,10 @@ case class DiscreteDistribution[A](
     *   The probability of the value.
     */
   @throws[NoSuchElementException]
-  override def pr(value: A): BigNatural = distribution(value)
+  def pr(valueAssignment: DiscreteDistributionValueAssignment[A]): BigNatural = {
+    val seq: Seq[BigNatural] = valueAssignment.values.map(value => distribution(value))
+    seq.sum
+  }
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *
@@ -194,7 +197,7 @@ case class DiscreteDistribution[A](
     println("** " + id + " **")
     domain.foreach(value => {
       val p: BigNatural = distribution(value)
-      val len: Int      = (20.0.bigNatural * p).toInt
+      val len: Int      = 20 * p
       val hs            = List.tabulate(len)(_ => "#").mkString
       println(
         value.toString +

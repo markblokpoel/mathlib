@@ -1,6 +1,6 @@
 package mathlib.probability_multi
 
-import mathlib.probability_multi.datastructures.{BigNatural, DistributionValueAssignment}
+import mathlib.probability_multi.datastructures.{BigNatural, Conditional, DistributionValueAssignment}
 
 trait Distribution[A] {
 
@@ -10,7 +10,7 @@ trait Distribution[A] {
     *   The probability of the value.
     */
   @throws[NoSuchElementException]
-  def pr(value: A): BigNatural
+  def pr(valueAssignment: DistributionValueAssignment[A]): BigNatural
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *
@@ -87,6 +87,8 @@ trait Distribution[A] {
     *   The sum of the probabilities, i.e., the probability mass.
     */
   def sum: BigNatural
+
+  def allValueAssignments: Seq[Conditional]
 
   def toString: String
 

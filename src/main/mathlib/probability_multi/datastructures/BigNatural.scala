@@ -365,6 +365,7 @@ class BigNatural(val dec: BigDecimal, val isPositiveInfinite: Boolean = false, v
   }
 
   override def isWhole(): Boolean = dec.isWhole
+
 }
 
 object BigNatural {

@@ -8,9 +8,25 @@ import mathlib.probability_multi.datastructures.{
   DistributionValueAssignment
 }
 
+import scala.language.implicitConversions
+import scala.collection.generic.IsIterable
+
 object Implicits {
-  implicit class ImplBigNaturalDouble(d: Double) {
-    def bigNatural: BigNatural = BigNatural(d)
+
+  implicit object BigNaturalNumeric extends Numeric[BigNatural] {
+    override def plus(x: BigNatural, y: BigNatural): BigNatural  = x + y
+    override def minus(x: BigNatural, y: BigNatural): BigNatural = x - y
+    override def times(x: BigNatural, y: BigNatural): BigNatural = x * y
+    override def negate(x: BigNatural): BigNatural               = -x
+    override def fromInt(x: Int): BigNatural                     = BigNatural(x)
+    override def toInt(x: BigNatural): Int                       = x.toInt
+    override def toLong(x: BigNatural): Long                     = x.toLong
+    override def toFloat(x: BigNatural): Float                   = x.toFloat
+    override def toDouble(x: BigNatural): Double                 = x.toDouble
+    override def compare(x: BigNatural, y: BigNatural): Int      = x compare y
+    override def parseString(str: String): Option[BigNatural]    = Some(
+      BigNatural(BigDecimal(str))
+    )
   }
 
   implicit class ImplGivenDiscreteDistribution[A](

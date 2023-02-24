@@ -20,7 +20,7 @@ object Probability {
 
     letters.hist()
 
-    println(letters is "a" or "c")
+    val prior = letters is "a" or "c"
 
     val names = DiscreteConditionalDistribution(
       id = "Name",
@@ -28,11 +28,15 @@ object Probability {
         "mark",
         "steffie"
       ),
-      letters
+      Map(
+
+      ),
+      letters:.*
     )
 
-    println((names is "mark") | (letters is "a" or "c"))
+    val bla = (names is "mark") | (letters is "a" or "c")
 
+    println(bla)
 
   }
 }
