@@ -46,5 +46,7 @@ object Probability {
 
     println(bla)
 
+//    names.pr(bla)
+
   }
 }

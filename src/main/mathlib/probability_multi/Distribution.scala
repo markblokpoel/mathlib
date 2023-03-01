@@ -13,7 +13,7 @@ trait Distribution[A] {
     * @return
     *   The probability of the value.
     */
-  def pr(valueAssignment: DVA1): BigNatural
+  def pr(valueAssignment: DVA2): BigNatural
 
   /** Scales the distribution according to the scalar: pr(domain) * scalar
     *

@@ -2,6 +2,8 @@ package mathlib.probability_multi
 import mathlib.probability_multi.datastructures.{
   BigNatural,
   DiscreteConditionalDistributionValueAssignment,
+  DiscreteConditionalNoAssignment,
+  DiscreteConditionalValue,
   DiscreteDistributionValueAssignment,
   DistributionValueAssignment
 }
@@ -18,19 +20,51 @@ case class DiscreteConditionalDistribution[A](
   override type DVA1 = DiscreteDistributionValueAssignment[A]
   override type DVA2 = DiscreteConditionalDistributionValueAssignment[A]
 
-  /** @param value
+  /** @param valueAssignment
     *   A value within the domain.
     * @return
     *   The probability of the value.
     */
-  override def pr(value: DiscreteDistributionValueAssignment[A]): BigNatural =
-    conditions.foldLeft(BigNatural(0)) {
-//    (acc: Double, conditional: Distribution[_]) => acc + pr(value | conditional)
-      ???
-    }
+  override def pr(valueAssignment: DiscreteConditionalDistributionValueAssignment[A]): BigNatural = {
+//    val seq: Seq[BigNatural] =
+//      valueAssignment.values.map(value => distribution(value))
+//    seq.sum
+
+    //    conditions.foldLeft(BigNatural(0))(
+//      (acc: Double, conditional: Distribution[_]) => acc + pr(value | conditional)
+
+//    )
+    ???
+  }
+
+  def pr(
+      conditionalValue: DistributionValueAssignment[_]
+  ): DiscreteConditionalDistribution[A] = {
+
+
+    ???
+  }
+
+  def pr(valueWithConditionalValues: DiscreteConditionalValue[A]): BigNatural = {
+    val values = valueWithConditionalValues.value
+    val conditionalValues: Seq[DistributionValueAssignment[_]] =
+      valueWithConditionalValues.conditionals
+
+//    values.values
+//      .map(v => {})
+//      .sum
+    ???
+  }
+
+  def pr(noValueWithConditionalValues: DiscreteConditionalNoAssignment[A]): BigNatural = ???
 
   override def is(value: A): DiscreteConditionalDistributionValueAssignment[A] =
     DiscreteConditionalDistributionValueAssignment(this, value)
+
+  def |(
+      conditionalValueAssignments: DistributionValueAssignment[_]*
+  ): DiscreteConditionalNoAssignment[A] =
+    DiscreteConditionalNoAssignment(this, conditionalValueAssignments: _*)
 
   override def allValueAssignments: Set[DiscreteConditionalDistributionValueAssignment[A]] =
     domain.map(value => DiscreteConditionalDistributionValueAssignment(distribution = this, value))

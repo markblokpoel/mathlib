@@ -2,7 +2,7 @@ package mathlib.probability_multi
 
 import mathlib.probability_multi.datastructures.{
   BigNatural,
-  DiscreteConditional,
+  DiscreteConditionalValue,
   DiscreteConditionalDistributionValueAssignment,
   DiscreteDistributionValueAssignment,
   DistributionValueAssignment
@@ -60,8 +60,8 @@ object Implicits {
       *   condition value
       * @return
       */
-    def |(condition: DistributionValueAssignment[_]): DiscreteConditional[A] =
-      DiscreteConditional(distributionValueAssignment, condition)
+    def |(condition: DistributionValueAssignment[_]): DiscreteConditionalValue[A] =
+      DiscreteConditionalValue(distributionValueAssignment, condition)
 
   }
 }
