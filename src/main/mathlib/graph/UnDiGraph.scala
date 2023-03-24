@@ -22,7 +22,7 @@ case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges:
 
   override def -(vertex: Node[T]): UnDiGraph[T] =
     UnDiGraph(vertices - vertex, edges.filter(_ match {
-      case edge: Edge[Node[T]] => !edge.contains(vertex)
+      case edge: UnDiEdge[Node[T]] => !edge.contains(vertex)
     }))
 
   override def -(_vertices: Set[Node[T]]): UnDiGraph[T] =
