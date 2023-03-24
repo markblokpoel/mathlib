@@ -1,23 +1,23 @@
 package mathlib.demos
 
 import mathlib.graph.GraphImplicits._
-import mathlib.graph.WUnDiGraph
+import mathlib.graph.{DiGraph, WUnDiGraph}
 
 object Coherence {
 
   def main(args: Array[String]): Unit = {
 
-    val network = WUnDiGraph.empty +
-      N("A") ~ N("B") % 1.0 +
-      N("A") ~ N("C") % 1.0 +
-      N("B") ~ N("C") % 1.0 +
-      N("C") ~ N("D") % 1.0 +
-      N("C") ~ N("E") % 1.0 +
-      N("C") ~ N("F") % 1.0
+    val network = DiGraph.empty +
+      N("A") ~> N("B")  +
+      N("A") ~> N("C")  +
+      N("B") ~> N("C") +
+      N("C") ~> N("D")  +
+      N("C") ~> N("E") +
+      N("C") ~> N("F")
 
     println(network)
 
-    val e1 = N("A") ~ N("B") % 1.0
+    val e1 = N("A") ~> N("B")
 
     println(network.nextLeft(e1))
     println(network.nextRight(e1))
