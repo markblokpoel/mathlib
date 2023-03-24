@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaProjectSettings">
-    <option name="collectionTypeHighlightingLevel" value="All" />
     <option name="intInjectionMapping">
       <map>
         <entry key="html" value="HTML" />
@@ -16,6 +15,5 @@
         <entry key="yaml" value="yaml" />
       </map>
     </option>
-    <option name="showImplicitConversions" value="true" />
   </component>
 </project>

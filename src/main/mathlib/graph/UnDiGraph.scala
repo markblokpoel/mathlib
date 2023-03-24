@@ -44,6 +44,6 @@ case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges:
 
 case object UnDiGraph {
   def apply[T](vertices: Set[Node[T]]): UnDiGraph[T] = UnDiGraph.empty + vertices
-  def apply[T, X: ClassTag](edges: Set[Edge[Node[T]]]): UnDiGraph[T] = UnDiGraph.empty + edges
+  def apply[T, X: ClassTag](edges: Set[UnDiEdge[Node[T]]]): UnDiGraph[T] = UnDiGraph.empty + edges
   def empty[T]: UnDiGraph[T] = UnDiGraph(Set.empty, Set.empty)
 }

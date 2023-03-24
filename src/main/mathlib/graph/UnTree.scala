@@ -31,6 +31,6 @@ case class UnTree[T](override val vertices: Set[Node[T]], root: Node[T], branche
 
 case object UnTree {
   def apply[T](vertices: Set[Node[T]], root: Node[T]): UnTree[T] = UnTree.single(root) + vertices
-  def apply[T, X: ClassTag](root: Node[T], edges: Set[Edge[Node[T]]]): UnTree[T] = UnTree.single(root) + edges
+  def apply[T, X: ClassTag](root: Node[T], edges: Set[DiEdge[Node[T]]]): UnTree[T] = UnTree.single(root) + edges
   def single[T](root: Node[T]): UnTree[T] = UnTree(Set.empty, root, Set.empty)
 }
