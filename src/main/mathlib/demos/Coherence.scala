@@ -16,5 +16,10 @@ object Coherence {
       N("C") ~ N("F") % 1.0
 
     println(network)
+
+    val e1 = N("A") ~ N("B") % 1.0
+
+    println(network.nextLeft(e1))
+    println(network.nextRight(e1))
   }
 }

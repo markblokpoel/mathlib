@@ -36,6 +36,19 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
   //    else checkCycles(randomVertex.get, Graph(), Set.empty)
   //  }
 
+  private lazy val leftNeighbours: Map[E, Set[E]] = edges.map(edge =>
+    edge -> (edges.filter(_.contains(edge.v1)))
+  ).toMap
+
+  def nextLeft(edge: E): Set[E] = leftNeighbours(edge)
+
+  private lazy val rightNeighbours: Map[E, Set[E]] = edges.map(edge =>
+    edge -> (edges.filter(_.contains(edge.v2)))
+  ).toMap
+
+  def nextRight(edge: E): Set[E] = rightNeighbours(edge)
+
+
   def size: Int = vertices.size
 }
 
