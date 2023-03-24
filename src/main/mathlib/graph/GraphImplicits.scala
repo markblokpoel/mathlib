@@ -16,12 +16,12 @@ object GraphImplicits {
   }
 
   implicit class UnDiHyperEdgeImpl1a[T <: Node[_]](unDiEdge: UnDiEdge[T]) {
-    def ~(node: T): UnDiHyperEdge[T] = UnDiHyperEdge(Set(unDiEdge.v1, unDiEdge.v2, node))
-    def %(weight: Double): WUnDiEdge[T] = WUnDiEdge(unDiEdge.v1, unDiEdge.v2, weight)
+    def ~(node: T): UnDiHyperEdge[T] = UnDiHyperEdge(Set(unDiEdge.left, unDiEdge.right, node))
+    def %(weight: Double): WUnDiEdge[T] = WUnDiEdge(unDiEdge.left, unDiEdge.right, weight)
   }
 
   implicit class UnDiHyperEdgeImpl1b[T](unDiEdge: UnDiEdge[Node[T]]) {
-    def ~(protoNode1: T): UnDiHyperEdge[Node[T]] = UnDiHyperEdge(Set(unDiEdge.v1, unDiEdge.v2, Node(protoNode1)))
+    def ~(protoNode1: T): UnDiHyperEdge[Node[T]] = UnDiHyperEdge(Set(unDiEdge.left, unDiEdge.right, Node(protoNode1)))
   }
 
   implicit class UnDiHyperEdgeImpl2a[T <: Node[_]](unDiHyperEdge: UnDiHyperEdge[T]) {
@@ -34,12 +34,12 @@ object GraphImplicits {
   }
 
   implicit class DiHyperEdgeImpl1a[T <: Node[_]](diEdge: DiEdge[T]) {
-    def ~(node: T): DiHyperEdge[T] = DiHyperEdge(List(diEdge.v1, diEdge.v2, node))
-    def %(weight: Double): WDiEdge[T] = WDiEdge(diEdge.v1, diEdge.v2, weight)
+    def ~(node: T): DiHyperEdge[T] = DiHyperEdge(List(diEdge.left, diEdge.right, node))
+    def %(weight: Double): WDiEdge[T] = WDiEdge(diEdge.left, diEdge.right, weight)
   }
 
   implicit class DiHyperEdgeImpl1b[T](diEdge: DiEdge[Node[T]]) {
-    def ~(protoNode: T): DiHyperEdge[Node[T]] = DiHyperEdge(List(diEdge.v1, diEdge.v2, Node(protoNode)))
+    def ~(protoNode: T): DiHyperEdge[Node[T]] = DiHyperEdge(List(diEdge.left, diEdge.right, Node(protoNode)))
   }
 
   implicit class DiHyperEdgeImpl2a[T <: Node[_]](diHyperEdge: DiHyperEdge[T]) {

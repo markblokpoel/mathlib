@@ -10,7 +10,7 @@ case class WUnDiGraph[T](override val vertices: Set[Node[T]], override val edges
     _vertices.foldLeft(this)(_ + _)
 
   override def +(edge: WUnDiEdge[Node[T]]): WUnDiGraph[T] =
-    WUnDiGraph(vertices + edge.v1 + edge.v2, edges + edge)
+    WUnDiGraph(vertices + edge.left + edge.right, edges + edge)
 
   override def +[X: ClassTag](_edges: Set[WUnDiEdge[Node[T]]]): WUnDiGraph[T] =
     _edges.foldLeft(this)(_ + _)

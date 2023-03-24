@@ -10,7 +10,7 @@ case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: S
     _vertices.foldLeft(this)(_ + _)
 
   override def +(edge: DiEdge[Node[T]]): DiGraph[T] =
-    DiGraph(vertices + edge.v1 + edge.v2, edges + edge)
+    DiGraph(vertices + edge.left + edge.right, edges + edge)
 
   override def +[X: ClassTag](_edges: Set[DiEdge[Node[T]]]): DiGraph[T] =
     _edges.foldLeft(this)(_ + _)

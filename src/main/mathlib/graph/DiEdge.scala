@@ -2,4 +2,4 @@ package mathlib.graph
 
 import mathlib.graph.properties.{Edge, ProtoEdge}
 
-case class DiEdge[T <: Node[_]](override val v1: T, override val v2: T) extends Edge[T](v1, v2) with ProtoEdge[T]
+case class DiEdge[T <: Node[_]](override val left: T, override val right: T) extends Edge[T](left, right) with ProtoEdge[T]

@@ -15,7 +15,7 @@ case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges:
     _vertices.foldLeft(this)(_ + _)
 
   override def +(edge: UnDiEdge[Node[T]]): UnDiGraph[T] =
-    UnDiGraph(vertices + edge.v1 + edge.v2, edges + edge)
+    UnDiGraph(vertices + edge.left + edge.right, edges + edge)
 
   override def +[X: ClassTag](_edges: Set[UnDiEdge[Node[T]]]): UnDiGraph[T] =
     _edges.foldLeft(this)(_ + _)

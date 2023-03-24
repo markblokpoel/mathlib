@@ -2,6 +2,6 @@ package mathlib.graph
 
 import mathlib.graph.properties.{Edge, ProtoEdge, WeightedEdge}
 
-case class WUnDiEdge[T <: Node[_]](override val v1:T, override val v2: T, weight: Double) extends Edge[T](v1, v2) with WeightedEdge with ProtoEdge[T] {
+case class WUnDiEdge[T <: Node[_]](override val left:T, override val right: T, weight: Double) extends Edge[T](left, right) with WeightedEdge with ProtoEdge[T] {
 
 }
