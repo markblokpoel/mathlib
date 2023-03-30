@@ -78,10 +78,11 @@ object Coherence {
       }
 
       negativeConstraints
-        .flatMap(nc => Set(nc.left, nc.right))
-        .allMappings(Set(true, false))
-        .map(completeBeliefAssignment)
-        .argMax(coh(_, positiveConstraints, negativeConstraints))
+        .flatMap(nc => Set(nc.left, nc.right))  // Get all vertices connected to negative constraints
+        .allMappings(Set(true, false))          // Generate all possible truth value assignments
+        .map(completeBeliefAssignment)          // For each partial assignment (only negative constraints), complete
+                                                // the assignment for the whole network
+        .argMax(coh(_, positiveConstraints, negativeConstraints))   // Find the value assignments with maximal coherence
     }
 
     def coherence(
