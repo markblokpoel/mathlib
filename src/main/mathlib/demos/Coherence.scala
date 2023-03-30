@@ -119,5 +119,8 @@ object Coherence {
     println("C- Coherence (FPT)")
     cMinusCoherence(network, positiveConstraints, negativeConstraints).foreach(println)
 
+
+    println(DiGraph.random(10, 0.5))
+    println(DiGraph.uniform(10, 2))
   }
 }
