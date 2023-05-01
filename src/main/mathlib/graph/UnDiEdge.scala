@@ -9,10 +9,9 @@ case class UnDiEdge[T <: Node[_]](override val left: T, override val right: T)
 
   override def equals(obj: Any): Boolean =
     obj match {
-      case that: UnDiEdge[T] => {
+      case that: UnDiEdge[T] =>
         left == that.left && right == that.right ||
         left == that.right && right == that.left
-      }
       case _ => false
     }
 

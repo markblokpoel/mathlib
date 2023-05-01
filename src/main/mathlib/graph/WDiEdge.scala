@@ -10,9 +10,8 @@ case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, we
 
   override def equals(obj: Any): Boolean =
     obj match {
-      case that: WDiEdge[T] => {
+      case that: WDiEdge[T] =>
         left == that.left && right == that.right
-      }
       case _ => false
     }
 
