@@ -15,10 +15,10 @@ case class DiHyperGraph[T](
     DiHyperGraph(vertices ++ _vertices, edges)
 
   override def +(edge: DiHyperEdge[Node[T]]): DiHyperGraph[T] =
-    DiHyperGraph(vertices ++ edge.nodes, edges + edge)
+    DiHyperGraph(vertices ++ edge.left ++ edge.right, edges + edge)
 
   override def +[X: ClassTag](_edges: Set[DiHyperEdge[Node[T]]]): DiHyperGraph[T] =
-    DiHyperGraph(vertices ++ _edges.flatMap(_.nodes), edges ++ _edges)
+    DiHyperGraph(vertices ++ _edges.flatMap(_.left) ++ _edges.flatMap(_.right), edges ++ _edges)
 
   override def -(vertex: Node[T]): DiHyperGraph[T] =
     DiHyperGraph(
