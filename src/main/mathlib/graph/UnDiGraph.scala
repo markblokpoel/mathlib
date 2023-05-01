@@ -2,8 +2,11 @@
 package mathlib.graph
 
 import mathlib.graph.properties.Edge
+import mathlib.set.SetTheory.ImplSet
 
+import scala.annotation.tailrec
 import scala.reflect.ClassTag
+import scala.util.Random
 
 case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges: Set[UnDiEdge[Node[T]]])
   extends Graph[T,UnDiEdge[Node[T]]](vertices, edges) {
@@ -46,4 +49,54 @@ case object UnDiGraph {
   def apply[T](vertices: Set[Node[T]]): UnDiGraph[T] = UnDiGraph.empty + vertices
   def apply[T, X: ClassTag](edges: Set[UnDiEdge[Node[T]]]): UnDiGraph[T] = UnDiGraph.empty + edges
   def empty[T]: UnDiGraph[T] = UnDiGraph(Set.empty, Set.empty)
+
+  def random[T](objects: Set[T], p: Double): UnDiGraph[T] = {
+    val vertices = objects.map(Node(_))
+    val edges = (vertices x vertices)
+      .filter(_ => Random.nextDouble() <= p) // Filter edges by probability p
+      .map(e => UnDiEdge(e._1, e._2))
+    UnDiGraph(vertices, edges)
+  }
+
+  def random(n: Int, p: Double): UnDiGraph[String] = {
+    val objects = (0 to n).toSet.map("N" + _)
+    random(objects, p)
+  }
+
+  def uniform[T](objects: Set[T], numberEdges: Int): UnDiGraph[T] = {
+    val vertices = objects.map(Node(_))
+
+    @tailrec
+    def randomEdges(
+                     possibleEdges: Set[UnDiEdge[Node[T]]],
+                     numberEdges: Int,
+                     accNumberEdges: Int,
+                     edges: Set[UnDiEdge[Node[T]]]
+                   ): Set[UnDiEdge[Node[T]]] = {
+      val randomEdge = possibleEdges.random // None is set is empty
+
+      if (randomEdge.isEmpty || accNumberEdges == numberEdges) edges
+      else
+        randomEdges(
+          possibleEdges - randomEdge.get,
+          numberEdges,
+          accNumberEdges + 1,
+          edges + randomEdge.get
+        )
+    }
+
+    val edges = randomEdges(
+      possibleEdges = (vertices x vertices).map(e => UnDiEdge(e._1, e._2)),
+      numberEdges,
+      accNumberEdges = 0,
+      edges = Set.empty
+    )
+
+    UnDiGraph(vertices, edges)
+  }
+
+  def uniform(n: Int, numberEdges: Int): UnDiGraph[String] = {
+    val objects = (0 to n).toSet.map("N" + _)
+    uniform(objects, numberEdges)
+  }
 }
