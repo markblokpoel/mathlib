@@ -1,5 +1,6 @@
 package mathlib.graph
 
+import mathlib.graph.hyper.{DiHyperEdge, UnDiHyperEdge, WDiHyperEdge, WUnDiHyperEdge}
 
 object GraphImplicits {
 
