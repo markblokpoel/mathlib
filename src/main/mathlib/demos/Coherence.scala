@@ -3,6 +3,7 @@ package mathlib.demos
 import mathlib.graph.GraphImplicits._
 import mathlib.graph.{DiGraph, Node, WDiGraph, WUnDiEdge, WUnDiGraph}
 import mathlib.set.SetTheory._
+import scala.collection.parallel.CollectionConverters._
 
 object Coherence {
 
@@ -80,8 +81,10 @@ object Coherence {
       negativeConstraints
         .flatMap(nc => Set(nc.left, nc.right))  // Get all vertices connected to negative constraints
         .allMappings(Set(true, false))          // Generate all possible truth value assignments
+        .par
         .map(completeBeliefAssignment)          // For each partial assignment (only negative constraints), complete
                                                 // the assignment for the whole network
+        .toList.toSet
         .argMax(coh(_, positiveConstraints, negativeConstraints))   // Find the value assignments with maximal coherence
     }
 
@@ -119,8 +122,22 @@ object Coherence {
     println("C- Coherence (FPT)")
     cMinusCoherence(network, positiveConstraints, negativeConstraints).foreach(println)
 
+    val size = 50
+    val edgeProbability = 0.5
+    val largeNetwork = WUnDiGraph.random(size, edgeProbability)
 
-    println(DiGraph.random(10, 0.5))
-    println(DiGraph.uniform(10, 2))
+
+    println(s"#vertices:\t\t\t\t$size")
+    println(s"#edges:\t\t\t\t\t${largeNetwork.edges.size} ≈ $size * $size * $edgeProbability = ${size*size*edgeProbability}")
+
+    val (lpc, lnc) =
+      largeNetwork.edges.splitAt(largeNetwork.edges.size - 6)
+
+    println(s"#positive constraints:\t${lpc.size}")
+    println(s"#negative constraints:\t${lnc.size}")
+
+    cMinusCoherence(largeNetwork, lpc, lnc).foreach(println)
+
+
   }
 }
