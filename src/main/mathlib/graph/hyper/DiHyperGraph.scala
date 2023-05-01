@@ -39,7 +39,7 @@ case class DiHyperGraph[T](
 
   override def merge[G <: HyperGraph[T, DiHyperEdge[Node[T]]]](that: G): DiHyperGraph[T] =
     that match {
-      case DiHyperGraph(thatVertices: Set[Node[T]], thatEdges: Set[DiHyperEdge[T]]) =>
+      case DiHyperGraph(thatVertices: Set[Node[T]], thatEdges: Set[DiHyperEdge[Node[T]]]) =>
         val v: Set[Node[T]] = this.vertices union thatVertices
         val e               = this.edges union thatEdges
         DiHyperGraph(v, e)
