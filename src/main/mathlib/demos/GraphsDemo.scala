@@ -17,10 +17,22 @@ object GraphsDemo {
           Set("A", "B") ~> Set("C")
         )
       ),
+      UnDiHyperGraph(
+        Set("A", "B", "C"),
+        Set(
+          Set("A", "B") ~ Set("C")
+        )
+      ),
       WDiHyperGraph(
         Set("A", "B", "C"),
         Set(
           Set("A", "B") ~> Set("C") % 0.5
+        )
+      ),
+      WUnDiHyperGraph(
+        Set("A", "B", "C"),
+        Set(
+          Set("A", "B") ~ Set("C") % 0.5
         )
       )
     ).foreach(println)
