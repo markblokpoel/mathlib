@@ -1,6 +1,7 @@
 package mathlib.graph.hyper
 
-import mathlib.graph.Node
+import mathlib.graph.GraphImplicits.N
+import mathlib.graph.{DiEdge, DiGraph, Node}
 
 import scala.reflect.ClassTag
 
@@ -44,4 +45,15 @@ case class DiHyperGraph[T](
         val e               = this.edges union thatEdges
         DiHyperGraph(v, e)
     }
+}
+
+case object DiHyperGraph {
+  def apply[T](vertices: Set[Node[T]]): DiHyperGraph[T] = DiHyperGraph.empty + vertices
+
+  def apply[T, X: ClassTag](edges: Set[DiHyperEdge[Node[T]]]): DiHyperGraph[T] = DiHyperGraph.empty + edges
+
+  def empty[T]: DiHyperGraph[T] = DiHyperGraph(Set[Node[T]](), Set[DiHyperEdge[Node[T]]]())
+
+  def apply[T, X: ClassTag](vertices: Set[T], edges: Set[DiHyperEdge[Node[T]]]): DiHyperGraph[T] =
+    DiHyperGraph(vertices.map(N), edges)
 }

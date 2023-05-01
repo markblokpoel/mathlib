@@ -1,4 +1,5 @@
 package mathlib.graph.hyper
+import mathlib.graph.GraphImplicits.N
 import mathlib.graph.Node
 
 import scala.reflect.ClassTag
@@ -41,4 +42,15 @@ case class WDiHyperGraph[T](override val vertices: Set[Node[T]], override val ed
         val e = this.edges union thatEdges
         WDiHyperGraph(v, e)
     }
+}
+
+case object WDiHyperGraph {
+  def apply[T](vertices: Set[Node[T]]): WDiHyperGraph[T] = WDiHyperGraph.empty + vertices
+
+  def apply[T, X: ClassTag](edges: Set[WDiHyperEdge[Node[T]]]): WDiHyperGraph[T] = WDiHyperGraph.empty + edges
+
+  def empty[T]: WDiHyperGraph[T] = WDiHyperGraph(Set[Node[T]](), Set[WDiHyperEdge[Node[T]]]())
+
+  def apply[T, X: ClassTag](vertices: Set[T], edges: Set[WDiHyperEdge[Node[T]]]): WDiHyperGraph[T] =
+    WDiHyperGraph(vertices.map(N), edges)
 }

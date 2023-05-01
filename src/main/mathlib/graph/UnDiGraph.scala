@@ -1,6 +1,7 @@
 
 package mathlib.graph
 
+import mathlib.graph.GraphImplicits.N
 import mathlib.graph.properties.Edge
 import mathlib.set.SetTheory.ImplSet
 
@@ -48,7 +49,10 @@ case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges:
 case object UnDiGraph {
   def apply[T](vertices: Set[Node[T]]): UnDiGraph[T] = UnDiGraph.empty + vertices
   def apply[T, X: ClassTag](edges: Set[UnDiEdge[Node[T]]]): UnDiGraph[T] = UnDiGraph.empty + edges
-  def empty[T]: UnDiGraph[T] = UnDiGraph(Set.empty, Set.empty)
+  def empty[T]: UnDiGraph[T] = UnDiGraph(Set[Node[T]](), Set[UnDiEdge[Node[T]]]())
+
+  def apply[T, X: ClassTag](vertices: Set[T], edges: Set[UnDiEdge[Node[T]]]): UnDiGraph[T] =
+    UnDiGraph(vertices.map(N), edges)
 
   def random[T](objects: Set[T], p: Double): UnDiGraph[T] = {
     val vertices = objects.map(Node(_))

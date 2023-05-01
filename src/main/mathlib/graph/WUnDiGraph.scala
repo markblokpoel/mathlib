@@ -1,4 +1,5 @@
 package mathlib.graph
+import mathlib.graph.GraphImplicits.N
 import mathlib.set.SetTheory.ImplSet
 
 import scala.annotation.tailrec
@@ -45,7 +46,10 @@ case class WUnDiGraph[T](override val vertices: Set[Node[T]], override val edges
 case object WUnDiGraph {
   def apply[T](vertices: Set[Node[T]]): WUnDiGraph[T] = WUnDiGraph.empty + vertices
   def apply[T, X: ClassTag](edges: Set[WUnDiEdge[Node[T]]]): WUnDiGraph[T] = WUnDiGraph.empty + edges
-  def empty[T]: WUnDiGraph[T] = WUnDiGraph(Set.empty, Set.empty)
+  def empty[T]: WUnDiGraph[T] = WUnDiGraph(Set[Node[T]](), Set[WUnDiEdge[Node[T]]]())
+
+  def apply[T, X: ClassTag](vertices: Set[T], edges: Set[WUnDiEdge[Node[T]]]): WUnDiGraph[T] =
+    WUnDiGraph(vertices.map(N), edges)
 
   def random[T](objects: Set[T], p: Double): WUnDiGraph[T] = {
     val vertices = objects.map(Node(_))

@@ -1,4 +1,5 @@
 package mathlib.graph
+import mathlib.graph.GraphImplicits.N
 import mathlib.set.SetTheory.ImplSet
 
 import scala.annotation.tailrec
@@ -45,9 +46,13 @@ case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: S
 }
 
 case object DiGraph {
-  def apply[T](vertices: Set[Node[T]]): DiGraph[T]                   = DiGraph.empty + vertices
+  def apply[T](vertices: Set[Node[T]]): DiGraph[T] = DiGraph.empty + vertices
   def apply[T, X: ClassTag](edges: Set[DiEdge[Node[T]]]): DiGraph[T] = DiGraph.empty + edges
-  def empty[T]: DiGraph[T]                                           = DiGraph(Set.empty, Set.empty)
+  def empty[T]: DiGraph[T] = DiGraph(Set[Node[T]](), Set[DiEdge[Node[T]]]())
+
+  def apply[T, X: ClassTag](vertices: Set[T], edges: Set[DiEdge[Node[T]]]): DiGraph[T] =
+    DiGraph(vertices.map(N), edges)
+
   def random[T](objects: Set[T], p: Double): DiGraph[T] = {
     val vertices = objects.map(Node(_))
     val edges = (vertices x vertices)
@@ -73,7 +78,7 @@ case object DiGraph {
     ): Set[DiEdge[Node[T]]] = {
       val randomEdge = possibleEdges.random // None is set is empty
 
-      if(randomEdge.isEmpty || accNumberEdges == numberEdges) edges
+      if (randomEdge.isEmpty || accNumberEdges == numberEdges) edges
       else
         randomEdges(
           possibleEdges - randomEdge.get,
