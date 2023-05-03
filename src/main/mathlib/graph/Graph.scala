@@ -1,6 +1,7 @@
 package mathlib.graph
 
 import mathlib.graph.properties.Edge
+import mathlib.set.SetTheory.ImplSet
 
 import scala.reflect.ClassTag
 
@@ -37,13 +38,13 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
   //  }
 
   private lazy val leftNeighbours: Map[E, Set[E]] = edges.map(edge =>
-    edge -> edges.filter(_.contains(edge.left))
+    edge -> (edges - edge).filter(_.contains(edge.left))
   ).toMap
 
   def nextLeft(edge: E): Set[E] = leftNeighbours(edge)
 
   private lazy val rightNeighbours: Map[E, Set[E]] = edges.map(edge =>
-    edge -> edges.filter(_.contains(edge.right))
+    edge -> (edges - edge).filter(_.contains(edge.right))
   ).toMap
 
   def nextRight(edge: E): Set[E] = rightNeighbours(edge)
