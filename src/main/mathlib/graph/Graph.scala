@@ -6,6 +6,12 @@ import mathlib.set.SetTheory.ImplSet
 import scala.reflect.ClassTag
 
 abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edges: Set[E]) {
+  require(
+    edges.forall(e => vertices.contains(e.left) && vertices.contains(e.right)),
+    "Cannot form graph, the following edges contain vertices not passed to the constructor: " + edges
+      .filter(e => !(vertices.contains(e.left) && vertices.contains(e.right)))
+      .mkString(" ")
+  )
 
   def +(vertex: Node[T]): Graph[T, E]
 
@@ -37,18 +43,19 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
   //    else checkCycles(randomVertex.get, Graph(), Set.empty)
   //  }
 
-  private lazy val leftNeighbours: Map[E, Set[E]] = edges.map(edge =>
-    edge -> (edges - edge).filter(_.contains(edge.left))
-  ).toMap
+  private lazy val leftNeighbours: Map[E, Set[E]] =
+    edges.map(edge => edge -> (edges - edge).filter(_.contains(edge.left))).toMap
 
   def nextLeft(edge: E): Set[E] = leftNeighbours(edge)
 
-  private lazy val rightNeighbours: Map[E, Set[E]] = edges.map(edge =>
-    edge -> (edges - edge).filter(_.contains(edge.right))
-  ).toMap
+  private lazy val rightNeighbours: Map[E, Set[E]] =
+    edges.map(edge => edge -> (edges - edge).filter(_.contains(edge.right))).toMap
 
   def nextRight(edge: E): Set[E] = rightNeighbours(edge)
 
+  lazy val adjecencyList: Map[Node[T], Vector[Node[T]]] = {
+    ???
+  }
 
   def size: Int = vertices.size
 }

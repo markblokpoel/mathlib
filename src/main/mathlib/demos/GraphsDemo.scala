@@ -37,10 +37,8 @@ object GraphsDemo {
       )
     ).foreach(println)
 
-
     println(
-      DiGraph(Set("a", "b"), Set("a" ~> "b", "c" ~> "b")).nextLeft("a" ~> "b")
-
+      DiGraph(Set("a", "b"), Set("a" ~> "b", "c" ~> "b"))
     )
 
   }
