@@ -40,6 +40,11 @@ case class WUnDiGraph[T](override val vertices: Set[Node[T]], override val edges
       val e = this.edges union thatEdges
       WUnDiGraph(v, e)
   }
+
+  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] =
+    vertices.map(v => {
+      v -> edges.filter(e => (e contains v) && e.weight != 0).map(_ getOther v)
+    }).toMap
 }
 
 

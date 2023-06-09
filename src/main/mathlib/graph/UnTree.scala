@@ -27,6 +27,8 @@ case class UnTree[T](override val vertices: Set[Node[T]], root: Node[T], branche
     case UnTree(thatVertices: Set[Node[T]], thatRoot: Node[T], thatBranches: Set[DiEdge[Node[T]]]) =>
       ???
   }
+
+  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] = ???
 }
 
 case object UnTree {

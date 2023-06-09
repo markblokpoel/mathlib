@@ -3,14 +3,16 @@ package mathlib.graph
 import mathlib.graph.properties.Edge
 import mathlib.set.SetTheory.ImplSet
 
+import scala.annotation.tailrec
 import scala.reflect.ClassTag
 
 abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edges: Set[E]) {
   require(
     edges.forall(e => vertices.contains(e.left) && vertices.contains(e.right)),
-    "Cannot form graph, the following edges contain vertices not passed to the constructor: " + edges
-      .filter(e => !(vertices.contains(e.left) && vertices.contains(e.right)))
-      .mkString(" ")
+    "Cannot form graph, the following edges contain vertices not passed to the constructor: " + edges + vertices
+//      edges
+//      .filter(e => !(vertices.contains(e.left) && vertices.contains(e.right)))
+//      .mkString(" ")
   )
 
   def +(vertex: Node[T]): Graph[T, E]
@@ -43,18 +45,28 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
   //    else checkCycles(randomVertex.get, Graph(), Set.empty)
   //  }
 
-  private lazy val leftNeighbours: Map[E, Set[E]] =
-    edges.map(edge => edge -> (edges - edge).filter(_.contains(edge.left))).toMap
 
-  def nextLeft(edge: E): Set[E] = leftNeighbours(edge)
+  def calcAdjacencyList(): Map[Node[T], Set[Node[T]]]
 
-  private lazy val rightNeighbours: Map[E, Set[E]] =
-    edges.map(edge => edge -> (edges - edge).filter(_.contains(edge.right))).toMap
+  lazy val adjacencyList: Map[Node[T], Set[Node[T]]] = calcAdjacencyList()
 
-  def nextRight(edge: E): Set[E] = rightNeighbours(edge)
+  @tailrec
+  private def nthAdjacencyListRec(n: Int, adjL: Map[Node[T], Set[Node[T]]]): Map[Node[T], Set[Node[T]]] = {
+    if(n == 0) adjL
+    else {
+      nthAdjacencyListRec(
+        n - 1,
+        adjL.map(kv => {
+          val v = kv._1
+          val adj = kv._2
+          v -> adj.flatMap(a => adjacencyList(a) - v)
+        })
+      )
+    }
+  }
 
-  lazy val adjecencyList: Map[Node[T], Vector[Node[T]]] = {
-    ???
+  def nthAdjacencyList(n: Int): Map[Node[T], Set[Node[T]]] = {
+    nthAdjacencyListRec(n, adjacencyList)
   }
 
   def size: Int = vertices.size

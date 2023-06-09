@@ -43,6 +43,11 @@ case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: S
       val e               = this.edges union thatEdges
       DiGraph(v, e)
   }
+
+  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] =
+    vertices.map(v => {
+      v -> edges.filter(e => (e contains v) && e.left == v).map(_.right)
+    }).toMap
 }
 
 case object DiGraph {
