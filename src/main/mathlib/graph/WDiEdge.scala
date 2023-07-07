@@ -6,6 +6,9 @@ case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, we
     extends Edge[T](left, right)
     with WeightedEdge
     with ProtoEdge[T] {
+  override def getNeighborOf(vertex: T): Option[T] =
+    if (left == vertex) Some(right)
+    else None
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WDiEdge[T]]
 
   override def equals(obj: Any): Boolean =

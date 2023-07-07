@@ -10,7 +10,14 @@ abstract class UnweightedGraph[T, E <: Edge[Node[T]]](override val vertices: Set
 
   def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] =
     vertices.map(v => {
-      v -> edges.filter(e => (e contains v) && e.left == v).map(e => e.right)
+      val adjacents = edges
+        .filter(_ contains v)
+        .map(e => {
+          val adjacentOption = e.getNeighborOf(v)
+          if (adjacentOption.isDefined) Some(adjacentOption.get)
+          else None
+        })
+      v -> adjacents.filter(_.isDefined).map(_.get)
     }).toMap
 
   lazy val adjacencyList: Map[Node[T], Set[Node[T]]] = calcAdjacencyList()

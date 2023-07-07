@@ -13,7 +13,14 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](override v
 
   def calcAdjacencyList(): Map[Node[T], Set[NodeWeightPair[T]]] =
     vertices.map(v => {
-      v -> edges.filter(e => (e contains v) && e.left == v && e.weight != 0).map(e => NodeWeightPair(e.right, e.weight))
+      val adjacents = edges
+        .filter(e =>  (e contains v) && e.weight != 0)
+        .map(e => {
+          val adjacentOption = e.getNeighborOf(v)
+          if(adjacentOption.isDefined) Some(NodeWeightPair(adjacentOption.get, e.weight))
+          else None
+        })
+      v -> adjacents.filter(_.isDefined).map(_.get)
     }).toMap
 
   lazy val adjacencyList: Map[Node[T], Set[NodeWeightPair[T]]] = calcAdjacencyList()

@@ -48,10 +48,10 @@ object GraphsDemo {
     }
     hyperGraphs.foreach(println)
 
-    val test = DiGraph(Set(
-      "a" ~> "b",
-      "b" ~> "c",
-      "c" ~> "d"
+    val test = WDiGraph(Set(
+      "a" ~> "b" % 3,
+      "b" ~> "c" % 4,
+      "b" ~> "d" % 2
     ))
 
     println(test)
