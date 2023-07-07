@@ -41,4 +41,5 @@ abstract class UnweightedGraph[T, E <: Edge[Node[T]]](override val vertices: Set
     nthAdjacencyListRec(n, adjacencyList)
   }
 
+  override def containsCycle: Boolean = ???
 }

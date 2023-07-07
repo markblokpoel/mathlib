@@ -31,6 +31,10 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
   def merge[G <: Graph[T, E]](that: G): Graph[T, E]
 
   def size: Int = vertices.size
+  def containsCycle: Boolean
+
+
+
 }
 
 //case object Graph {
