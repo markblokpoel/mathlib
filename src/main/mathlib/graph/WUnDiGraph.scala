@@ -7,7 +7,7 @@ import scala.reflect.ClassTag
 import scala.util.Random
 
 case class WUnDiGraph[T](override val vertices: Set[Node[T]], override val edges: Set[WUnDiEdge[Node[T]]])
-  extends Graph[T,WUnDiEdge[Node[T]]](vertices, edges) {
+  extends WeightedGraph[T,WUnDiEdge[Node[T]]](vertices, edges) {
   override def +(vertex: Node[T]): WUnDiGraph[T] =
     WUnDiGraph(vertices + vertex, edges)
 
@@ -40,11 +40,6 @@ case class WUnDiGraph[T](override val vertices: Set[Node[T]], override val edges
       val e = this.edges union thatEdges
       WUnDiGraph(v, e)
   }
-
-  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] =
-    vertices.map(v => {
-      v -> edges.filter(e => (e contains v) && e.weight != 0).map(_ getOther v)
-    }).toMap
 }
 
 

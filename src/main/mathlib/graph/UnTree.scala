@@ -6,7 +6,7 @@ import mathlib.set.SetTheory._
 import scala.reflect.ClassTag
 
 case class UnTree[T](override val vertices: Set[Node[T]], root: Node[T], branches: Set[DiEdge[Node[T]]])
-  extends Graph[T,DiEdge[Node[T]]](vertices, branches) {
+  extends UnweightedGraph[T,DiEdge[Node[T]]](vertices, branches) {
   override def +(vertex: Node[T]): UnTree[T] = ???
 
   override def +(_vertices: Set[Node[T]]): UnTree[T] = ???
@@ -28,7 +28,6 @@ case class UnTree[T](override val vertices: Set[Node[T]], root: Node[T], branche
       ???
   }
 
-  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] = ???
 }
 
 case object UnTree {

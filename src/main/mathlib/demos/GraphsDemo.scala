@@ -41,14 +41,17 @@ object GraphsDemo {
 
 
     graphs.foreach(println)
-    graphs.map(_.adjacencyList).foreach(println)
+    graphs.foreach {
+      case g: UnweightedGraph[_, _] => println(g.adjacencyList)
+      case g: WeightedGraph[_, _] => println(g.adjacencyList)
+      case _ => println("Unknown graph supertype.")
+    }
     hyperGraphs.foreach(println)
 
-    // TODO Check nthAdjacencyList for undirected graphs. It now cycles back and forth.
-    val test = UnDiGraph(Set(
-      "a" ~ "b",
-      "b" ~ "c",
-      "c" ~ "d"
+    val test = DiGraph(Set(
+      "a" ~> "b",
+      "b" ~> "c",
+      "c" ~> "d"
     ))
 
     println(test)

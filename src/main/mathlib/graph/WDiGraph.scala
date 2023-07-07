@@ -7,7 +7,7 @@ import scala.reflect.ClassTag
 import scala.util.Random
 
 case class WDiGraph[T](override val vertices: Set[Node[T]],override val edges: Set[WDiEdge[Node[T]]])
-  extends Graph[T, WDiEdge[Node[T]]](vertices, edges) {
+  extends WeightedGraph[T, WDiEdge[Node[T]]](vertices, edges) {
   override def +(vertex: Node[T]): WDiGraph[T] =
     WDiGraph(vertices + vertex, edges)
 
@@ -41,10 +41,9 @@ case class WDiGraph[T](override val vertices: Set[Node[T]],override val edges: S
       WDiGraph(v, e)
   }
 
-  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] =
-    vertices.map(v => {
-      v -> edges.filter(e => (e contains v) && e.left == v && e.weight != 0).map(_.right)
-    }).toMap
+
+
+
 }
 
 case object WDiGraph {

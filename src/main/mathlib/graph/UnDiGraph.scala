@@ -10,7 +10,7 @@ import scala.reflect.ClassTag
 import scala.util.Random
 
 case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges: Set[UnDiEdge[Node[T]]])
-  extends Graph[T,UnDiEdge[Node[T]]](vertices, edges) {
+  extends UnweightedGraph[T,UnDiEdge[Node[T]]](vertices, edges) {
 
   override def +(vertex: Node[T]): UnDiGraph[T] =
     UnDiGraph(vertices + vertex, edges)
@@ -44,11 +44,6 @@ case class UnDiGraph[T](override val vertices: Set[Node[T]], override val edges:
       val e = this.edges union thatEdges
       UnDiGraph(v, e)
   }
-
-  override def calcAdjacencyList(): Map[Node[T], Set[Node[T]]] =
-    vertices.map(v => {
-      v -> edges.filter(_ contains v).map(_ getOther v)
-    }).toMap
 }
 
 case object UnDiGraph {
