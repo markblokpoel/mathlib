@@ -18,7 +18,7 @@ ThisBuild / developers := List(
   )
 )
 
-ThisBuild / description := "mathlib is a supporting library for programming computer simulations for theoretical models. Models are expected to be formally defined using math (e.g., set, graph or probability theory)."
+ThisBuild / description := "mathlib is a supporting library for programming computer simulations for theoretical models."
 ThisBuild / licenses := List("GNU General Public License v3.0" -> new URL("https://github.com/markblokpoel/mathlib/blob/master/LICENSE"))
 ThisBuild / homepage := Some(url("https://github.com/markblokpoel/mathlib"))
 
@@ -27,7 +27,7 @@ ThisBuild / pomIncludeRepository := { _ => false }
 
 ThisBuild / publishTo := Some(
   {
-    if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
+    if (isSnapshot.value) Opts.resolver.sonatypeOssSnapshots.head
     else Opts.resolver.sonatypeStaging
   }
 )

@@ -85,4 +85,12 @@
     </LinkMapSettings>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK" />
+  <component name="ScaladocSettings">
+    <option name="outputDir" value="$PROJECT_DIR$/docs" />
+    <option name="additionalFlags" value="" />
+    <option name="maxHeapSize" value="" />
+    <option name="docTitle" value="mathlib documentation" />
+    <option name="verbose" value="true" />
+    <option name="openInBrowser" value="true" />
+  </component>
 </project>
