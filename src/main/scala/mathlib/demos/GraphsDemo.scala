@@ -40,28 +40,31 @@ object GraphsDemo {
     )
 
 
-    graphs.foreach(println)
-    graphs.foreach {
-      case g: UnweightedGraph[_, _] => println(g.adjacencyList)
-      case g: WeightedGraph[_, _] => println(g.adjacencyList)
-      case _ => println("Unknown graph supertype.")
-    }
-    hyperGraphs.foreach(println)
+//    graphs.foreach(println)
+//    graphs.foreach {
+//      case g: UnweightedGraph[_, _] => println(g.adjacencyList)
+//      case g: WeightedGraph[_, _] => println(g.adjacencyList)
+//      case _ => println("Unknown graph supertype.")
+//    }
+//    hyperGraphs.foreach(println)
 
-    val test = WDiGraph(Set(
-      "a" ~> "b" % 3,
-      "b" ~> "c" % 4,
-      "b" ~> "d" % 2
+    val test = DiGraph(Set(
+      "a" ~> "b",
+      "b" ~> "c",
+//      "c" ~> "d",
+//      "d" ~> "a"
     ))
 
     println(test)
+    println(test.containsCycle)
 
-    println(test.nthAdjacencyList(0))
-    println(test.nthAdjacencyList(1))
-    println(test.nthAdjacencyList(2))
-    println(test.nthAdjacencyList(3))
-    println(test.nthAdjacencyList(4))
 
+    val test2 = UnDiGraph(Set(
+      "a" ~ "b",
+      "b" ~ "c",
+//      "c" ~ "a"
+    ))
+    println(test2.containsCycle)
 
   }
 }

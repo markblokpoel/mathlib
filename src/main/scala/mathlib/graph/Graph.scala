@@ -32,7 +32,8 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
 
   def size: Int = vertices.size
   def containsCycle: Boolean
-
+  def isEmpty: Boolean = vertices.isEmpty
+  def noEdges: Boolean = edges.isEmpty
 
 
 }
