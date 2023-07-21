@@ -81,7 +81,7 @@ case object WDiGraph {
     * @tparam X
     *   A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
     * @return
-    *   A directed graph of type T with only the vertices.
+    *   A directed graph of type T.
     */
   def apply[T, X: ClassTag](edges: Set[WDiEdge[Node[T]]]): WDiGraph[T] = WDiGraph.empty + edges
 

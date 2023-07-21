@@ -81,7 +81,7 @@ case object UnDiGraph {
    * @tparam X
    * A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
    * @return
-   * An undirected graph of type T with only the vertices.
+   * An undirected graph of type T.
    */
   def apply[T, X: ClassTag](edges: Set[UnDiEdge[Node[T]]]): UnDiGraph[T] = UnDiGraph.empty + edges
 

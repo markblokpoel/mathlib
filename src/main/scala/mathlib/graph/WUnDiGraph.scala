@@ -71,7 +71,7 @@ case object WUnDiGraph {
    * @tparam X
    * A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
    * @return
-   * A weighted undirected graph of type T with only the vertices.
+   * A weighted undirected graph of type T.
    */
   def apply[T, X: ClassTag](edges: Set[WUnDiEdge[Node[T]]]): WUnDiGraph[T] =
     WUnDiGraph.empty + edges
