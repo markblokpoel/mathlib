@@ -6,6 +6,14 @@ import scala.annotation.tailrec
 import scala.reflect.ClassTag
 import scala.util.Random
 
+/** Represents an unweighted directed graph.
+  * @param vertices
+  *   The set of vertices of the graph.
+  * @param edges
+  *   The set of edges of the graph.
+  * @tparam T
+  *   The type of nodes in the graph.
+  */
 case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: Set[DiEdge[Node[T]]])
     extends UnweightedGraph[T, DiEdge[Node[T]]](vertices, edges) {
   override def +(vertex: Node[T]): DiGraph[T] =
@@ -46,7 +54,7 @@ case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: S
 }
 
 case object DiGraph {
-  def apply[T](vertices: Set[Node[T]]): DiGraph[T] = DiGraph.empty + vertices
+  def apply[T](vertices: Set[Node[T]]): DiGraph[T]                   = DiGraph.empty + vertices
   def apply[T, X: ClassTag](edges: Set[DiEdge[Node[T]]]): DiGraph[T] = DiGraph.empty + edges
   def empty[T]: DiGraph[T] = DiGraph(Set[Node[T]](), Set[DiEdge[Node[T]]]())
 
