@@ -23,7 +23,7 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     * @param that
     *   The instance to check.
     * @return
-    * \```true``` if ```that``` is of type [[WUnDiEdge]][T]
+    * ```true``` if ```that``` is of type [[WUnDiEdge]][T]
     */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WUnDiEdge[T]]
 
@@ -36,7 +36,7 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     * @param that
     *   The object to test equivalence to.
     * @return
-    *   \```true``` if that.left == that.left && that.right == that.right or that.left == that.right
+    *   ```true``` if that.left == that.left && that.right == that.right or that.left == that.right
     *   && that.right == that.left.
     */
   override def equals(that: Any): Boolean =
@@ -47,6 +47,11 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
       case _ => false
     }
 
+  /** Calculates the hash code of the edge.
+   *
+   * @return
+   * Hash code of the edge.
+   */
   override def hashCode(): Int = {
     val prime = 1693
     (prime + left.hashCode()) * prime + right.hashCode() +
