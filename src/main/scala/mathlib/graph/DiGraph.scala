@@ -14,8 +14,10 @@ import scala.util.Random
   * @tparam T
   *   The type of nodes in the graph.
   */
-case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: Set[DiEdge[Node[T]]])
-    extends UnweightedGraph[T, DiEdge[Node[T]]](vertices, edges) {
+case class DiGraph[T](
+    override val vertices: Set[Node[T]],
+    override val edges: Set[DiEdge[Node[T]]]
+) extends UnweightedGraph[T, DiEdge[Node[T]]](vertices, edges) {
   override def +(vertex: Node[T]): DiGraph[T] =
     DiGraph(vertices + vertex, edges)
 
@@ -146,19 +148,19 @@ case object DiGraph {
   }
 
   /** Generate a random directed graph.
-   *
-   * Graphs are generated according to the uniform model, which states that given a number of fixed edges
-   * will uniformly distribute those edges between all pairs of objects. The probability of an edge existing
-   * in the final graph is the same as in the Erdős–Rényi–Gilbert model.
-   * @param objects
-   * The set of objects representing the vertices.
-   * @param numberEdges
-   * The number of edges.
-   * @tparam T
-   * The type of the graph and objects.
-   * @return
-   * A random graph.
-   */
+    *
+    * Graphs are generated according to the uniform model, which states that given a number of fixed
+    * edges will uniformly distribute those edges between all pairs of objects. The probability of
+    * an edge existing in the final graph is the same as in the Erdős–Rényi–Gilbert model.
+    * @param objects
+    *   The set of objects representing the vertices.
+    * @param numberEdges
+    *   The number of edges.
+    * @tparam T
+    *   The type of the graph and objects.
+    * @return
+    *   A random graph.
+    */
   def uniform[T](objects: Set[T], numberEdges: Int): DiGraph[T] = {
     val vertices = objects.map(Node(_))
 
@@ -192,17 +194,17 @@ case object DiGraph {
   }
 
   /** Helper factory to generate a random directed graph of type [[java.lang.String]] for n
-   * vertices.
-   *
-   * Uses the uniform model.
-   *
-   * @param n
-   * The number of vertices.
-   * @param numberEdges
-   * The number of edges.
-   * @return
-   * A random graph.
-   */
+    * vertices.
+    *
+    * Uses the uniform model.
+    *
+    * @param n
+    *   The number of vertices.
+    * @param numberEdges
+    *   The number of edges.
+    * @return
+    *   A random graph.
+    */
   def uniform(n: Int, numberEdges: Int): DiGraph[String] = {
     val objects = (0 to n).toSet.map("N" + _)
     uniform(objects, numberEdges)

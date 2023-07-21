@@ -153,20 +153,21 @@ case object WDiGraph {
   }
 
   /** Generate a random weighted directed graph.
-   *
-   * Graphs are generated according to the uniform model, which states that given a number of fixed edges
-   * will uniformly distribute those edges between all pairs of objects. The probability of an edge existing
-   * in the final graph is the same as in the Erdős–Rényi–Gilbert model.
-   *
-   * @param objects
-   * The set of objects representing the vertices.
-   * @param numberEdges
-   * The number of edges.
-   * @tparam T
-   * The type of the graph and objects.
-   * @return
-   * A random graph.
-   */
+    *
+    * Graphs are generated according to the uniform model, which states that given a number of fixed
+    * edges will uniformly distribute those edges between all pairs of objects. Weights are random
+    * sampled between 0 and 1. The probability of an edge existing in the final graph is the same as
+    * in the Erdős–Rényi–Gilbert model.
+    *
+    * @param objects
+    *   The set of objects representing the vertices.
+    * @param numberEdges
+    *   The number of edges.
+    * @tparam T
+    *   The type of the graph and objects.
+    * @return
+    *   A random graph.
+    */
   def uniform[T](objects: Set[T], numberEdges: Int): WDiGraph[T] = {
     val vertices = objects.map(Node(_))
 
@@ -200,17 +201,17 @@ case object WDiGraph {
   }
 
   /** Helper factory to generate a random weighted directed graph of type [[java.lang.String]] for n
-   * vertices.
-   *
-   * Uses the uniform model.
-   *
-   * @param n
-   * The number of vertices.
-   * @param numberEdges
-   * The number of edges.
-   * @return
-   * A random graph.
-   */
+    * vertices.
+    *
+    * Uses the uniform model and weights are random sampled between 0 and 1.
+    *
+    * @param n
+    *   The number of vertices.
+    * @param numberEdges
+    *   The number of edges.
+    * @return
+    *   A random graph.
+    */
   def uniform(n: Int, numberEdges: Int): WDiGraph[String] = {
     val objects = (0 to n).toSet.map("N" + _)
     uniform(objects, numberEdges)
