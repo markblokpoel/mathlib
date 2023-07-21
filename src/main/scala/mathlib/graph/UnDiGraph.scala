@@ -1,8 +1,6 @@
-
 package mathlib.graph
 
 import mathlib.graph.GraphImplicits.N
-import mathlib.graph.properties.Edge
 import mathlib.set.SetTheory.ImplSet
 
 import scala.annotation.tailrec
