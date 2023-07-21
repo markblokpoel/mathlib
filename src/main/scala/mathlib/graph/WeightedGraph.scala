@@ -6,33 +6,46 @@ import mathlib.set.SetTheory.ImplAny
 import scala.annotation.tailrec
 import scala.reflect.ClassTag
 
+/** A data structure to represent pairs of nodes and weights (of the path leading to this node).
+  * @param node
+  *   The node of type T.
+  * @param weight
+  *   The weight.
+  * @tparam T
+  *   Type of the node.
+  */
 case class NodeWeightPair[T](node: Node[T], weight: Double) {
+
+  /** Add a weight to the pair.
+    * @param weight
+    *   The weight to be added.
+    * @return
+    *   Updated [[NodeWeightPair]].
+    */
   def +(weight: Double): NodeWeightPair[T] = NodeWeightPair(node, this.weight + weight)
 }
+
+/** Abstract class representing weighted graphs.
+  * @param vertices
+  *   The set of vertices of the graph.
+  * @param edges
+  *   The set of edges of the graph.
+  * @tparam T
+  *   The type of nodes in the graph.
+  * @tparam E
+  *   The type of edges of the graph, must be a subtype of [[properties.WeightedEdge]].
+  */
 abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
     override val vertices: Set[Node[T]],
     override val edges: Set[E]
 ) extends Graph[T, E](vertices, edges) {
 
-//  override def +(vertex: Node[T]): WeightedGraph[T, E]
-//
-//  override def +(_vertices: Set[Node[T]]): WeightedGraph[T, E]
-//
-//  override def +(edge: E): WeightedGraph[T, E]
-//
-//  override def +[X: ClassTag](_edges: Set[E]): WeightedGraph[T, E]
-//
-//  override def -(vertex: Node[T]): WeightedGraph[T, E]
-//
-//  override def -(_vertices: Set[Node[T]]): WeightedGraph[T, E]
-//
-//  override def -(edge: E): WeightedGraph[T, E]
-//
-//  override def -[X: ClassTag](_edges: Set[E]): WeightedGraph[T, E]
-//
-//  override def merge[G <: Graph[T, E]](that: G): WeightedGraph[T, E]
-
-  def calcAdjacencyList(): Map[Node[T], Set[NodeWeightPair[T]]] =
+  /** Computes the adjacency list for weighted graphs (either directed or undirected).
+    *
+    * @return
+    *   A mapping from nodes to a set of neighboring nodes with the associated weights.
+    */
+  private def calcAdjacencyList(): Map[Node[T], Set[NodeWeightPair[T]]] =
     vertices
       .map(v => {
         val adjacents = edges
@@ -46,8 +59,20 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
       })
       .toMap
 
+  /** The adjacency list for this graph, represented as a mapping from nodes to a set of neighboring
+    * nodes with associated weights. This is lazily (only when called) evaluated.
+    */
   lazy val adjacencyList: Map[Node[T], Set[NodeWeightPair[T]]] = calcAdjacencyList()
 
+  /** Recursively computes the n^th^ adjacency list.
+    *
+    * @param n
+    *   The required level.
+    * @param adjL
+    *   Current adjacency list.
+    * @return
+    *   The n^th^ adjacency list.
+    */
   @tailrec
   private def nthAdjacencyListRec(
       n: Int,
@@ -66,10 +91,28 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
     }
   }
 
+  /** Recursively computes the n^th^ adjacency list.
+    *
+    * @param n
+    *   The required level.
+    * @return
+    *   The n^th^ adjacency list.
+    */
   def nthAdjacencyList(n: Int): Map[Node[T], Set[NodeWeightPair[T]]] = {
     nthAdjacencyListRec(n, adjacencyList)
   }
 
+  /** Recursively checks if the graph contains a cycle.
+    *
+    * @param currentVertex
+    *   The current vertex to be evaluated.
+    * @param visitedVertices
+    *   A set of vertices already visited.
+    * @param traversingGraph
+    *   The (partial) graph with removed edges to track traversal.
+    * @return
+    * ```true``` if the graph contains a cycle, ```false``` otherwise.
+    */
   private def containsCycleRec(
       currentVertex: Node[T],
       visitedVertices: Set[Node[T]],
@@ -78,26 +121,31 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
     if (traversingGraph.noEdges && (currentVertex in visitedVertices)) true
     else if (traversingGraph.noEdges) false
     else {
-      traversingGraph
-      .edges
-      .filter(_ contains currentVertex)
-      .exists(edge => {
-        // check if it leads to a cycle
-        val neighbor = edge.getNeighborOf(currentVertex)
-        if (neighbor.isEmpty) false
-        else
-          containsCycleRec(
-            neighbor.get,
-            visitedVertices + currentVertex,
-            (traversingGraph - edge).asInstanceOf[WeightedGraph[T, E]] // can cast because must be a weighted graph
-          )
-      })
+      traversingGraph.edges
+        .filter(_ contains currentVertex)
+        .exists(edge => {
+          // check if it leads to a cycle
+          val neighbor = edge.getNeighborOf(currentVertex)
+          if (neighbor.isEmpty) false
+          else
+            containsCycleRec(
+              neighbor.get,
+              visitedVertices + currentVertex,
+              (traversingGraph - edge)
+                .asInstanceOf[WeightedGraph[T, E]] // can cast because must be a weighted graph
+            )
+        })
     }
 
   }
 
+  /** Recursively checks if the graph contains a cycle.
+    *
+    * @return
+    * ```true``` if the graph contains a cycle, ```false``` otherwise.
+    */
   override def containsCycle: Boolean =
-    vertices  // forall vertices check if it leads to a cycle (in case of forests)
+    vertices // forall vertices check if it leads to a cycle (in case of forests)
       .exists(vertex =>
         containsCycleRec(
           vertex,

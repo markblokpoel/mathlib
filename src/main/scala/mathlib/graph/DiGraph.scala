@@ -56,7 +56,7 @@ case class DiGraph[T](override val vertices: Set[Node[T]], override val edges: S
 /** Factory for directed graphs. */
 case object DiGraph {
 
-  /** Creates a graph without edges from a set of vertices.
+  /** Creates a directed graph without edges from a set of vertices.
     * @param vertices
     *   A set of vertices.
     * @tparam T
@@ -66,7 +66,7 @@ case object DiGraph {
     */
   def apply[T](vertices: Set[Node[T]]): DiGraph[T] = DiGraph.empty + vertices
 
-  /** Creates a graph from a set of edges.
+  /** Creates a directed graph from a set of edges.
     *
     * Will automatically add the vertices from the edges, without explicitly passing them to the
     * constructor.
