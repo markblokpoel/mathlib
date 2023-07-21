@@ -126,24 +126,17 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
     */
   def size: Int = vertices.size
 
-  /** Tests if the hyper graph contains a cycle.
-    *
-    * @return
-    * \```true``` if the graph contains a cycle, ```false``` otherwise.
-    */
-  def containsCycle: Boolean
-
   /** Tests if the hyper graph contains any vertices.
     *
     * @return
-    * \```true``` if the hyper graph contains no vertices, ```false``` otherwise.
+    * ```true``` if the hyper graph contains no vertices, ```false``` otherwise.
     */
   def isEmpty: Boolean = vertices.isEmpty
 
   /** Tests if the hyper graph contains any edges.
     *
     * @return
-    * \```true``` if the hyper graph no edges, ```false``` otherwise.
+    * ```true``` if the hyper graph no edges, ```false``` otherwise.
     */
   def noEdges: Boolean = edges.isEmpty
 }

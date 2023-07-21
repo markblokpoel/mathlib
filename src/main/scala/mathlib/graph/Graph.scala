@@ -130,19 +130,19 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
 
   /** Tests if the graph contains a cycle.
     * @return
-    *   \```true``` if the graph contains a cycle, ```false``` otherwise.
+    *   ```true``` if the graph contains a cycle, ```false``` otherwise.
     */
   def containsCycle: Boolean
 
   /** Tests if the graph contains any vertices.
     * @return
-    *   \```true``` if the graph contains no vertices, ```false``` otherwise.
+    *   ```true``` if the graph contains no vertices, ```false``` otherwise.
     */
   def isEmpty: Boolean = vertices.isEmpty
 
   /** Tests if the graph contains any edges.
     * @return
-    *   \```true``` if the graph no edges, ```false``` otherwise.
+    *   ```true``` if the graph no edges, ```false``` otherwise.
     */
   def noEdges: Boolean = edges.isEmpty
 }
