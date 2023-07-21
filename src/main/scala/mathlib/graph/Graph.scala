@@ -65,9 +65,10 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
     */
   def +[X: ClassTag](_edges: Set[E]): Graph[T, E]
 
-  /** Remove a vertex from the graph
+  /** Remove a vertex from the graph.
     *
-    * Any edges connected to this vertex will also be removed.
+    * Any edges connected to this vertex will also be removed. If the vertex is not part of the
+    * graph, this function returns the original graph.
     * @param vertex
     *   The vertex to be removed.
     * @return
@@ -77,7 +78,9 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
 
   /** Remove a set of vertices from the graph.
     *
-    * Any edges connected to any of the vertices will also be removed.
+    * Any edges connected to any of the vertices will also be removed. Vertices that are not part of
+    * the graph are ignored.
+    *
     * @param _vertices
     *   The vertices to be removed.
     * @return
@@ -86,14 +89,20 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
   def -(_vertices: Set[Node[T]]): Graph[T, E]
 
   /** Remove an edge from the graph.
+    *
+    * If the edge is not part of the graph this function does nothing.
+    *
     * @param edge
-    *   The vertices to be removed.
+    *   The edge to be removed.
     * @return
     *   The graph minus the edge.
     */
   def -(edge: E): Graph[T, E]
 
   /** Remove a set of edges from the graph.
+    *
+    * Edges that are not part of the graph will are ignored.
+    *
     * @param _edges
     *   The edges to be removed.
     * @tparam X
@@ -103,7 +112,7 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
     */
   def -[X: ClassTag](_edges: Set[E]): Graph[T, E]
 
-  /** Merge to graphs of the same type.
+  /** Merge two graphs of the same type.
     * @param that
     *   The graph to be merged with this graph.
     * @tparam G
@@ -121,19 +130,19 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
 
   /** Tests if the graph contains a cycle.
     * @return
-    *   ```true``` if the graph contains a cycle, ```false``` otherwise.
+    *   \```true``` if the graph contains a cycle, ```false``` otherwise.
     */
   def containsCycle: Boolean
 
   /** Tests if the graph contains any vertices.
     * @return
-    *   ```true``` if the graph contains no vertices, ```false``` otherwise.
+    *   \```true``` if the graph contains no vertices, ```false``` otherwise.
     */
   def isEmpty: Boolean = vertices.isEmpty
 
   /** Tests if the graph contains any edges.
     * @return
-    *   ```true``` if the graph no edges, ```false``` otherwise.
+    *   \```true``` if the graph no edges, ```false``` otherwise.
     */
   def noEdges: Boolean = edges.isEmpty
 }
