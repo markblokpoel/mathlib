@@ -2,6 +2,15 @@ package mathlib.graph
 
 import mathlib.graph.properties.{Edge, ProtoEdge, WeightedEdge}
 
+/** Represents a weighted directed edge.
+ * @param left
+ *   Left vertex of the edge.
+ * @param right
+ *   Right vertex of the edge.
+ * @param weight The weight of the edge.
+ * @tparam T
+ *   The type of the vertices.
+ */
 case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, weight: Double)
     extends Edge[T](left, right)
     with WeightedEdge
