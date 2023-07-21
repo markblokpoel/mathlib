@@ -23,9 +23,9 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     * @param that
     *   The instance to check.
     * @return
-    * ```true``` if ```that``` is of type [[WUnDiEdge]][T]
+    * ```true``` if ```that``` is of type [[WUnDiEdge]]
     */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[WUnDiEdge[T]]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[WUnDiEdge[_]]
 
   /** Checks if this equals that.
     *
@@ -41,7 +41,7 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     */
   override def equals(that: Any): Boolean =
     that match {
-      case that: UnDiEdge[T] =>
+      case that: UnDiEdge[_T] =>
         left == that.left && right == that.right ||
         left == that.right && right == that.left
       case _ => false
