@@ -2,13 +2,43 @@ package mathlib.graph
 
 import mathlib.graph.hyper.{DiHyperEdge, UnDiHyperEdge, WDiHyperEdge, WUnDiHyperEdge}
 
+/** A collection of implicit functions to construct nodes, edges and graphs. */
 object GraphImplicits {
 
+  /** Creates a Node (representing a vertex) from value of type T, wrapping the value with [[Node]].
+    * @param value
+    *   The value of the node.
+    * @tparam T
+    *   The type of the node.
+    * @return
+    *   The node.
+    */
   def N[T](value: T): Node[T] = Node(value)
 
+  /** Implicit functions to create edges from nodes (vertices).
+    * @param node1
+    *   The left node (vertex).
+    * @tparam T
+    *   The type of the nodes.
+    */
   implicit class EdgeImpl[T <: Node[_]](node1: T) {
+
+    /** Creates an undirected edge between node1 and node2.
+      * @param node2
+      *   The right node.
+      * @return
+      *   An undirected edge.
+      */
     def ~(node2: T): UnDiEdge[T] = UnDiEdge(node1, node2)
-    def ~>(node2: T): DiEdge[T]  = DiEdge(node1, node2)
+
+    /** Creates a directed edge between node1 and node2.
+      *
+      * @param node2
+      *   The right node.
+      * @return
+      *   A directed edge.
+      */
+    def ~>(node2: T): DiEdge[T] = DiEdge(node1, node2)
   }
 
   implicit class EdgeImpl2[T](protoNode1: T) {
@@ -35,7 +65,8 @@ object GraphImplicits {
   }
 
   implicit class WDiHyperEdgeImpl[T](diHyperEdge: DiHyperEdge[Node[T]]) {
-    def %(weight: Double): WDiHyperEdge[Node[T]] = WDiHyperEdge(diHyperEdge.left, diHyperEdge.right, weight)
+    def %(weight: Double): WDiHyperEdge[Node[T]] =
+      WDiHyperEdge(diHyperEdge.left, diHyperEdge.right, weight)
   }
 
   implicit class UnDiHyperEdgeImpl1[T](protoNodeSet1: Set[T]) {
@@ -49,6 +80,7 @@ object GraphImplicits {
   }
 
   implicit class WUnDiHyperEdgeImpl[T](diHyperEdge: UnDiHyperEdge[Node[T]]) {
-    def %(weight: Double): WUnDiHyperEdge[Node[T]] = WUnDiHyperEdge(diHyperEdge.left, diHyperEdge.right, weight)
+    def %(weight: Double): WUnDiHyperEdge[Node[T]] =
+      WUnDiHyperEdge(diHyperEdge.left, diHyperEdge.right, weight)
   }
 }
