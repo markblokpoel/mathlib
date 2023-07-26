@@ -26,7 +26,7 @@ object SetTheory {
     override def mulElements(set: Set[Float]): Float = set.product
   }
 
-  /** Compute the power set.
+  /** Returns the power set.
     *
     * This function runs very slowly (in exponential time).
     * @param set
@@ -38,7 +38,7 @@ object SetTheory {
     */
   def powerset[A](set: Set[A]): Set[Set[A]] = set.subsets.toSet
 
-  /** Compute the power set (shorthand notation).
+  /** Returns the power set (shorthand notation).
     *
     * This function runs very slowly (in exponential time).
     * @param set
@@ -50,7 +50,7 @@ object SetTheory {
     */
   def P[A](set: Set[A]): Set[Set[A]] = powerset(set)
 
-  /** Compute all possible subsets with ```len``` number of elements.
+  /** Returns all possible subsets with ```len``` number of elements.
     *
     * @param set
     *   The set of elements to compute power set for.
@@ -63,7 +63,7 @@ object SetTheory {
     */
   def powerset[A](set: Set[A], len: Int): Set[Set[A]] = set.subsets(len).toSet
 
-  /** Compute all possible subsets with ```len``` number of elements (shorthand notation).
+  /** Returns all possible subsets with ```len``` number of elements (shorthand notation).
     * @param set
     *   The set of elements to compute power set for.
     * @param len
@@ -75,7 +75,7 @@ object SetTheory {
     */
   def P[A](set: Set[A], len: Int): Set[Set[A]] = powerset(set, len)
 
-  /** Compute all possible subsets with up to ```upperbound``` number of elements.
+  /** Returns all possible subsets with up to ```upperbound``` number of elements.
     * @param set
     *   The set of elements to compute power set for.
     * @param upperbound
@@ -89,7 +89,7 @@ object SetTheory {
   def powersetUp[A](set: Set[A], upperbound: Int): Set[Set[A]] =
     (for (len <- 0 to upperbound) yield powerset(set, len)).toSet.flatten
 
-  /** Compute all possible subsets with at least ```lowerbound``` number of elements.
+  /** Returns all possible subsets with at least ```lowerbound``` number of elements.
     * @param set
     *   The set of elements to compute power set for.
     * @param lowerbound
@@ -103,7 +103,8 @@ object SetTheory {
   def powersetLow[A](set: Set[A], lowerbound: Int): Set[Set[A]] =
     (for (len <- lowerbound to set.size) yield powerset(set, len)).toSet.flatten
 
-  /** Take all elements from the set that have maximum value according to a given function ```f```.
+  /** Returns all elements from the set that have maximum value according to a given function
+    * ```f```.
     *
     * The function ```f``` needs to have as an argument the same type as the elements in the set
     * (A), and returns a value for which an ordering exists (e.g., a number or String).
@@ -130,7 +131,7 @@ object SetTheory {
     }
   }
 
-  /** Computes the sum of all elements in the set, given that the elements can be added together.
+  /** Returns the sum of all elements in the set, given that the elements can be added together.
     *
     * For sets with elements of types other than [[scala.Int]], [[scala.Double]] and
     * [[scala.Float]], one would need to implements a custom [[NumberSetOps]] implicit object. See
@@ -147,7 +148,7 @@ object SetTheory {
     */
   def sum[T](set: Set[T])(implicit nso: NumberSetOps[T]): T = nso.sumElements(set)
 
-  /** Computes the sum of all elements in the set, given a function ```f```.
+  /** Returns the sum of all elements in the set, given a function ```f```.
     *
     * For sets with elements of types other than [[scala.Int]], [[scala.Double]] and
     * [[scala.Float]], one would need to implements a custom [[NumberSetOps]] implicit object. See
@@ -169,7 +170,7 @@ object SetTheory {
   def sum[A, T](set: Set[A], f: A => T)(implicit nso: NumberSetOps[T]): T =
     nso.sumElements(set.map(f))
 
-  /** Given a set of pairs (i.e., [[scala.Tuple2]]), this computes the sum of all pairs in the set,
+  /** Given a set of pairs (i.e., [[scala.Tuple2]]), this returns the sum of all pairs in the set,
     * given a function ```f```.
     *
     * For sets with tuples of types other than [[scala.Int]], [[scala.Double]] and [[scala.Float]],
@@ -192,7 +193,7 @@ object SetTheory {
   def sum[A, T](set: Set[(A, A)], f: (A, A) => T)(implicit nso: NumberSetOps[T]): T =
     nso.sumElements(set.map(pair => f(pair._1, pair._2)))
 
-  /** Computes the product of all elements in the set, given that the elements can be multiplied.
+  /** Returns the product of all elements in the set, given that the elements can be multiplied.
     *
     * For sets with elements of types other than [[scala.Int]], [[scala.Double]] and
     * [[scala.Float]], one would need to implements a custom [[NumberSetOps]] implicit object. See
@@ -209,7 +210,7 @@ object SetTheory {
     */
   def product[T](set: Set[T])(implicit nso: NumberSetOps[T]): T = nso.mulElements(set)
 
-  /** Computes the product of all elements in the set, given a function ```f```.
+  /** Returns the product of all elements in the set, given a function ```f```.
     *
     * For sets with elements of types other than [[scala.Int]], [[scala.Double]] and
     * [[scala.Float]], one would need to implements a custom [[NumberSetOps]] implicit object. See
@@ -231,7 +232,7 @@ object SetTheory {
   def product[A, T](set: Set[A], f: A => T)(implicit nso: NumberSetOps[T]): T =
     nso.mulElements(set.map(f))
 
-  /** Given a set of pairs (i.e., [[scala.Tuple2]]), this computes the product of all pairs in the
+  /** Given a set of pairs (i.e., [[scala.Tuple2]]), this returns the product of all pairs in the
     * set, given a function ```f```.
     *
     * For sets with tuples of types other than [[scala.Int]], [[scala.Double]] and [[scala.Float]],
@@ -278,7 +279,7 @@ object SetTheory {
       * @param set
       *   The set of elements.
       * @return
-      * ```true``` if the ```elem``` is in the ```set```, ```false``` otherwise.
+      *   ```true``` if the ```elem``` is in the ```set```, ```false``` otherwise.
       */
     def in(set: Set[A]): Boolean = set.contains(elem)
   }
@@ -290,94 +291,191 @@ object SetTheory {
     *   The type of the elements in the set.
     */
   implicit class ImplSet[A](set: Set[A]) {
-
-    /** Checks if ```elem``` is in the ```set```.
-      * @param elem
-      *   The element.
-      * @return
-      * ```true``` if the ```elem``` is in the ```set```, ```false``` otherwise.
-      */
-    def contains(elem: A): Boolean = set.contains(elem)
+    // for contains use set.contains(otherSet)
 
     /** Checks if ```set``` is a strict subset of ```otherSet```.
       * @param otherSet
       *   The other set of elements with the same type as the elements in ```set```.
       * @return
-      *  ```true``` if ```set``` is a strict subset of ```otherSet```, ```false``` otherwise.
+      *   ```true``` if ```set``` is a strict subset of ```otherSet```, ```false``` otherwise.
       */
     def isSubsetOf(otherSet: Set[A]): Boolean = set != otherSet && set.subsetOf(otherSet)
 
-    /** Checks if ```set``` is a strict subset of ```otherSet```  (shorthand notation).
-     *
-     * @param otherSet
-     * The other set of elements with the same type as the elements in ```set```.
-     * @return
-     * ```true``` if ```set``` is a strict subset of ```otherSet```, ```false``` otherwise.
-     */
-    def <(otherSet: Set[A]): Boolean              = isSubsetOf(otherSet)
+    /** Checks if ```set``` is a strict subset of ```otherSet``` (shorthand notation).
+      *
+      * @param otherSet
+      *   The other set of elements with the same type as the elements in ```set```.
+      * @return
+      *   ```true``` if ```set``` is a strict subset of ```otherSet```, ```false``` otherwise.
+      */
+    def <(otherSet: Set[A]): Boolean = isSubsetOf(otherSet)
 
     /** Checks if ```set``` is a subset of or equal to ```otherSet```.
-     * @param otherSet
-     * The other set of elements with the same type as the elements in ```set```.
-     * @return
-     * ```true``` if ```set``` is a subset of or equal to ```otherSet```, ```false``` otherwise.
-     */
+      * @param otherSet
+      *   The other set of elements with the same type as the elements in ```set```.
+      * @return
+      *   ```true``` if ```set``` is a subset of or equal to ```otherSet```, ```false``` otherwise.
+      */
     def isSubsetEqTo(otherSet: Set[A]): Boolean = set.subsetOf(otherSet)
 
-    /** Checks if ```set``` is a subset of or equal to ```otherSet```  (shorthand notation).
-     * @param otherSet
-     * The other set of elements with the same type as the elements in ```set```.
-     * @return
-     * ```true``` if ```set``` is a subset of or equal to ```otherSet```, ```false``` otherwise.
-     */
-    def <=(otherSet: Set[A]): Boolean           = isSubsetEqTo(otherSet)
+    /** Checks if ```set``` is a subset of or equal to ```otherSet``` (shorthand notation).
+      * @param otherSet
+      *   The other set of elements with the same type as the elements in ```set```.
+      * @return
+      *   ```true``` if ```set``` is a subset of or equal to ```otherSet```, ```false``` otherwise.
+      */
+    def <=(otherSet: Set[A]): Boolean = isSubsetEqTo(otherSet)
 
     def isSupersetOf(otherSet: Set[A]): Boolean = otherSet isSubsetOf set
     def >(otherSet: Set[A]): Boolean            = isSupersetOf(otherSet)
 
     /** Checks if ```set``` is a superset of or equal to ```otherSet```.
-     * @param otherSet
-     * The other set of elements with the same type as the elements in ```set```.
-     * @return
-     * ```true``` if ```set``` is a superset of or equal to ```otherSet```, ```false``` otherwise.
-     */
+      * @param otherSet
+      *   The other set of elements with the same type as the elements in ```set```.
+      * @return
+      *   ```true``` if ```set``` is a superset of or equal to ```otherSet```, ```false```
+      *   otherwise.
+      */
     def isSupersetEqTo(otherSet: Set[A]): Boolean = otherSet isSubsetEqTo set
 
-    /** Checks if ```set``` is a superset of ```otherSet```  (shorthand notation).
-     * @param otherSet
-     * The other set of elements with the same type as the elements in ```set```.
-     * @return
-     * ```true``` if ```set``` is a superset of or equal to ```otherSet```, ```false``` otherwise.
-     */
-    def >=(otherSet: Set[A]): Boolean             = isSupersetEqTo(otherSet)
+    /** Checks if ```set``` is a superset of ```otherSet``` (shorthand notation).
+      * @param otherSet
+      *   The other set of elements with the same type as the elements in ```set```.
+      * @return
+      *   ```true``` if ```set``` is a superset of or equal to ```otherSet```, ```false```
+      *   otherwise.
+      */
+    def >=(otherSet: Set[A]): Boolean = isSupersetEqTo(otherSet)
 
     // for intersection use set.intersect(set2)
+
+    /** Returns the intersection between ```set``` and ```otherSet```.
+      * @param otherSet
+      *   A set of elements.
+      * @return
+      *   The intersection between ```set``` and ```otherSet```.
+      */
     def /\(otherSet: Set[A]): Set[A] = set.intersect(otherSet)
 
     // for union use set.union(set2)
+
+    /** Returns the union between ```set``` and ```otherSet```.
+      * @param otherSet
+      *   A set of elements.
+      * @return
+      *   The union between ```set``` and ```otherSet```.
+      */
     def \/(otherSet: Set[A]): Set[A] = set.union(otherSet)
 
+    /** Set builder.
+      *
+      * Builds a set from the base set by keeping only elements that return ```true``` when ```f```
+      * is applied to those elements.
+      * @param f
+      *   A function from the elements in the set to ```true``` or ```false```.
+      * @return
+      *   A subset of elements that satisfy ```f```.
+      */
     def build(f: A => Boolean): Set[A] = set.filter(f(_))
 
+    /** Set builder (shorthand notation).
+      *
+      * Builds a set from the base set by keeping only elements that return ```true``` when ```f```
+      * is applied to those elements.
+      * @param f
+      *   A function from the elements in the set to ```true``` or ```false```.
+      * @return
+      *   A subset of elements that satisfy ```f```.
+      */
     def |(f: A => Boolean): Set[A] = set build f
 
+    /** Returns the set difference ```set \ otherSet```.
+      *
+      * For example, ```Set(1, 2, 3) \ Set(3, 4)``` returns ```Set(1, 2)```.
+      * @param otherSet
+      *   The other set of elements.
+      * @return
+      *   The set difference ```set \ otherSet```.
+      */
     def \(otherSet: Set[A]): Set[A] = set.diff(otherSet)
 
-    def cardinalProduct[B](otherSet: Set[B]): Set[(A, B)] =
+    /** Returns the cartesian product ```set x otherSet```.
+      *
+      * For example, ```Set(1, 2, 3).cartesianProduct(Set("a", "b"))``` returns
+      * ```Set((2,"b"), (1,"b"), (3,"a"), (3,"b"), (2,"a"), (1,"a"))```.
+      * @param otherSet
+      *   The other set of elements.
+      * @tparam B
+      *   The type of the elements of ```otherSet```.
+      * @return
+      *   The cartesian product ```set x otherSet```.
+      */
+    def cartesianProduct[B](otherSet: Set[B]): Set[(A, B)] =
       for (x <- set; y <- otherSet) yield (x, y)
-    def x[B](otherSet: Set[B]): Set[(A, B)] = cardinalProduct(otherSet)
 
+    /** Returns the cartesian product ```set x otherSet``` (shorthand notation).
+      *
+      * For example, ```Set(1, 2, 3).cartesianProduct(Set("a", "b"))``` returns
+      * ```Set((2,"b"), (1,"b"), (3,"a"), (3,"b"), (2,"a"), (1,"a"))```.
+      * @param otherSet
+      *   The other set of elements.
+      * @tparam B
+      *   The type of the elements of ```otherSet```.
+      * @return
+      *   The cartesian product ```set x otherSet```.
+      */
+    def x[B](otherSet: Set[B]): Set[(A, B)] = cartesianProduct(otherSet)
+
+    /** Returns a set of all possible pairs.
+      * @return
+      *   A set of all possible pairs.
+      */
     def pairs: Set[(A, A)] = for (x <- set; y <- set) yield (x, y)
 
+    /** Returns a set of all possible unique pairs.
+      *
+      * This set excludes 'self' pairs (x, x).
+      * @return
+      *   A set of all possible unique pairs.
+      */
     def uniquePairs: Set[(A, A)] = for (x <- set; y <- set if x != y) yield (x, y)
 
+    /** Returns a set of all possible pairs, assuming that (a, b) equals (b, a).
+      *
+      * The pairs are represented by sets of size two.
+      * @return
+      *   A set of all possible pairs, assuming no ordering on the elements in pairs.
+      */
     def unorderedPairs: Set[Set[A]] = for (x <- set; y <- set) yield Set(x, y)
 
+    /** Returns a set of all possible unique pairs, assuming that (a, b) equals (b, a).
+      *
+      * This set excludes 'self' pairs (x, x) and the pairs are represented by sets of size two.
+      * @return
+      *   A set of all possible pairs, assuming no ordering on the elements in pairs.
+      */
     def unorderedUniquePairs: Set[Set[A]] = for (x <- set; y <- set if x != y) yield Set(x, y)
 
+    /** Returns the power set of set.
+      * @return
+      *   The power set of set.
+      */
     def powerset: Set[Set[A]] = SetTheory.powerset(set)
-    def P: Set[Set[A]]        = SetTheory.powerset(set)
 
+    /** Returns the power set of set (shorthand notation).
+      * @return
+      *   The power set of set.
+      */
+    def P: Set[Set[A]] = SetTheory.powerset(set)
+
+    /** Returns all possible partitions of the set.
+      *
+      * For example, ```Set(1, 2, 3).allPartitions``` returns ```Set(Set(Set(3), Set(2), Set(1)),
+      * Set(Set(3), Set(2, 1)), Set(Set(2), Set(3, 1)), Set(Set(3, 2), Set(1)), Set(Set(3, 2,
+      * 1)))```.
+      * @return
+      *   All possible partitions of the set.
+      */
     def allPartitions: Set[Set[Set[A]]] = {
       if (set.isEmpty) Set.empty
       else {
@@ -403,8 +501,36 @@ object SetTheory {
       }
     }
 
+    /** Returns all elements from the set that have maximum value according to a given function
+      * ```f```.
+      *
+      * The function ```f``` needs to have as an argument the same type as the elements in the set
+      * (A), and returns a value for which an ordering exists (e.g., a number or String).
+      * @param f
+      *   The function for which the elements are evaluated.
+      * @param ord
+      *   An ordering on the return values of ```f```, this can be omitted when using simple types
+      *   such as numbers.
+      * @tparam T
+      *   The type of the values that are returned by ```f```.
+      * @return
+      *   A set of elements that have maximum value according to ```f```. Can contain zero, one or
+      *   more elements.
+      */
     def argMax[T](f: A => T)(implicit ord: Ordering[T]): Set[A] = SetTheory.argMax(set, f)
 
+    /** Returns a map with all possible 1-to-1 mappings (bijections) from elements in ```set``` to
+      * ```targetSet```.
+      *
+      * Assumes that ```set``` and ```targetSet``` are of equal size. Will otherwise ignore elements
+      * of the bigger set.
+      * @param targetSet
+      *   The target set of elements.
+      * @tparam B
+      *   The type of the elements in ```targetSet```.
+      * @return
+      *   A map with all possible mappings from elements in ```set``` to ```targetSet```.
+      */
     def allBijections[B](targetSet: Set[B]): Set[Map[A, B]] = {
       val perm = targetSet.toList.permutations.toSet
       val bijections = perm
@@ -413,6 +539,19 @@ object SetTheory {
       bijections
     }
 
+    /** Returns all possible one-to-many mappings from elementsin ```set``` to ```coDomain```.
+      *
+      * For example, ```Set(1, 2, 3).allMappings(Set("a", "b"))``` returns ```HashSet(Map(1 -> b, 2
+      * -> b, 3 -> b), Map(1 -> a, 2 -> b, 3 -> a), Map(1 -> b, 2 -> a, 3 -> b), Map(1 -> b, 2 -> b,
+      * 3 -> a), Map(1 -> a, 2 -> a, 3 -> a), Map(1 -> a, 2 -> b, 3 -> b), Map(1 -> b, 2 -> a, 3 ->
+      * a), Map(1 -> a, 2 -> a, 3 -> b))```.
+      * @param coDomain
+      *   The set of elements representing the co-domain.
+      * @tparam B
+      *   The type of the elements in the co-domain.
+      * @return
+      *   All possible one-to-many mappings from elementsin ```set``` to ```coDomain```.
+      */
     def allMappings[B](coDomain: Set[B]): Set[Map[A, B]] = {
       @tailrec
       def allMappingsRec(
@@ -432,26 +571,79 @@ object SetTheory {
       allMappingsRec(set, coDomain)
     }
 
+    /** Selects a random elements from the set.
+      * @return
+      *   A random elements from the set, wrapped in ```Some(.)```, ```None``` if the set is emtpy.
+      */
     def random: Option[A] = SetTheory.random(set)
   }
+
+  /** Implicit functions for pairs of sets.
+    * @param sets
+    *   A pair of sets.
+    * @tparam A
+    *   Type of the elements in the one set in the pair.
+    * @tparam B
+    *   Type of the elements in the other set in the pair.
+    */
   implicit class Impl2Set[A, B](sets: (Set[A], Set[B])) {
-    // Example (set, set2) build((a: Int, b: Int) => a/2==0 && b%2==0)
+
+    /** Builds a set from a pair of sets.
+      *
+      * It takes the cartesian product of the two sets, then keeps only pairs of elements that
+      * return ```true``` when ```f``` is applied to those elements.
+      *
+      * Example to build a set of pairs from two initial sets, where one element can be divided by 2
+      * and the other elements have no remainder when divided by 2 (are even numbers).
+      *
+      * ```(set, set2) build((a: Int, b: Int) => a/2==0 && b%2==0)```.
+      * @param f
+      *   A function from the pairs to ```true``` or ```false```.
+      * @return
+      *   A subset of pairs that satisfy ```f```.
+      */
     def build(f: (A, B) => Boolean): Set[(A, B)] =
-      (sets._1 cardinalProduct sets._2) build Function.tupled(f)
+      (sets._1 cartesianProduct sets._2) build Function.tupled(f)
+
+    /** Builds a set from a pair of sets (shorthand notation).
+      *
+      * It takes the cartesian product of the two sets, then keeps only pairs of elements that
+      * return ```true``` when ```f``` is applied to those elements.
+      *
+      * Example to build a set of pairs from two initial sets, where one element can be divided by 2
+      * and the other elements have no remainder when divided by 2 (are even numbers).
+      *
+      * ```(set, set2) build((a: Int, b: Int) => a/2==0 && b%2==0)```.
+      *
+      * @param f
+      *   A function from the pairs to ```true``` or ```false```.
+      * @return
+      *   A subset of pairs that satisfy ```f```.
+      */
     def |(f: (A, B) => Boolean): Set[(A, B)] = sets build f
   }
 
+  /** Implicit functions for sets of sets.
+    * @param setOfSets
+    *   A set of sets.
+    * @tparam A
+    *   Type of the elements in the sets (within the set).
+    */
   implicit class ImplSetSet[A](setOfSets: Set[Set[A]]) {
+
+    /** Returns the union of all the sets.
+      * @return
+      *   The union of all the sets.
+      */
     def union: Set[A] =
       if (setOfSets.nonEmpty) setOfSets.reduce(_ union _) else Set.empty
 
+    /** Returns the intersection of all the sets.
+      * @return
+      *   The intersection of all the sets.
+      */
     def intersection: Set[A] =
       if (setOfSets.nonEmpty) setOfSets.reduce(_ intersect _) else Set.empty
   }
 
-  def requirement(b: Boolean, msg: String): Unit =
-    if (!b) {
-      println(s"Requirement not met: $msg")
-      assert(false)
-    }
 }

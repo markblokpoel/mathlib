@@ -53,8 +53,8 @@ object Coherence {
         positiveConstraints: Set[WUnDiEdge[Node[String]]],
         negativeConstraints: Set[WUnDiEdge[Node[String]]]
     ): Set[Map[Node[String], Boolean]] = {
-      requirement(positiveConstraints \/ negativeConstraints == network.edges, "C+ union C- != E")
-      requirement(
+      require(positiveConstraints \/ negativeConstraints == network.edges, "C+ union C- != E")
+      require(
         positiveConstraints /\ negativeConstraints == Set.empty,
         "C+ intersect C- is not empty"
       )
@@ -93,8 +93,8 @@ object Coherence {
         positiveConstraints: Set[WUnDiEdge[Node[String]]],
         negativeConstraints: Set[WUnDiEdge[Node[String]]]
     ): Set[Map[Node[String], Boolean]] = {
-      requirement(positiveConstraints \/ negativeConstraints == network.edges, "C+ union C- != E")
-      requirement(
+      require(positiveConstraints \/ negativeConstraints == network.edges, "C+ union C- != E")
+      require(
         positiveConstraints /\ negativeConstraints == Set.empty,
         "C+ intersect C- is not empty"
       )
