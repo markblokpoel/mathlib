@@ -11,7 +11,7 @@
 
 This library was developed to complement the theory development method outlined in the book Theoretical modeling for cognitive science and psychology by Blokpoel and van Rooij (2021). You can [read the book for free](https://computationalcognitivescience.github.io/lovelace/).
 
-You can find an extensive tutorial on the basics of Scala and using ```mathlib``` in the [markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples) github repository. The tutorials include a link to an online service (binder) where you can try out the library without needing to install anything.
+You can find an extensive tutorial on the basics of Scala and using ```mathlib``` in the [markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples) GitHub repository. The tutorials include a link to an online service (binder) where you can try out the library without needing to install anything.
 
 ## Under development
 
