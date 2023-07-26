@@ -19,7 +19,7 @@ case class UnDiHyperEdge[T <: Node[_]](left: Set[T], right: Set[T]) extends Hype
    * @return
    * ```true``` if ```that``` is of type [[UnDiHyperEdge]]
    */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnDiHyperEdge[T]]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnDiHyperEdge[_]]
 
   /** Checks if this equals that.
    *
@@ -33,7 +33,7 @@ case class UnDiHyperEdge[T <: Node[_]](left: Set[T], right: Set[T]) extends Hype
    */
   override def equals(that: Any): Boolean =
     that match {
-      case that: UnDiHyperEdge[T] =>
+      case that: UnDiHyperEdge[_] =>
         left == that.left && right == that.right ||
           left == that.right && right == that.left
       case _ => false

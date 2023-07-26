@@ -26,7 +26,7 @@ case class WDiHyperEdge[T <: Node[_]](
     * @return
     * ```true``` if ```that``` is of type [[WDiHyperEdge]]
     */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[WDiHyperEdge[T]]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[WDiHyperEdge[_]]
 
   /** Checks if this equals that.
     * @param that
@@ -37,7 +37,7 @@ case class WDiHyperEdge[T <: Node[_]](
     */
   override def equals(that: Any): Boolean =
     that match {
-      case that: DiHyperEdge[T] =>
+      case that: DiHyperEdge[_] =>
         left == that.left && right == that.right
       case _ => false
     }
