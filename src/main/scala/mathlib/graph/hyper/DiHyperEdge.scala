@@ -20,7 +20,7 @@ case class DiHyperEdge[T <: Node[_]](left: Set[T], right: Set[T])
    * @return
    * ```true``` if ```that``` is of type [[DiHyperEdge]]
    */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[DiHyperEdge[T]]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[DiHyperEdge[_]]
 
   /** Checks if this equals that.
    * @param that
@@ -30,7 +30,7 @@ case class DiHyperEdge[T <: Node[_]](left: Set[T], right: Set[T])
    */
   override def equals(that: Any): Boolean =
     that match {
-      case that: DiHyperEdge[T] =>
+      case that: DiHyperEdge[_] =>
         left == that.left && right == that.right
       case _ => false
     }
