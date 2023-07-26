@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 import scala.util.Random
 
 /**
- * Implementation of basic set theory as implicits
+ * Implementation of basic set theory.
  */
 object SetTheory {
   trait NumberSetOps[T] {
