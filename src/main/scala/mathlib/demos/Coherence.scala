@@ -3,7 +3,6 @@ package mathlib.demos
 import mathlib.graph.GraphImplicits._
 import mathlib.graph.{DiGraph, Node, WDiGraph, WUnDiEdge, WUnDiGraph}
 import mathlib.set.SetTheory._
-import scala.collection.parallel.CollectionConverters._
 
 object Coherence {
 
@@ -81,7 +80,6 @@ object Coherence {
       negativeConstraints
         .flatMap(nc => Set(nc.left, nc.right))  // Get all vertices connected to negative constraints
         .allMappings(Set(true, false))          // Generate all possible truth value assignments
-        .par
         .map(completeBeliefAssignment)          // For each partial assignment (only negative constraints), complete
                                                 // the assignment for the whole network
         .toList.toSet
