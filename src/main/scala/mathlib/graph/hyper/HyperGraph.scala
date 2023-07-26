@@ -29,7 +29,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
   def +(vertex: Node[T]): HyperGraph[T, E]
 
   /** Adds a set of vertices to the hyper graph.
-    *
     * @param _vertices
     *   The vertices to be added.
     * @return
@@ -40,7 +39,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
   /** Adds a hyper edge to the hyper graph.
     *
     * This will also add vertices if the hyper edge contains vertices not yet present in the graph.
-    *
     * @param edge
     *   The hyper edge to be added.
     * @return
@@ -52,7 +50,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
     *
     * This will also add vertices if any of the hyper edges contains vertices not yet present in the
     * graph.
-    *
     * @param _edges
     *   The hyper edges to be added.
     * @tparam X
@@ -65,7 +62,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
   /** Remove a vertex from the hyper graph.
     *
     * Any hyper edges connected to this vertex will also be removed.
-    *
     * @param vertex
     *   The vertex to be removed.
     * @return
@@ -77,7 +73,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
     *
     * Any hyper edges connected to any of the vertices will also be removed. Vertices that are not
     * part of the hyper graph are ignored.
-    *
     * @param _vertices
     *   The vertices to be removed.
     * @return
@@ -88,7 +83,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
   /** Remove a hyper edge from the graph.
     *
     * If the hyper edge is not part of the graph this function returns the original hyper graph.
-    *
     * @param edge
     *   The hyper edge to be removed.
     * @return
@@ -109,7 +103,6 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
   def -[X: ClassTag](_edges: Set[E]): HyperGraph[T, E]
 
   /** Merge two hyper graphs of the same type.
-    *
     * @param that
     *   The hyper graph to be merged with this graph.
     * @tparam G
@@ -127,14 +120,12 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
   def size: Int = vertices.size
 
   /** Tests if the hyper graph contains any vertices.
-    *
     * @return
     * ```true``` if the hyper graph contains no vertices, ```false``` otherwise.
     */
   def isEmpty: Boolean = vertices.isEmpty
 
   /** Tests if the hyper graph contains any edges.
-    *
     * @return
     * ```true``` if the hyper graph no edges, ```false``` otherwise.
     */

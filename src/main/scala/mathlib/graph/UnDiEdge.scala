@@ -15,7 +15,6 @@ case class UnDiEdge[T <: Node[_]](override val left: T, override val right: T)
     with ProtoEdge[T] {
 
   /** Checks if this instance can equal that instance.
-    *
     * @param that
     *   The instance to check.
     * @return

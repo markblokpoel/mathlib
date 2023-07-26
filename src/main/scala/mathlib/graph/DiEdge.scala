@@ -35,10 +35,6 @@ case class DiEdge[T <: Node[_]](override val left: T, override val right: T)
   override def canEqual(that: Any): Boolean = that.isInstanceOf[DiEdge[_]]
 
   /** Checks if this equals that.
-   *
-   * Undirected edges (x,y) equal (y,x). This equals function tests equivalence respecting this
-   * property.
-   *
    * @param that
    * The object to test equivalence to.
    * @return
@@ -52,7 +48,6 @@ case class DiEdge[T <: Node[_]](override val left: T, override val right: T)
     }
 
   /** Calculates the hash code of the edge.
-   *
    * @return
    * Hash code of the edge.
    */

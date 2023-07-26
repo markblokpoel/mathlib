@@ -13,4 +13,34 @@ import mathlib.graph.properties.{HyperEdge, ProtoEdge}
  */
 case class DiHyperEdge[T <: Node[_]](left: Set[T], right: Set[T])
     extends HyperEdge[T](left, right)
-    with ProtoEdge[T]
+    with ProtoEdge[T] {
+  /** Checks if this instance can equal that instance.
+   * @param that
+   * The instance to check.
+   * @return
+   * ```true``` if ```that``` is of type [[DiHyperEdge]]
+   */
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[DiHyperEdge[T]]
+
+  /** Checks if this equals that.
+   * @param that
+   * The object to test equivalence to.
+   * @return
+   * ```true``` if that.left == that.left && that.right == that.right.
+   */
+  override def equals(that: Any): Boolean =
+    that match {
+      case that: DiHyperEdge[T] =>
+        left == that.left && right == that.right
+      case _ => false
+    }
+
+  /** Calculates the hash code of the hyper edge.
+   * @return
+   * Hash code of the edge.
+   */
+  override def hashCode(): Int = {
+    val prime = 1693
+    (prime + left.hashCode()) * prime + right.hashCode()
+  }
+}
