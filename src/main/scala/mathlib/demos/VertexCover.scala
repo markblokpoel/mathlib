@@ -1,6 +1,6 @@
 package mathlib.demos
 
-import mathlib.graph.{Graph, Node}
+import mathlib.graph.{Graph, Node, UnDiGraph}
 import mathlib.set.SetTheory._
 
 object VertexCover {
@@ -8,7 +8,7 @@ object VertexCover {
     // Vertex cover demo
     import mathlib.graph.GraphImplicits._
 
-    val graph = Graph.empty +
+    val graph = UnDiGraph.empty +
       N("A") ~ N("B") +
       N("A") ~ N("C") +
       N("B") ~ N("C") +
@@ -27,9 +27,9 @@ object VertexCover {
   }
 
   // Example of bounded exhaustive search
-  def vertexCover(graph: Graph[String], k: Int): Set[Set[Node[String]]] = {
+  def vertexCover(graph: UnDiGraph[String], k: Int): Set[Set[Node[String]]] = {
     def isVC(subset: Set[Node[String]]): Boolean =
-      graph.edges.forall(edge => subset.contains(edge.v1) || subset.contains(edge.v2))
+      graph.edges.forall(edge => subset.contains(edge.left) || subset.contains(edge.right))
 
     powersetUp(graph.vertices, k)
       .build(isVC)
@@ -53,13 +53,13 @@ object VertexCover {
   }
 
   // Bounded search tree, using generic class
-  def fptvc(graph: Graph[String], k: Int, acc: Set[Node[String]]): Set[Set[Node[String]]] = {
-    def branch(graph: Graph[String]): Set[(Graph[String], Node[String])] = {
+  def fptvc(graph: UnDiGraph[String], k: Int, acc: Set[Node[String]]): Set[Set[Node[String]]] = {
+    def branch(graph: UnDiGraph[String]): Set[(UnDiGraph[String], Node[String])] = {
       val edge = graph.edges.random
       if(edge.isEmpty) Set.empty
       else {
-        val left = edge.get.v1
-        val right = edge.get.v2
+        val left = edge.get.left
+        val right = edge.get.right
         val leftGraph = graph - left
         val rightGraph = graph - right
 
@@ -71,11 +71,11 @@ object VertexCover {
   }
 
   // Bounded search tree, specific implementation
-  def fptVertexCover(graph: Graph[String], k: Int, acc: Set[Node[String]]): Set[Set[Node[String]]] = {
+  def fptVertexCover(graph: UnDiGraph[String], k: Int, acc: Set[Node[String]]): Set[Set[Node[String]]] = {
     val edge = graph.edges.random
 
-    val left = edge.get.v1
-    val right = edge.get.v2
+    val left = edge.get.left
+    val right = edge.get.right
 
     val leftGraph = graph - left
     val rightGraph = graph - right
