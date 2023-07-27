@@ -1,7 +1,8 @@
 /*
-Main steps to publish this project:
-1. publishSigned
-2. sonatypeBundleRelease
+Main steps to publish this project, use sbt from terminal to allow for password input:
+1. sonatypePrepare
+2. publishSigned
+3. sonatypeBundleRelease
 */
 
 ThisBuild / organization := "com.markblokpoel"
@@ -34,24 +35,12 @@ ThisBuild / homepage := Some(url("https://github.com/markblokpoel/mathlib"))
 ThisBuild / pomIncludeRepository := { _ => false }
 Global / excludeLintKeys += pomIncludeRepository
 
-ThisBuild / publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
-  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
-}
-
-
-//Some(
-//  {
-//    if (isSnapshot.value) Opts.resolver.sonatypeOssSnapshots.head
-//    else Opts.resolver.sonatypeStaging
-//  }
-//)
+ThisBuild / publishTo := sonatypePublishToBundle.value
+ThisBuild / sonatypeCredentialHost := "oss.sonatype.org"
+ThisBuild / sonatypeRepository := "https://oss.sonatype.org/service/local"
+ThisBuild / sonatypeSessionName := "[sbt-sonatype] ${name.value}-${scalaBinaryVersion.value}-${version.value}"
 
 ThisBuild / publishMavenStyle := true
 Global / excludeLintKeys += publishMavenStyle
 
-//ThisBuild / versionScheme := Some("early-semver")
-//
-//Global / excludeLintKeys += publishMavenStyle
-//Global / excludeLintKeys += pomIncludeRepository
+ThisBuild / versionScheme := Some("early-semver")
