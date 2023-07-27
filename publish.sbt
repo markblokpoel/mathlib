@@ -18,23 +18,32 @@ ThisBuild / developers := List(
   )
 )
 
-ThisBuild / description := "mathlib is a supporting library for programming computer simulations for theoretical models."
-ThisBuild / licenses := List("GNU General Public License v3.0" -> new URL("https://github.com/markblokpoel/mathlib/blob/master/LICENSE"))
+ThisBuild / description := "mathlib is a library supporting functional programming that closely resembles mathematical notation."
+ThisBuild / licenses := List(
+  "GNU General Public License v3.0" -> new URL("https://github.com/markblokpoel/mathlib/blob/master/LICENSE")
+)
 ThisBuild / homepage := Some(url("https://github.com/markblokpoel/mathlib"))
 
 // Remove all additional repository other than Maven Central from POM
 ThisBuild / pomIncludeRepository := { _ => false }
 
-ThisBuild / publishTo := Some(
-  {
-    if (isSnapshot.value) Opts.resolver.sonatypeOssSnapshots.head
-    else Opts.resolver.sonatypeStaging
-  }
-)
+ThisBuild / publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+
+
+//Some(
+//  {
+//    if (isSnapshot.value) Opts.resolver.sonatypeOssSnapshots.head
+//    else Opts.resolver.sonatypeStaging
+//  }
+//)
 
 ThisBuild / publishMavenStyle := true
 
-ThisBuild / versionScheme := Some("early-semver")
-
-Global / excludeLintKeys += publishMavenStyle
-Global / excludeLintKeys += pomIncludeRepository
+//ThisBuild / versionScheme := Some("early-semver")
+//
+//Global / excludeLintKeys += publishMavenStyle
+//Global / excludeLintKeys += pomIncludeRepository
