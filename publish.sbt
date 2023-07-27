@@ -32,6 +32,7 @@ ThisBuild / homepage := Some(url("https://github.com/markblokpoel/mathlib"))
 
 // Remove all additional repository other than Maven Central from POM
 ThisBuild / pomIncludeRepository := { _ => false }
+Global / excludeLintKeys += pomIncludeRepository
 
 ThisBuild / publishTo := {
   val nexus = "https://oss.sonatype.org/"
@@ -48,6 +49,7 @@ ThisBuild / publishTo := {
 //)
 
 ThisBuild / publishMavenStyle := true
+Global / excludeLintKeys += publishMavenStyle
 
 //ThisBuild / versionScheme := Some("early-semver")
 //
