@@ -1,3 +1,15 @@
+/*
+Main steps to publish this project:
+1. Create a new staging repository:
+   sbt> sonatypeOpen "com.markblokpoel" "mathlib_2.13-0.9.0 staging"
+2. Sign and publish the library to the staging repository:
+   sbt> publishSigned
+3. You can and should check the published artifacts in the
+   Nexus Repository Manager (same login as Sonatype’s Jira account)
+4. Close the staging repository and promote the release to central:
+   sbt> sonatypeRelease
+ */
+
 ThisBuild / organization := "com.markblokpoel"
 ThisBuild / organizationName := "markblokpoel"
 ThisBuild / organizationHomepage := Some(url("https://www.markblokpoel.com"))
