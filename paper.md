@@ -19,12 +19,16 @@ bibliography: paper.bib
 
 # Summary
 
+- write introduction to computational / theoretical modeling and its role in cognitive science
+- explain role of simulations
+
+
 ```mathlib``` is a library for Scala supporting functional programming that resembles
 mathematical expressions such as set theory, graph theory and probability theory.
 This library was developed to complement the theory development method outlined
 in the open education book Theoretical modeling for cognitive science and psychology by @blokpoelandvanrooij:2021.
 
-The goal of this project is to facilitate users to write Scala code that is:
+The goal of this library is to facilitate users to implement simulations of their formal theories. ```mathlib``` and Scala code is:
 
 * easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
@@ -32,7 +36,7 @@ The goal of this project is to facilitate users to write Scala code that is:
 
 # Statement of need
 
-
+- elaborate on the need for readable, verifiable and sustainable code
 
 
 # Acknowledgements
