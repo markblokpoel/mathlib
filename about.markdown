@@ -1,19 +1,16 @@
 ---
 layout: default
-title: About
-permalink: /about/
+title: Acknowledgements
+permalink: /acknowledgements/
 order: 99
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+```mathlib``` is developed and maintained by [Mark Blokpoel<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.markblokpoel.com).
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+We thank the [Computational Cognitive Science group<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.ru.nl/donders/research/theme-2-perception-action-decision-making/research-groups-theme-2/computational-cognitive-science/) at the Donders Center for Cognition (Nijmegen, The Netherlands) for
+useful discussions and feedback, in particular, Laura van de Braak, Olivia Guest and Iris van Rooij.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+This project was supported by Netherlands Organization for Scientific Research Gravitation Grant of the [Language in 
+Interaction consortium<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.languageininteraction.nl/)
+024.001.006, the [Radboud School for Artificial Intelligence<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.ru.nl/en/education/bachelors/artificial-intelligence)
+and the [Donders Institute, Donders Center for Cognition<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.ru.nl/donders/).
