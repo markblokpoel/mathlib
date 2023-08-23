@@ -17,7 +17,7 @@ This library was developed to complement the theory development method outlined
 in the open education book [Theoretical modeling for cognitive science and psychology by
 Blokpoel and van Rooij (2021)<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://computationalcognitivescience.github.io/lovelace/).
 
-The goal of this project is to facilitate users to write Scala code that is:
+The goal of this library is to facilitate users to implement simulations of their formal theories. ```mathlib``` and Scala code is:
 
 * 👓 easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * ✅ easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
