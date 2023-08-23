@@ -75,7 +75,7 @@ backwards compatible (i.e., code that uses these components will still run with 
 Currently, this library only supports Scala 2 and not Scala 3.
 
 | Component | ```import``` statement | Minimum ```mathlib``` and Scala versions |
-|--|--|:--:|:--:|
+|--|--|:--:|
 | Set theory | ```import mathlib.set.SetTheory._``` | v0.9.0 / 2.13.9 |
 | Graph theory | ```import mathlib.graph._```<br/> ```import mathlib.graph.GraphImplicits._``` | v0.9.0 / 2.13.9 |
 
