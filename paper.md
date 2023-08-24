@@ -1,21 +1,21 @@
 ---
 title: 'mathlib: '
 tags:
-- psychology
-- cognitive science
-- simulations
-- formal theory
-- computational modeling
-- Scala
-  authors:
-    - name: Mark Blokpoel
-      orcid: 0000-0002-1522-0343
-      affiliation: 1
-      affiliations:
-    - name: Donders Institute for Brain, Cognition, and Behaviour, Radboud University, The Netherlands
-      index: 1
-      date: 23 August 2023
-      bibliography: paper.bib
+  - psychology
+  - cognitive science
+  - simulations
+  - formal theory
+  - computational modeling
+  - Scala
+authors:
+  - name: Mark Blokpoel
+    orcid: 0000-0002-1522-0343
+    affiliation: 1
+    affiliations:
+  - name: Donders Institute for Brain, Cognition, and Behaviour, Radboud University, The Netherlands
+    index: 1
+date: 23 August 2023
+bibliography: paper.bib
 ---
 
 # Summary
