@@ -65,7 +65,7 @@ for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
-```scala
+```
 type Item = String
 
 def subsetChoice(items: Set[Item],
