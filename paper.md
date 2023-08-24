@@ -1,5 +1,5 @@
 ---
-title: 'mathlib: '
+title: 'mathlib: A Scala package for readable, verifiable and sustainable simulations of formal theory'
 tags:
   - psychology
   - cognitive science
@@ -24,7 +24,7 @@ Formal theory and computational modeling are critical in cognitive science and p
 scientists to 'conceptually analyze, specify, and formalize intuitions that otherwise remain unexamined'
 [@guest_martin:2021]. They make otherwise underspecified theories precise and open for critical reflection
 [@vanrooij_baggio:2021]. A theory can be formally specified in a computational model using mathematical concepts
-such as set theory, graph theory and probability theory.  Following this specification comes analysis to understand
+such as set theory, graph theory and probability theory.  The specification is often followed by analysis to understand
 precisely what assumptions and consequences the formal theory entails. An important method of analysis is computer
 simulation, which allows scientists to explore complex model behaviours and derive predictions that cannot (easily)
 be analytically derived.
@@ -48,8 +48,8 @@ Writing code is not easy, writing code for which we can know that it computes wh
 syntax and semantics closely matches that of the specification. Since formal theories are specified using mathematical
 notation [@marr:1982, @blokpoel_vanrooij:2021, @guest_martin:2021], functional programming languages bring a lot to the
 table in terms of syntactic and semantic resemblance to mathematical concepts and notation. ```mathlib``` adds
-mathematical concepts and notation to the functional programming language Scala [@odersky:2008]. Specifically in the
-current version, set theory and graph theory. ```mathlib``` differs from other libraries in that is focuses on
+mathematical concepts and notation to the functional programming language Scala [@odersky:2008], specifically in the
+current version: set theory and graph theory. ```mathlib``` differs from other libraries in that is focuses on
 usability and transparency, whereas other libraries focus on computational expressiveness at the cost of accessibility
 and transparency.
 
@@ -82,9 +82,10 @@ def subsetChoice(
 ```
 
 Finally, ```mathlib``` and Scala are designed to be backwards compatible, i.e., to run on future systems and future
-execution context (e.g., operating systems). Many programming contributions in academia are lost to history because
+execution contexts (e.g., operating systems). Many programming contributions in academia are lost because
 of incompatibility issues between versions and newer operating systems, etc. This sometimes affects contributions
-within a short timeframe, and means that it is incredibly hard for anyone to verify the code and simulation results.
+within a short timeframe, and means that it is incredibly hard for anyone to run or verify the code and
+simulation results.
 
 # Acknowledgements
 
