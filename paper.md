@@ -87,6 +87,13 @@ of incompatibility issues between versions and newer operating systems, etc. Thi
 within a short timeframe, and means that it is incredibly hard for anyone to run or verify the code and
 simulation results.
 
+# Resources
+
+* Github repository: [https://github.com/markblokpoel/mathlib](https://github.com/markblokpoel/mathlib)
+* Website: [https://markblokpoel.github.io/mathlib](https://markblokpoel.github.io/mathlib)
+* Scaladoc: [https://markblokpoel.github.io/mathlib](https://markblokpoel.github.io/mathlib/scaladoc)
+* Tutorials: [https://github.com/markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples)
+
 # Acknowledgements
 
 We thank the Computational Cognitive Science group at the Donders Center for Cognition (Nijmegen, The Netherlands)
