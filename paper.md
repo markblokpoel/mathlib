@@ -55,21 +55,31 @@ and transparency.
 
 Given the important role of theory and computer simulations, it is important that scholars can verify that the code
 does what the authors intent it to do. We provide an example below of a formalization of subset choice and its
-implementation in Scala using ```mathlib```.
+implementation in Scala using ```mathlib``` to illustrate this.
 
 **Subset choice**
 
 *Input:* A set of items $I$, a value function for single items $v:I\rightarrow \mathbb{Z}$ and a binary value function
 for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 
-*Output:* A subset $I'\subseteq I$ of items that maximizes the combined value of the selected items according, i.e.,
-$\arg\max_{I'\subseteq I}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
+*Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)) that maximizes the combined value of the
+selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
 ```scala
+type Item = String
 
+def subsetChoice(items: Set[Item],
+                 v: (Item => Double),
+                 b: ((Item, Item) => Double)): Set[Set[Item]] = {
+    def value(subset: Set[Item]): Double = sum(subset, v) + sum(subset.uniquePairs, b)
+    argMax(powerset(items), value)
+}
 ```
 
-
+Finally, ```mathlib``` and Scala are designed to be backwards compatible, i.e., to run on future systems and future
+execution context (e.g., operating systems). Many programming contributions in academia are lost to history because
+of incompatibility issues between versions and newer operating systems, etc. This sometimes affects contributions
+within a short timeframe, and means that it is incredibly hard for anyone to verify the code and simulation results.
 
 # Acknowledgements
 
