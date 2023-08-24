@@ -22,8 +22,8 @@ bibliography: paper.bib
 
 Formal theory and computational modeling are critical in cognitive science and psychology. These methods allow
 scientists to 'conceptually analyze, specify, and formalize intuitions that otherwise remain unexamined'
-@[guest_martin:2021]. They make otherwise underspecified theories precise and open for critical reflection
-@[vanrooij_baggio:2021]. A theory can be formally specified in a computational model using mathematical concepts
+[@guest_martin:2021]. They make otherwise underspecified theories precise and open for critical reflection
+[@vanrooij_baggio:2021]. A theory can be formally specified in a computational model using mathematical concepts
 such as set theory, graph theory and probability theory.  Following this specification comes analysis to understand
 precisely what assumptions and consequences the formal theory entails. An important method of analysis is computer
 simulation, which allows scientists to explore complex model behaviours and derive predictions that cannot (easily)
