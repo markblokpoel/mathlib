@@ -68,10 +68,15 @@ selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(
 ```scala
 type Item = String
 
-def subsetChoice(items: Set[Item],
-                 v: (Item => Double),
-                 b: ((Item, Item) => Double)): Set[Set[Item]] = {
-    def value(subset: Set[Item]): Double = sum(subset, v) + sum(subset.uniquePairs, b)
+def subsetChoice(
+  items: Set[Item],
+  v: (Item => Double),
+  b: ((Item, Item) => Double)
+): Set[Set[Item]] = {
+
+    def value(subset: Set[Item]): Double = 
+      sum(subset, v) + sum(subset.uniquePairs, b)
+
     argMax(powerset(items), value)
 }
 ```
