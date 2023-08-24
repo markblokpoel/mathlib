@@ -11,7 +11,7 @@ authors:
   - name: Mark Blokpoel
     orcid: 0000-0002-1522-0343
     affiliation: 1
-    affiliations:
+affiliations:
   - name: Donders Institute for Brain, Cognition, and Behaviour, Radboud University, The Netherlands
     index: 1
 date: 23 August 2023
@@ -65,7 +65,7 @@ for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
-```
+```scala
 type Item = String
 
 def subsetChoice(items: Set[Item],
