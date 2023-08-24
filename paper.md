@@ -62,7 +62,7 @@ implementation in Scala using ```mathlib``` to illustrate this.
 *Input:* A set of items $I$, a value function for single items $v:I\rightarrow \mathbb{Z}$ and a binary value function
 for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 
-*Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)) that maximizes the combined value of the
+*Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
 ```
