@@ -91,7 +91,7 @@ simulation results.
 
 * Github repository: [https://github.com/markblokpoel/mathlib](https://github.com/markblokpoel/mathlib)
 * Website: [https://markblokpoel.github.io/mathlib](https://markblokpoel.github.io/mathlib)
-* Scaladoc: [https://markblokpoel.github.io/mathlib](https://markblokpoel.github.io/mathlib/scaladoc)
+* Scaladoc: [https://markblokpoel.github.io/mathlib/scaladoc](https://markblokpoel.github.io/mathlib/scaladoc)
 * Tutorials: [https://github.com/markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples)
 
 # Acknowledgements
