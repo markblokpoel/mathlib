@@ -29,13 +29,13 @@ precisely what assumptions and consequences the formal theory entails. An import
 simulation, which allows scientists to explore complex model behaviours and derive predictions that cannot (easily)
 be analytically derived.
 
-```mathlib``` is a library for Scala supporting functional programming that resembles mathematical expressions such
-as set theory, graph theory and probability theory. This library was developed to complement the theory development
-method outlined in the open education book Theoretical modeling for cognitive science and psychology by
-@blokpoel_vanrooij:2021.
+```mathlib``` is a library for Scala [@odersky:2008] supporting functional programming that resembles mathematical 
+expressions such as set theory, graph theory and probability theory. This library was developed to complement the
+theory development method outlined in the open education book Theoretical modeling for cognitive science and
+psychology by @blokpoel_vanrooij:2021.
 
-The goal of this library is to facilitate users to implement simulations of their formal theories.
-Code written in Scala using ```mathlib``` is:
+The goal of this library is to facilitate users to implement simulations of their formal theories. Code written in
+Scala using ```mathlib``` is:
 
 * easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
@@ -43,7 +43,32 @@ Code written in Scala using ```mathlib``` is:
 
 # Statement of need
 
-- elaborate on the need for readable, verifiable and sustainable code
+Writing code is not easy, writing code for which we can know that it computes what the specification
+(i.e., the formal theory) states is even harder. This can be facilitated by having a programming language where the
+syntax and semantics closely matches that of the specification. Since formal theories are specified using mathematical
+notation [@marr:1982, @blokpoel_vanrooij:2021, @guest_martin:2021], functional programming languages bring a lot to the
+table in terms of syntactic and semantic resemblance to mathematical concepts and notation. ```mathlib``` adds
+mathematical concepts and notation to the functional programming language Scala [@odersky:2008]. Specifically in the
+current version, set theory and graph theory. ```mathlib``` differs from other libraries in that is focuses on
+usability and transparency, whereas other libraries focus on computational expressiveness at the cost of accessibility
+and transparency.
+
+Given the important role of theory and computer simulations, it is important that scholars can verify that the code
+does what the authors intent it to do. We provide an example below of a formalization of subset choice and its
+implementation in Scala using ```mathlib```.
+
+**Subset choice**
+
+*Input:* A set of items $I$, a value function for single items $v:I\rightarrow \mathbb{Z}$ and a binary value function
+for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
+
+*Output:* A subset $I'\subseteq I$ of items that maximizes the combined value of the selected items according, i.e.,
+$\arg\max_{I'\subseteq I}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
+
+```scala
+
+```
+
 
 
 # Acknowledgements
