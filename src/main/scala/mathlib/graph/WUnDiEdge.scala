@@ -41,7 +41,7 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     */
   override def equals(that: Any): Boolean =
     that match {
-      case that: UnDiEdge[_] =>
+      case that: WUnDiEdge[_] =>
         left == that.left && right == that.right ||
         left == that.right && right == that.left
       case _ => false
