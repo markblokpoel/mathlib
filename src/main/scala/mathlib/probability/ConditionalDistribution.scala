@@ -100,7 +100,7 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
    * @return The scaled distribution.
    */
   def *(scalar: Double): ConditionalDistribution[A, B] =
-    ConditionalDistribution(domainV1, domainV2, distribution.view.mapValues(_ * scalar).toMap)
+    ConditionalDistribution(domainV1, domainV2, distribution.mapValues(_ * scalar).toMap)
 
   /**
    * Inversely scales the distribution according to a scalar: pr(domain) * 1 / scalar = pr(domain) / scalar
@@ -113,7 +113,7 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
   @throws[IllegalArgumentException]
   def /(scalar: Double): ConditionalDistribution[A, B] = {
     require(scalar != 0, "Cannot divide by 0.")
-    ConditionalDistribution(domainV1, domainV2, distribution.view.mapValues(_ / scalar).toMap)
+    ConditionalDistribution(domainV1, domainV2, distribution.mapValues(_ / scalar).toMap)
   }
 
   def +(other: ConditionalDistribution[A, B]): ConditionalDistribution[A, B] = {
@@ -169,9 +169,9 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
    */
   def sum: Double = distribution.values.fold(0.0)((acc: Double, p: Double) => acc + p)
 
-  def exp: ConditionalDistribution[A, B] = ConditionalDistribution(domainV1, domainV2, distribution.view.mapValues(math.exp).toMap)
+  def exp: ConditionalDistribution[A, B] = ConditionalDistribution(domainV1, domainV2, distribution.mapValues(math.exp).toMap)
 
-  def log: ConditionalDistribution[A, B] = ConditionalDistribution(domainV1, domainV2, distribution.view.mapValues(math.log).toMap)
+  def log: ConditionalDistribution[A, B] = ConditionalDistribution(domainV1, domainV2, distribution.mapValues(math.log).toMap)
 
   /**
    * Returns the softmaxed distribution

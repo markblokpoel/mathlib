@@ -40,6 +40,9 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
     override val edges: Set[E]
 ) extends Graph[T, E](vertices, edges) {
 
+  override def degreeOf(vertex: Node[T]): Int =
+    adjacencyList(vertex).size
+
   /** Computes the adjacency list for weighted graphs (either directed or undirected).
     *
     * @return

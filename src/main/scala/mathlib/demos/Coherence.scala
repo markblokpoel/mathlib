@@ -47,44 +47,44 @@ object Coherence {
     ): Double =
       cohPlus(assignment, positiveConstraints) + cohMinus(assignment, negativeConstraints)
 
-    def cMinusCoherence(
-        network: WUnDiGraph[String],
-        positiveConstraints: Set[WUnDiEdge[Node[String]]],
-        negativeConstraints: Set[WUnDiEdge[Node[String]]]
-    ): Set[Map[Node[String], Boolean]] = {
-      require(positiveConstraints \/ negativeConstraints == network.edges, "C+ union C- != E")
-      require(
-        positiveConstraints /\ negativeConstraints == Set.empty,
-        "C+ intersect C- is not empty"
-      )
-
-      def completeBeliefAssignment(
-          negativeAssignments: Map[Node[String], Boolean]
-      ): Map[Node[String], Boolean] = {
-        val positiveAssignments = positiveConstraints
-          .flatMap(pc => {
-            if (negativeAssignments.contains(pc.left) && !negativeAssignments.contains(pc.right))
-              Set(pc.right -> negativeAssignments(pc.left))
-            else if (
-              !negativeAssignments.contains(pc.left) && negativeAssignments.contains(pc.right)
-            ) Set(pc.left -> negativeAssignments(pc.right))
-            else if (
-              !negativeAssignments.contains(pc.left) && !negativeAssignments.contains(pc.right)
-            ) Set(pc.left -> true, pc.right -> true)
-            else Set.empty
-          })
-          .toMap
-        positiveAssignments ++ negativeAssignments
-      }
-
-      negativeConstraints
-        .flatMap(nc => Set(nc.left, nc.right))  // Get all vertices connected to negative constraints
-        .allMappings(Set(true, false))          // Generate all possible truth value assignments
-        .map(completeBeliefAssignment)          // For each partial assignment (only negative constraints), complete
-                                                // the assignment for the whole network
-        .toList.toSet
-        .argMax(coh(_, positiveConstraints, negativeConstraints))   // Find the value assignments with maximal coherence
-    }
+//    def cMinusCoherence(
+//        network: WUnDiGraph[String],
+//        positiveConstraints: Set[WUnDiEdge[Node[String]]],
+//        negativeConstraints: Set[WUnDiEdge[Node[String]]]
+//    ): Set[Map[Node[String], Boolean]] = {
+//      require(positiveConstraints \/ negativeConstraints == network.edges, "C+ union C- != E")
+//      require(
+//        positiveConstraints /\ negativeConstraints == Set.empty,
+//        "C+ intersect C- is not empty"
+//      )
+//
+//      def completeBeliefAssignment(
+//          negativeAssignments: Map[Node[String], Boolean]
+//      ): Map[Node[String], Boolean] = {
+//        val positiveAssignments = positiveConstraints
+//          .flatMap(pc => {
+//            if (negativeAssignments.contains(pc.left) && !negativeAssignments.contains(pc.right))
+//              Set(pc.right -> negativeAssignments(pc.left))
+//            else if (
+//              !negativeAssignments.contains(pc.left) && negativeAssignments.contains(pc.right)
+//            ) Set(pc.left -> negativeAssignments(pc.right))
+//            else if (
+//              !negativeAssignments.contains(pc.left) && !negativeAssignments.contains(pc.right)
+//            ) Set(pc.left -> true, pc.right -> true)
+//            else Set.empty
+//          })
+//          .toMap
+//        positiveAssignments ++ negativeAssignments
+//      }
+//
+//      negativeConstraints
+//        .flatMap(nc => Set(nc.left, nc.right))  // Get all vertices connected to negative constraints
+//        .allMappings(Set(true, false))          // Generate all possible truth value assignments
+//        .map(completeBeliefAssignment)          // For each partial assignment (only negative constraints), complete
+//                                                // the assignment for the whole network
+//        .toList.toSet
+//        .argMax(coh(_, positiveConstraints, negativeConstraints))   // Find the value assignments with maximal coherence
+//    }
 
     def coherence(
         network: WUnDiGraph[String],
@@ -118,7 +118,7 @@ object Coherence {
     println("Exhaustive Coherence")
     coherence(network, positiveConstraints, negativeConstraints).foreach(println)
     println("C- Coherence (FPT)")
-    cMinusCoherence(network, positiveConstraints, negativeConstraints).foreach(println)
+//    cMinusCoherence(network, positiveConstraints, negativeConstraints).foreach(println)
 
     val size = 50
     val edgeProbability = 0.5
@@ -134,7 +134,7 @@ object Coherence {
     println(s"#positive constraints:\t${lpc.size}")
     println(s"#negative constraints:\t${lnc.size}")
 
-    cMinusCoherence(largeNetwork, lpc, lnc).foreach(println)
+//    cMinusCoherence(largeNetwork, lpc, lnc).foreach(println)
 
 
   }
