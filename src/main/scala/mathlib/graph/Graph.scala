@@ -151,4 +151,10 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
    * @return The degree of vertex.
    */
   def degreeOf(vertex: Node[T]): Int
+
+  /** Returns a DOT string for visualization.
+   *
+   * @return A DOT string.
+   */
+  def toDOTString: String
 }

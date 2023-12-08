@@ -86,6 +86,6 @@ object GraphsDemo {
     println("2nd order: " + cycleCheck.nthAdjacencyList(2))
     println(cycleCheck.degreeOf(N("a")))
 
-    println(UnDiGraph.preferentialAttachment(100, 10).toDOTString)
+    println(WDiGraph.preferentialAttachment(100, 10).toDOTString)
   }
 }

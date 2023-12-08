@@ -56,10 +56,10 @@ case class UnDiGraph[T](
       UnDiGraph(v, e)
   }
 
-  def toDOTString: String = {
+  override def toDOTString: String = {
     "graph G {\n" +
       edges.map(edge => "\t" + edge.left.label + " -- " + edge.right.label).mkString("\n") +
-    "\n}"
+      "\n}"
   }
 }
 
@@ -234,6 +234,7 @@ case object UnDiGraph {
    * @return An undirected graph.
    */
   def preferentialAttachment(size: Int, m: Int): UnDiGraph[String] = {
+    assert(1 <= m && m < size, s"m=$m is less than one or equal to or bigger than size=$size")
     @tailrec
     def preferentialAttachment(n: Int, partialGraph: UnDiGraph[String]): UnDiGraph[String] = {
       if(n + m == size) partialGraph
