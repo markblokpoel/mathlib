@@ -96,6 +96,15 @@ work with future versions of ```mathlib```.
 | Set theory | | Complete implementation and documentation. | Completed in v0.9.0 |
 | Graph theory | | Complete implementation and documentation for non-hyper graphs. | Completed in v0.9.0 |
 
+## Acknowledgements
+
+We thank the Computational Cognitive Science group at the Donders Center for Cognition
+(Nijmegen, The Netherlands) for useful discussions and feedback, in particular, Laura van de
+Braak, Olivia Guest and Iris van Rooij.
+
+This project was supported by Netherlands Organization for Scientific Research Gravitation
+Grant of the Language in Interaction consortium 024.001.006, the Radboud School for Artificial
+Intelligence and the Donders Institute, Donders Center for Cognition
 
 ## License
 
