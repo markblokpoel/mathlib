@@ -86,6 +86,6 @@ object GraphsDemo {
     println("2nd order: " + cycleCheck.nthAdjacencyList(2))
     println(cycleCheck.degreeOf(N("a")))
 
-    println(UnDiGraph.barabasiAlbertGraph(100, 10).toDOTString)
+    println(UnDiGraph.preferentialAttachment(100, 10).toDOTString)
   }
 }

@@ -221,9 +221,21 @@ case object UnDiGraph {
     uniform(objects, numberEdges)
   }
 
-  def barabasiAlbertGraph[T](size: Int, m: Int): UnDiGraph[String] = {
+  /** Generates an undirected graph of size vertices using preferential attachment,
+   *  first decsribed by Eggenberger and Pólya and also known as a Barabasi-Albert graph.
+   *
+   * Eggenberger, F. & Pólya, G. J. Appl. Math. Mech. (ZAMM) 3, 279–289 (1923).
+   *
+   * Barabási, Albert-László; Albert, Réka (October 1999). "Emergence of scaling in
+   * random networks" (PDF). Science. 286 (5439): 509–512.
+   *
+   * @param size The size of the generated network.
+   * @param m The number initial vertices.
+   * @return An undirected graph.
+   */
+  def preferentialAttachment(size: Int, m: Int): UnDiGraph[String] = {
     @tailrec
-    def barabasiAlbertGraph(n: Int, partialGraph: UnDiGraph[String]): UnDiGraph[String] = {
+    def preferentialAttachment(n: Int, partialGraph: UnDiGraph[String]): UnDiGraph[String] = {
       if(n + m == size) partialGraph
       else {
         val degrees = partialGraph.adjacencyList
@@ -274,12 +286,12 @@ case object UnDiGraph {
 
         val newVertex = N("V" + (n + m))
         val newEdges = sampledVertices.map(sv => newVertex ~ sv).toSet
-        barabasiAlbertGraph(n + 1, partialGraph + newEdges)
+        preferentialAttachment(n + 1, partialGraph + newEdges)
       }
     }
 
     val initialVertices = (0 until m).toSet.map((i: Int) => N("V" + i))  // Construct m vertices
     val initialGraph =  UnDiGraph[String](initialVertices)
-    barabasiAlbertGraph(m, initialGraph)
+    preferentialAttachment(m, initialGraph)
   }
 }
