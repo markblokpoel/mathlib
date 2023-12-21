@@ -9,21 +9,35 @@ object SetTheory {
   trait NumberSetOps[T] {
     def sumElements(set: Set[T]): T
     def mulElements(set: Set[T]): T
+
+    def sumElements(list: List[T]): T
+
+    def mulElements(list: List[T]): T
   }
 
   implicit object IntNumberOps extends NumberSetOps[Int] {
     override def sumElements(set: Set[Int]): Int = set.sum
     override def mulElements(set: Set[Int]): Int = set.product
+    override def sumElements(list: List[Int]): Int = list.sum
+    override def mulElements(list: List[Int]): Int = list.product
   }
 
   implicit object DoubleNumberOps extends NumberSetOps[Double] {
     override def sumElements(set: Set[Double]): Double = set.sum
     override def mulElements(set: Set[Double]): Double = set.product
+
+    override def sumElements(list: List[Double]): Double = list.sum
+
+    override def mulElements(list: List[Double]): Double = list.product
   }
 
   implicit object FloatNumberOps extends NumberSetOps[Float] {
     override def sumElements(set: Set[Float]): Float = set.sum
     override def mulElements(set: Set[Float]): Float = set.product
+
+    override def sumElements(list: List[Float]): Float = list.sum
+
+    override def mulElements(list: List[Float]): Float = list.product
   }
 
   /** Returns the power set.
@@ -168,7 +182,7 @@ object SetTheory {
     *   The sum of the elements in the set mapped via ```f```.
     */
   def sum[A, T](set: Set[A], f: A => T)(implicit nso: NumberSetOps[T]): T =
-    nso.sumElements(set.map(f))
+    nso.sumElements(set.toList.map(f))
 
   /** Given a set of pairs (i.e., [[scala.Tuple2]]), this returns the sum of all pairs in the set,
     * given a function ```f```.
@@ -191,7 +205,7 @@ object SetTheory {
     *   The sum of the pairs of elements in the set mapped via ```f```.
     */
   def sum[A, T](set: Set[(A, A)], f: (A, A) => T)(implicit nso: NumberSetOps[T]): T =
-    nso.sumElements(set.map(pair => f(pair._1, pair._2)))
+    nso.sumElements(set.toList.map(pair => f(pair._1, pair._2)))
 
   /** Returns the product of all elements in the set, given that the elements can be multiplied.
     *
@@ -230,7 +244,7 @@ object SetTheory {
     *   The product of the elements in the set mapped via ```f```.
     */
   def product[A, T](set: Set[A], f: A => T)(implicit nso: NumberSetOps[T]): T =
-    nso.mulElements(set.map(f))
+    nso.mulElements(set.toList.map(f))
 
   /** Given a set of pairs (i.e., [[scala.Tuple2]]), this returns the product of all pairs in the
     * set, given a function ```f```.
@@ -254,7 +268,7 @@ object SetTheory {
     *   The product of the pairs of elements in the set mapped via ```f```.
     */
   def product[A, T](set: Set[(A, A)], f: (A, A) => T)(implicit nso: NumberSetOps[T]): T =
-    nso.mulElements(set.map(pair => f(pair._1, pair._2)))
+    nso.mulElements(set.toList.map(pair => f(pair._1, pair._2)))
 
   /** Selects a random elements from the set.
     * @param set
