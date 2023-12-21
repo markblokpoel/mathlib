@@ -29,7 +29,7 @@ case class Distribution[A](domain: Set[A], distribution: Map[A, Double]) {
    * @param scalar
    * @return The scaled distribution.
    */
-  def *(scalar: Double): Distribution[A] = Distribution(domain, distribution.view.mapValues(_ * scalar).toMap)
+  def *(scalar: Double): Distribution[A] = Distribution(domain, distribution.mapValues(_ * scalar).toMap)
 
   def +(other: Distribution[A]): Distribution[A] = {
     require(domain == other.domain, "addition for distributions requires the same domains")
@@ -54,7 +54,7 @@ case class Distribution[A](domain: Set[A], distribution: Map[A, Double]) {
   @throws[IllegalArgumentException]
   def /(scalar: Double): Distribution[A] = {
     require(scalar != 0, "Cannot divide by 0.")
-    Distribution(domain, distribution.view.mapValues(_ / scalar).toMap)
+    Distribution(domain, distribution.mapValues(_ / scalar).toMap)
   }
 
   /** Efficient representation for sampling. Compute when needed and only once. */
@@ -101,9 +101,9 @@ case class Distribution[A](domain: Set[A], distribution: Map[A, Double]) {
     maxValSet(Random.nextInt(maxValSet.length))
   }
 
-  def exp: Distribution[A] = Distribution(domain, distribution.view.mapValues(math.exp).toMap)
+  def exp: Distribution[A] = Distribution(domain, distribution.mapValues(math.exp).toMap)
 
-  def log: Distribution[A] = Distribution(domain, distribution.view.mapValues(math.log).toMap)
+  def log: Distribution[A] = Distribution(domain, distribution.mapValues(math.log).toMap)
 
   /**
    * Returns the softmaxed distribution

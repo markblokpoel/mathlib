@@ -45,6 +45,12 @@ case class WUnDiGraph[T](
       val e               = this.edges union thatEdges
       WUnDiGraph(v, e)
   }
+
+  override def toDOTString: String = {
+    "graph G {\n" +
+      edges.map(edge => "\t" + edge.left.label + " -- " + edge.right.label + " [weight="+edge.weight+"]").mkString("\n") +
+      "\n}"
+  }
 }
 
 case object WUnDiGraph {
@@ -206,6 +212,26 @@ case object WUnDiGraph {
   def uniform(n: Int, numberEdges: Int): WUnDiGraph[String] = {
     val objects = (0 to n).toSet.map("N" + _)
     uniform(objects, numberEdges)
+  }
+
+  /** Generates a weighted undirected graph of size vertices using preferential attachment,
+   * first decsribed by Eggenberger and Pólya and also known as a Barabasi-Albert graph.
+   * Each edge will have a weight between 0 and upperbound.
+   *
+   * Eggenberger, F. & Pólya, G. J. Appl. Math. Mech. (ZAMM) 3, 279–289 (1923).
+   *
+   * Barabási, Albert-László; Albert, Réka (October 1999). "Emergence of scaling in
+   * random networks" (PDF). Science. 286 (5439): 509–512.
+   *
+   * @param size       The size of the generated network.
+   * @param m          The number initial vertices.
+   * @param upperbound The upperbound for randomly generated weights, defaults to 1.0.
+   * @return An undirected graph.
+   */
+  def preferentialAttachment(size: Int, m: Int, upperbound: Double = 1.0): WUnDiGraph[String] = {
+    val unweightedGraph = UnDiGraph.preferentialAttachment(size, m)
+    val weightedEdges = unweightedGraph.edges.map(e => WUnDiEdge(e.left, e.right, Random.nextDouble() * upperbound))
+    WUnDiGraph(unweightedGraph.vertices, weightedEdges)
   }
 
 }

@@ -20,6 +20,9 @@ abstract class UnweightedGraph[T, E <: Edge[Node[T]]](
     override val edges: Set[E]
 ) extends Graph[T, E](vertices, edges) {
 
+  override def degreeOf(vertex: Node[T]): Int =
+    adjacencyList(vertex).size
+
   /** Computes the adjacency list for unweighted graphs (either directed or undirected).
     * @return
     *   A mapping from nodes to a set of neighboring nodes.

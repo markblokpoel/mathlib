@@ -1,5 +1,5 @@
 package mathlib.graph
-import mathlib.graph.GraphImplicits.N
+import mathlib.graph.GraphImplicits.{EdgeImpl, N}
 import mathlib.set.SetTheory.ImplSet
 
 import scala.annotation.tailrec
@@ -52,6 +52,11 @@ case class DiGraph[T](
       val v: Set[Node[T]] = this.vertices union thatVertices
       val e               = this.edges union thatEdges
       DiGraph(v, e)
+  }
+  override def toDOTString: String = {
+    "digraph G {\n" +
+      edges.map(edge => "\t" + edge.left.label + " -> " + edge.right.label).mkString("\n") +
+      "\n}"
   }
 }
 
@@ -208,5 +213,82 @@ case object DiGraph {
   def uniform(n: Int, numberEdges: Int): DiGraph[String] = {
     val objects = (0 to n).toSet.map("N" + _)
     uniform(objects, numberEdges)
+  }
+
+  /** Generates an directed graph of size vertices using preferential attachment,
+   * first decsribed by Eggenberger and Pólya and also known as a Barabasi-Albert graph.
+   *
+   * Eggenberger, F. & Pólya, G. J. Appl. Math. Mech. (ZAMM) 3, 279–289 (1923).
+   *
+   * Barabási, Albert-László; Albert, Réka (October 1999). "Emergence of scaling in
+   * random networks" (PDF). Science. 286 (5439): 509–512.
+   *
+   * @param size The size of the generated network.
+   * @param m    The number initial vertices.
+   * @return An undirected graph.
+   */
+  def preferentialAttachment(size: Int, m: Int): DiGraph[String] = {
+    assert(1 <= m && m < size, s"m=$m is less than one or equal to or bigger than size=$size")
+
+    @tailrec
+    def preferentialAttachment(n: Int, partialGraph: DiGraph[String]): DiGraph[String] = {
+      if (n + m == size) partialGraph
+      else {
+        val degrees = partialGraph.adjacencyList
+          .mapValues(_.size) // Get degrees of all vertices
+        val sumDegrees = degrees.values.sum
+        val probabilities = degrees.mapValues(_.doubleValue() / sumDegrees)
+        val rnd = Random.nextDouble()
+
+        @tailrec
+        def sampleVertices(
+          currentVertex: Node[String],
+          s: Int,
+          currentP: Double,
+          nextVertices: Seq[Node[String]],
+          sampledVertices: Seq[Node[String]]
+        ): Seq[Node[String]] = {
+          if (s == 0) sampledVertices
+          else {
+            if (nextVertices.isEmpty || currentP + probabilities(nextVertices.head) > rnd) {
+              val verticesWithoutCurrentVertex = partialGraph.vertices - currentVertex
+              sampleVertices(
+                verticesWithoutCurrentVertex.toSeq.head,
+                s - 1,
+                0.0,
+                verticesWithoutCurrentVertex.toSeq.tail,
+                sampledVertices :+ currentVertex
+              )
+            } else {
+              sampleVertices(
+                nextVertices.head,
+                s,
+                currentP + probabilities(nextVertices.head),
+                nextVertices.tail,
+                sampledVertices
+              )
+            }
+          }
+        }
+
+        val nodes = partialGraph.vertices.toSeq
+
+        val sampledVertices = sampleVertices(
+          nodes.head,
+          m,
+          0,
+          nodes.tail,
+          Seq.empty
+        )
+
+        val newVertex = N("V" + (n + m))
+        val newEdges = sampledVertices.map(sv => newVertex ~> sv).toSet
+        preferentialAttachment(n + 1, partialGraph + newEdges)
+      }
+    }
+
+    val initialVertices = (0 until m).toSet.map((i: Int) => N("V" + i)) // Construct m vertices
+    val initialGraph = DiGraph[String](initialVertices)
+    preferentialAttachment(m, initialGraph)
   }
 }

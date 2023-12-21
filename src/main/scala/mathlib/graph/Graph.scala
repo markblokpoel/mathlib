@@ -145,4 +145,16 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
     *   ```true``` if the graph no edges, ```false``` otherwise.
     */
   def noEdges: Boolean = edges.isEmpty
+
+  /** Returns the degree of a vertex in the graph.
+   * @param vertex The vertex.
+   * @return The degree of vertex.
+   */
+  def degreeOf(vertex: Node[T]): Int
+
+  /** Returns a DOT string for visualization.
+   *
+   * @return A DOT string.
+   */
+  def toDOTString: String
 }
