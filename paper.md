@@ -20,14 +20,18 @@ bibliography: paper.bib
 
 # Summary
 
-Formal theory and computational modeling are critical in cognitive science and psychology. These methods allow
+Formal theory and computational modeling are critical in cognitive science and psychology. Formal systems (e.g.,
+set theory, functions, first-order logic, graph theory, etc.) allow
 scientists to 'conceptually analyze, specify, and formalize intuitions that otherwise remain unexamined'
 [@guest_martin:2021]. They make otherwise underspecified theories precise and open for critical reflection
 [@vanrooij_baggio:2021]. A theory can be formally specified in a computational model using mathematical concepts
 such as set theory, graph theory and probability theory.  The specification is often followed by analysis to understand
 precisely what assumptions and consequences the formal theory entails. An important method of analysis is computer
-simulation, which allows scientists to explore complex model behaviours and derive predictions that cannot (easily)
-be analytically derived.
+simulation, which allows scientists to explore complex model behaviours and derive predictions that otherwise cannot
+be analytically derived[^1].
+
+[^1]: Computer simulations can also aid scientists to discover properties of the model that they would not have
+thought to analytically derive, even when in principle the property can be analytically derived.
 
 ```mathlib``` is a library for Scala [@odersky:2008] supporting functional programming that resembles mathematical 
 expressions such as set theory, graph theory and probability theory. This library was developed to complement the
