@@ -53,21 +53,30 @@ syntax and semantics closely matches that of the specification. Since formal the
 notation [@marr:1982, @blokpoel_vanrooij:2021, @guest_martin:2021], functional programming languages bring a lot to the
 table in terms of syntactic and semantic resemblance to mathematical concepts and notation. ```mathlib``` adds
 mathematical concepts and notation to the functional programming language Scala [@odersky:2008], specifically in the
-current version: set theory and graph theory. ```mathlib``` differs from other libraries in that is focuses on
+current version: set theory and graph theory. ```mathlib``` differs from other libraries in that it focuses on
 usability and transparency, whereas other libraries focus on computational expressiveness at the cost of accessibility
 and transparency.
 
 Given the important role of theory and computer simulations, it is important that scholars can verify that the code
-does what the authors intent it to do. We provide an example below of a formalization of subset choice and its
-implementation in Scala using ```mathlib``` to illustrate this.
+does what the authors intent it to do. We provide two examples to illustrate how Scala and ```mathlib``` make it more
+accessible to verify the relationship between simulation and theory.
 
-**Subset choice**
+## Illustration 1: Subset choice
+
+The following formal theory is taken from the textbook by [@blokpoel_vanrooij:2021]. It specifies people's capacity 
+to select a subset of items, given the value of individual items and pairs. For more details on this topic, see
+Chapter 4 of the textbook.  
+
+<span style="font-variant: small-caps;">Subset choice</span>
 
 *Input:* A set of items $I$, a value function for single items $v:I\rightarrow \mathbb{Z}$ and a binary value function
 for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
+
+Assuming familiarity with the formal specification, the ```mathlib``` implementation below illustrates how the code is
+easy to read as it maps onto mathematical expressions in the specification.
 
 ```scala
 type Item = String
@@ -84,6 +93,36 @@ def subsetChoice(
     argMax(powerset(items), value)
 }
 ```
+
+
+## Illustration 2: Coherence
+
+[@thagard:1998]
+
+<span style="font-variant: small-caps;">Coherence</span>
+
+*Input:* A graph $G=(V,E)$ with vertex set $V$ and edge set $E\subseteq V\times V$ that partitions into positive constraints $C^+$ and negative constraints $C^-$ (i.e., $C^+\cup C^-=E$ and $C^+\cap C^-=\varnothing$) and a weight function $w: E \rightarrow \mathbb{R}$.
+
+*Output:* A truth value assignemnt $T:V \rightarrow \{true, false\}$ such that $Coh(T)=Coh^+(A,R)+Coh^-(T)$ is maximum. Here,
+$$
+Coh^+(T)=\displaystyle\sum_{(u,v)\in C^+}
+\begin{cases}
+w((u,v))\text{ if }T(u) = T(v)\\
+0\text{ otherwise}
+\end{cases}
+$$
+and
+$$
+Coh^-(T)=\displaystyle\sum_{(u,v)\in C^+}
+\begin{cases}
+w((u,v))\text{ if }T(u) \ne T(v)\\
+0\text{ otherwise}
+\end{cases}
+$$
+
+
+
+
 
 Finally, ```mathlib``` and Scala are designed to be backwards compatible, i.e., to run on future systems and future
 execution contexts (e.g., operating systems). Many programming contributions in academia are lost because
