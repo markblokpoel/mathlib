@@ -75,8 +75,8 @@ for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
-Assuming familiarity with the formal specification, the ```mathlib``` implementation below illustrates how the code is
-easy to read as it maps onto mathematical expressions in the specification (Table \autoref{subset}).
+Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{subset} below
+illustrate how the code is easy to read as it maps onto mathematical expressions in the specification.
 
 ```scala
 type Item = String
@@ -118,7 +118,12 @@ def subsetChoice(
 
 ## Illustration 2: Coherence
 
-[@thagard:1998]
+Coherence theory [@thagard:1998] aims to explain people's capacity to infer a consistent set of beliefs given 
+constraints between them. For example, the belief 'it rains' may have a negative constraint with 'wearing shorts'. 
+To belief that it rains and not wearing shorts is consistent, but to belief that it rains and to wear shorts is
+inconsistent. In case of consistency, the constraint is said to be _satisfied_. Coherence theory conjectures that
+people infer truth-values for their beliefs so as to maximize the sum of weights of all satisfied constraints. For a
+more detailed introduction to Coherence theory, see [@thagard:1998] and Chapter 5 in [@blokpoel_vanrooij:2021]
 
 <span style="font-variant: small-caps;">Coherence</span>
 
@@ -141,7 +146,38 @@ w((u,v))\text{ if }T(u) \ne T(v)\\
 \end{cases}
 $$
 
+Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{coherence} below
+illustrate how the code is easy to read as it maps onto mathematical expressions in the specification.
 
+```scala
+def coherence(
+    network: UnDiGraph[String],
+    positiveConstraints: Set[UnDiEdge[Node[String]]]
+): Map[Node[String], Boolean] = {
+    val negativeConstraints = network.edges \ positiveConstraints
+    
+    def cohPlus(assignment: Map[Node[String], Boolean]): Int =
+     positiveConstraints.count(pc => assignment(pc.left) == assignment(pc.right))
+    
+    def cohMinus(assignment: Map[Node[String], Boolean]): Int =
+     positiveConstraints.count(pc => assignment(pc.left) != assignment(pc.right))
+    
+    def coh(assignment: Map[Node[String], Boolean]): Int =
+        cohPlus(assignment) + cohMinus(assignment)
+    
+    network.vertices.allMappings(Set(true, false))
+    .argMax(coh _)
+    .random.get
+}
+```
+
+: Mappings between formal expression and ```mathlib``` implementation. []{label=”coherence”}
+
+| Formal expression                     | ```mathlib``` implementation and description                                                                              |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| n.a.                                  | ```Item```                                                                                                                |
+|                                       | _Custom type for items._                                                                                                  |
+| $I$                                   | ```items: Set[Item]```                                                                                                    |
 
 
 
@@ -156,7 +192,6 @@ simulation results.
 * Github repository: [https://github.com/markblokpoel/mathlib](https://github.com/markblokpoel/mathlib)
 * Website: [https://markblokpoel.github.io/mathlib](https://markblokpoel.github.io/mathlib)
 * Scaladoc: [https://markblokpoel.github.io/mathlib/scaladoc](https://markblokpoel.github.io/mathlib/scaladoc)
-* Tutorials: [https://github.com/markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples)
 
 # Acknowledgements
 
