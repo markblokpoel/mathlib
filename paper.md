@@ -76,7 +76,7 @@ for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
 Assuming familiarity with the formal specification, the ```mathlib``` implementation below illustrates how the code is
-easy to read as it maps onto mathematical expressions in the specification.
+easy to read as it maps onto mathematical expressions in the specification (Table \autoref{subset}).
 
 ```scala
 type Item = String
@@ -94,22 +94,26 @@ def subsetChoice(
 }
 ```
 
-| Formal expression                     | ```mathlib``` implementation and description                                                                            |
-|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| n.a.                                  | ```Item```                                                                                                              |
-|                                       | Custom type for items.                                                                                                  |
-| $I$                                   | ```items: Set[Item]```                                                                                                  |
-|                                       | A set of items.                                                                                                         |
-| $v:I\rightarrow \mathbb{Z}$           | ```v: (Item => Double)```                                                                                               | 
-|                                       | Value function for single items.                                                                                        |
-| $b:I \times I \rightarrow \mathbb{Z}$ | ```b: ((Item, Item) => Double)```                                                                                       | 
-|                                       | Value function for pairs of items.                                                                                      |
-| n.a.                                  | ```def value(subset: Set[Item]): Double```                                                                              | 
-|                                       | Function wrapper for the combined value of a subset.                                                                    |
-| $\sum_{i \in I'}v(i)$                 | ```sum(subset, v)```                                                                                                    | 
-|                                       | Sum of single item values, where ```subset``` is $I$.                                                                   |
-| $\sum_{i, j \in I'}b(i,j)$            | ```sum(subset.uniquePairs, b)```                                                                                        | 
-|                                       | Sum of pair-wise item values, where ```uniquePairs``` generates all pairs ```(x, y)``` in ```subset``` with ```x!=y```. |
+: Mappings between formal expression and ```mathlib``` implementation. []{label=”subset”}
+
+| Formal expression                     | ```mathlib``` implementation and description                                                                              |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| n.a.                                  | ```Item```                                                                                                                |
+|                                       | _Custom type for items._                                                                                                  |
+| $I$                                   | ```items: Set[Item]```                                                                                                    |
+|                                       | _A set of items._                                                                                                         |
+| $v:I\rightarrow \mathbb{Z}$           | ```v: (Item => Double)```                                                                                                 | 
+|                                       | _Value function for single items._                                                                                        |
+| $b:I \times I \rightarrow \mathbb{Z}$ | ```b: ((Item, Item) => Double)```                                                                                         | 
+|                                       | _Value function for pairs of items._                                                                                      |
+| n.a.                                  | ```def value(subset: Set[Item]): Double```                                                                                | 
+|                                       | _Function wrapper for the combined value of a subset._                                                                    |
+| $\sum_{i \in I'}v(i)$                 | ```sum(subset, v)```                                                                                                      | 
+|                                       | _Sum of single item values, where ```subset``` is $I'$._                                                                  |
+| $\sum_{i, j \in I'}b(i,j)$            | ```sum(subset.uniquePairs, b)```                                                                                          | 
+|                                       | _Sum of pair-wise item values, where ```uniquePairs``` generates all pairs ```(x, y)``` in ```subset``` with ```x!=y```._ |
+| $\arg\max_{I'\in\mathcal{P}(I)}\dots$ | ```argMax(powerset(items), value)```                                                                                      |
+|                                       | _Returns the element from the powerset of items that maximizes ```value```.                                               |
 
 
 ## Illustration 2: Coherence
