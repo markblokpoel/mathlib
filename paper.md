@@ -94,6 +94,18 @@ def subsetChoice(
 }
 ```
 
+| Formal expression                     | ```mathlib implementation```               | Description                                                                                                             |
+|---------------------------------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| n.a.                                  | ```Item```                                 | Custom type for items.                                                                                                  |
+| $I$                                   | ```items: Set[Item]```                     | A set of items.                                                                                                         |
+| $v:I\rightarrow \mathbb{Z}$           | ```v: (Item => Double)```                  | Value function for single items.                                                                                        |
+| $b:I \times I \rightarrow \mathbb{Z}$ | ```b: ((Item, Item) => Double)```          | Value function for pairs of items.                                                                                      |
+| n.a.                                  | ```def value(subset: Set[Item]): Double``` | Function wrapper for the combined value of a subset.                                                                    |
+| $\sum_{i \in I'}v(i)$                 | ```sum(subset, v)```                       | Sum of single item values, where ```subset``` is $I$.                                                                   |
+| $\sum_{i, j \in I'}b(i,j)$            | ```sum(subset.uniquePairs, b)```           | Sum of pair-wise item values, where ```uniquePairs``` generates all pairs ```(x, y)``` in ```subset``` with ```x!=y```. |
+|                                       |                                            |                                                                                                                         |
+|                                       |                                            |                                                                                                                         |
+
 
 ## Illustration 2: Coherence
 
