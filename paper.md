@@ -61,6 +61,15 @@ Given the important role of theory and computer simulations, it is important tha
 does what the authors intent it to do. We provide two examples to illustrate how Scala and ```mathlib``` make it more
 accessible to verify the relationship between simulation and theory.
 
+Finally, ```mathlib``` and Scala are designed to be backwards compatible, i.e., to run on future systems and future
+execution contexts (e.g., operating systems). Many programming contributions in academia are lost because
+of incompatibility issues between versions and newer operating systems, etc. This sometimes affects contributions
+within a short timeframe, and means that it is incredibly hard for anyone to run or verify the code and
+simulation results.
+
+
+# Illustrations
+
 ## Illustration 1: Subset choice
 
 The following formal theory is taken from the textbook by [@blokpoel_vanrooij:2021]. It specifies people's capacity 
@@ -75,7 +84,7 @@ for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
-Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{subset} below
+Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{tab:subset} below
 illustrate how the code is easy to read as it maps onto mathematical expressions in the specification.
 
 ```scala
@@ -94,7 +103,7 @@ def subsetChoice(
 }
 ```
 
-: Mappings between formal expression and ```mathlib``` implementation. []{label=”subset”}
+: Mappings between formal expression and ```mathlib``` implementation. \label{tab:subset}
 
 | Formal expression                     | ```mathlib``` implementation and description                                                                              |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
@@ -146,7 +155,7 @@ w((u,v))\text{ if }T(u) \ne T(v)\\
 \end{cases}
 $$
 
-Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{coherence} below
+Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{tab:coherence} below
 illustrate how the code is easy to read as it maps onto mathematical expressions in the specification.
 
 ```scala
@@ -154,7 +163,8 @@ def coherence(
   network: WUnDiGraph[String],
   positiveConstraints: Set[WUnDiEdge[Node[String]]]
 ): Map[Node[String], Boolean] = {
-  val negativeConstraints: Set[WUnDiEdge[Node[String]]] = network.edges \ positiveConstraints
+  val negativeConstraints: Set[WUnDiEdge[Node[String]]] = 
+    network.edges \ positiveConstraints
 
   def cohPlus(assignment: Map[Node[String], Boolean]): Double = {
     def isSatisfied(pc: WUnDiEdge[Node[String]]): Double =
@@ -173,43 +183,40 @@ def coherence(
   def coh(assignment: Map[Node[String], Boolean]): Double =
     cohPlus(assignment) + cohMinus(assignment)
 
-  val allPossibleTruthValueAssignments = network.vertices.allMappings(Set(true, false))
-  val optimalSolutions = argMax(allPossibleTruthValueAssignments, coh _)
+  val allPossibleTruthValueAssignments = 
+    network.vertices.allMappings(Set(true, false))
+  val optimalSolutions = 
+    argMax(allPossibleTruthValueAssignments, coh _)
   optimalSolutions.random.get
 }
 ```
 
-: Mappings between formal expression and ```mathlib``` implementation. []{label=”coherence”}
+: Mappings between formal expression and ```mathlib``` implementation. \label{tab:coherence}
 
-| Formal expression                | ```mathlib``` implementation and description                                                                                |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| $G$                              | ```network: WUnDiGraph[String]```                                                                                           |
-|                                  | _Undirected weighted graph with labels._                                                                                    |
-| $C^+$                            | ```positiveConstraints: Set[WUnDiEdge[Node[String]]]```                                                                     |
-|                                  | _Set of positive constraints as weighted edges._                                                                            |
-| $C^-$                            | ```negativeConstraints: Set[WUnDiEdge[Node[String]]]```                                                                     |
-|                                  | _Set of negative constraints, computed by subtracting the positive constraints from all edges in ```network```.             |
-| $w$                              | _Weights are represented not by an explicit function, but by a weighted graph._                                             |
-| $T:V\rightarrow \{true, false\}$ | ```allPossibleTruthValueAssignments```                                                                                      |
-|                                  | _The truth value assignments are explicitly listed by generating all mappings between vertices and ```Set(true, false)```._ |
-| $Coh^+(T)$                       | ```cohPlus(assignment: Map[Node[String], Boolean]): Double```                                                               |
-|                                  | _Returns the sum of weights of all satisfied positive constraints._                                                         |
-| $Coh^-(T)$                       | ```cohMinus(assignment: Map[Node[String], Boolean]): Double```                                                              |
-|                                  | _Returns the sum of weights of all satisfied negative constraints._                                                         |
-| $Coh(T)$                         | ```coh(assignment: Map[Node[String], Boolean]): Double```                                                                   |
-|                                  | _Returns the sum of weights of all satisfied constraints._                                                                  |
-| n.a.                             | ```optimalSolutions```                                                                                                      |
-|                                  | _Compute all truth value assignments with maximum coherence._                                                               |
-| n.a.                             | ```optimalSolutions.random.get```                                                                                           |
-|                                  | _The formal specification is met when any maximum truth value assignment is returned, so we return a random maximum one._   |
+| Formal expression                | ```mathlib``` implementation and description                                                                                  |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| $G$                              | ```network: WUnDiGraph[String]```                                                                                             |
+|                                  | _Undirected weighted graph with labels._                                                                                      |
+| $C^+$                            | ```positiveConstraints: Set[WUnDiEdge[Node[String]]]```                                                                       |
+|                                  | _Set of positive constraints as weighted edges._                                                                              |
+| $C^-$                            | ```negativeConstraints: Set[WUnDiEdge[Node[String]]]```                                                                       |
+|                                  | _Set of negative constraints, computed by subtracting the positive constraints from all edges in_ ```network```_._            |
+| $w$                              | _Weights are represented not by an explicit function, but by a weighted graph._                                               |
+| $T:V\rightarrow \{true, false\}$ | ```allPossibleTruthValueAssignments```                                                                                        |
+|                                  | _The truth value assignments are explicitly listed by generating all mappings between vertices and_ ```Set(true, false)```_._ |
+| $Coh^+(T)$                       | ```cohPlus(assignment: Map[Node[String], Boolean]): Double```                                                                 |
+|                                  | _Returns the sum of weights of all satisfied positive constraints._                                                           |
+| $Coh^-(T)$                       | ```cohMinus(assignment: Map[Node[String], Boolean]): Double```                                                                |
+|                                  | _Returns the sum of weights of all satisfied negative constraints._                                                           |
+| $Coh(T)$                         | ```coh(assignment: Map[Node[String], Boolean]): Double```                                                                     |
+|                                  | _Returns the sum of weights of all satisfied constraints._                                                                    |
+| n.a.                             | ```optimalSolutions```                                                                                                        |
+|                                  | _Compute all truth value assignments with maximum coherence._                                                                 |
+| n.a.                             | ```optimalSolutions.random.get```                                                                                             |
+|                                  | _The formal specification is met when any maximum truth value assignment is returned, so we return a random maximum one._     |
 
 
 
-Finally, ```mathlib``` and Scala are designed to be backwards compatible, i.e., to run on future systems and future
-execution contexts (e.g., operating systems). Many programming contributions in academia are lost because
-of incompatibility issues between versions and newer operating systems, etc. This sometimes affects contributions
-within a short timeframe, and means that it is incredibly hard for anyone to run or verify the code and
-simulation results.
 
 # Resources
 
