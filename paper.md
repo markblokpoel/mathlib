@@ -43,7 +43,7 @@ Scala using ```mathlib``` is:
 
 * easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
-* easy to **sustain**, because newer versions of Scala and ```mathlib``` can run old code (backwards compatibility)
+* easy to **sustain**, older versions of Scala and ```mathlib``` can easily be run on newer machines
 
 # Statement of need
 
@@ -53,20 +53,27 @@ syntax and semantics closely matches that of the specification. Since formal the
 notation [@marr:1982, @blokpoel_vanrooij:2021, @guest_martin:2021], functional programming languages bring a lot to the
 table in terms of syntactic and semantic resemblance to mathematical concepts and notation. ```mathlib``` adds
 mathematical concepts and notation to the functional programming language Scala [@odersky:2008], specifically in the
-current version: set theory and graph theory. ```mathlib``` differs from other libraries in that it focuses on
-usability and transparency, whereas other libraries focus on computational expressiveness at the cost of accessibility
-and transparency.
+current version (0.9.1): set theory and graph theory. ```mathlib``` differs from other libraries in that it focuses on
+usability and transparency, whereas other libraries focus on computational expressiveness and efficiency.
 
-Given the important role of theory and computer simulations, it is important that scholars can verify that the code
-does what the authors intent it to do. We provide two examples to illustrate how Scala and ```mathlib``` make it more
-accessible to verify the relationship between simulation and theory.
+Given the critical role of theory and computer simulations in cognitive science, it is important that scholars
+can verify that the code does what the authors intent it to do. We provide two examples to illustrate how Scala 
+and ```mathlib``` make code more accessible to verify the relationship between simulation and theory.
 
-Finally, ```mathlib``` and Scala are designed to be backwards compatible, i.e., to run on future systems and future
-execution contexts (e.g., operating systems). Many programming contributions in academia are lost because
-of incompatibility issues between versions and newer operating systems, etc. This sometimes affects contributions
-within a short timeframe, and means that it is incredibly hard for anyone to run or verify the code and
-simulation results.
+```mathlib``` and Scala support scholars to address the issue of out-of-date code. It is important that
+academic contributions remain accessible for reflection and critique. This includes simulations that also have
+theoretical import. Simulation results may need to be verified, or future scholars may wish to expand upon the work.
+It is not sufficient to archive code, because in practise programming contributions in academia are easily lost because
+of incompatibility issues between older software and newer operating systems. Scala (and consequently ```mathlib```) 
+runs on the Java Virtual Machine (JVM) and has state-of-the-art versioning. The programmer can specify exactly which
+version of Scala and ```mathlib``` needs to be retrieved to run the code on any system that supports the JVM. Even
+when newer versions of Scala or ```mathlib``` may potentially break older code, this versioning system allows future
+users to easily run older code.
 
+What makes ```mathlib``` unique is that its design encourages the computational cognitive scientist to write
+readable, verifiable and sustainable code for simulations formal theories. This is not to say that one cannot
+apply these principles in other languages, but it may require building the mathematical infrastructure that
+```mathlib``` affords.
 
 # Illustrations
 
