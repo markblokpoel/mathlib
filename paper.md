@@ -86,11 +86,11 @@ def subsetChoice(
   v: (Item => Double),
   b: ((Item, Item) => Double)
 ): Set[Set[Item]] = {
+  
+  def value(subset: Set[Item]): Double = 
+    sum(subset, v) + sum(subset.uniquePairs, b)
 
-    def value(subset: Set[Item]): Double = 
-      sum(subset, v) + sum(subset.uniquePairs, b)
-
-    argMax(powerset(items), value)
+  argMax(powerset(items), value)
 }
 ```
 
@@ -139,7 +139,7 @@ w((u,v))\text{ if }T(u) = T(v)\\
 $$
 and
 $$
-Coh^-(T)=\displaystyle\sum_{(u,v)\in C^+}
+Coh^-(T)=\displaystyle\sum_{(u,v)\in C^-}
 \begin{cases}
 w((u,v))\text{ if }T(u) \ne T(v)\\
 0\text{ otherwise}
@@ -151,33 +151,57 @@ illustrate how the code is easy to read as it maps onto mathematical expressions
 
 ```scala
 def coherence(
-    network: UnDiGraph[String],
-    positiveConstraints: Set[UnDiEdge[Node[String]]]
+  network: WUnDiGraph[String],
+  positiveConstraints: Set[WUnDiEdge[Node[String]]]
 ): Map[Node[String], Boolean] = {
-    val negativeConstraints = network.edges \ positiveConstraints
-    
-    def cohPlus(assignment: Map[Node[String], Boolean]): Int =
-     positiveConstraints.count(pc => assignment(pc.left) == assignment(pc.right))
-    
-    def cohMinus(assignment: Map[Node[String], Boolean]): Int =
-     positiveConstraints.count(pc => assignment(pc.left) != assignment(pc.right))
-    
-    def coh(assignment: Map[Node[String], Boolean]): Int =
-        cohPlus(assignment) + cohMinus(assignment)
-    
-    network.vertices.allMappings(Set(true, false))
-    .argMax(coh _)
-    .random.get
+  val negativeConstraints: Set[WUnDiEdge[Node[String]]] = network.edges \ positiveConstraints
+
+  def cohPlus(assignment: Map[Node[String], Boolean]): Double = {
+    def isSatisfied(pc: WUnDiEdge[Node[String]]): Double =
+      if(assignment(pc.left) == assignment(pc.right)) pc.weight
+      else 0.0
+    sum(positiveConstraints, isSatisfied _)
+  }
+
+  def cohMinus(assignment: Map[Node[String], Boolean]): Double = {
+    def isSatisfied(pc: WUnDiEdge[Node[String]]): Double =
+      if(assignment(pc.left) != assignment(pc.right)) pc.weight
+     else 0.0
+    sum(negativeConstraints, isSatisfied _)
+  }
+
+  def coh(assignment: Map[Node[String], Boolean]): Double =
+    cohPlus(assignment) + cohMinus(assignment)
+
+  val allPossibleTruthValueAssignments = network.vertices.allMappings(Set(true, false))
+  val optimalSolutions = argMax(allPossibleTruthValueAssignments, coh _)
+  optimalSolutions.random.get
 }
 ```
 
 : Mappings between formal expression and ```mathlib``` implementation. []{label=”coherence”}
 
-| Formal expression                     | ```mathlib``` implementation and description                                                                              |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| n.a.                                  | ```Item```                                                                                                                |
-|                                       | _Custom type for items._                                                                                                  |
-| $I$                                   | ```items: Set[Item]```                                                                                                    |
+| Formal expression                | ```mathlib``` implementation and description                                                                                |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| $G$                              | ```network: WUnDiGraph[String]```                                                                                           |
+|                                  | _Undirected weighted graph with labels._                                                                                    |
+| $C^+$                            | ```positiveConstraints: Set[WUnDiEdge[Node[String]]]```                                                                     |
+|                                  | _Set of positive constraints as weighted edges._                                                                            |
+| $C^-$                            | ```negativeConstraints: Set[WUnDiEdge[Node[String]]]```                                                                     |
+|                                  | _Set of negative constraints, computed by subtracting the positive constraints from all edges in ```network```.             |
+| $w$                              | _Weights are represented not by an explicit function, but by a weighted graph._                                             |
+| $T:V\rightarrow \{true, false\}$ | ```allPossibleTruthValueAssignments```                                                                                      |
+|                                  | _The truth value assignments are explicitly listed by generating all mappings between vertices and ```Set(true, false)```._ |
+| $Coh^+(T)$                       | ```cohPlus(assignment: Map[Node[String], Boolean]): Double```                                                               |
+|                                  | _Returns the sum of weights of all satisfied positive constraints._                                                         |
+| $Coh^_(T)$                       | ```cohMinus(assignment: Map[Node[String], Boolean]): Double```                                                              |
+|                                  | _Returns the sum of weights of all satisfied negative constraints._                                                         |
+| $Coh(T)$                         | ```coh(assignment: Map[Node[String], Boolean]): Double```                                                                   |
+|                                  | _Returns the sum of weights of all satisfied constraints._                                                                  |
+| n.a.                             | ```optimalSolutions```                                                                                                      |
+|                                  | _Compute all truth value assignments with maximum coherence._                                                               |
+| n.a.                             | ```optimalSolutions.random.get```                                                                                           |
+|                                  | _The formal specification is met when any maximum truth value assignment is returned, so we return a random maximum one._   |
 
 
 
