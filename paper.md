@@ -62,18 +62,18 @@ theory.
 
 ```mathlib``` and Scala support scholars write **sustainable** code. It is important that
 academic contributions remain accessible for reflection and critique. This includes simulations that also have
-theoretical import. Simulation results may need to be verified, or future scholars may wish to expand upon the work.
+theoretical import. Simulation results may need to be verified or future scholars may wish to expand upon the work.
 It is not sufficient to archive code, because in practise programming contributions in academia are easily lost because
 of incompatibility issues between older software and newer operating systems. Scala (and consequently ```mathlib```)
 runs on the Java Virtual Machine (JVM) and has state-of-the-art versioning. The programmer can specify exactly which
 version of Scala and ```mathlib``` needs to be retrieved to run the code on any system that supports the JVM. Even
 when newer versions of Scala or ```mathlib``` may potentially break older code, this versioning system allows future
-users to easily run older code.
+users to easily run, adapt or expand older code.
 
 ```mathlib``` is unique because its design encourages the computational cognitive scientist to write
 readable, verifiable and sustainable code for simulations of formal theories. This is not to say that one cannot
 apply these principles in other languages, but it may require building the mathematical infrastructure that
-```mathlib``` affords. ```mathlib``` differs from other libraries in that it focuses on
+```mathlib``` supports. ```mathlib``` differs from other libraries in that it focuses on
 usability and transparency for simulations of formal theories specifically, whereas other libraries that implement
 similar functionality focus on computational expressiveness and efficiency.
 
@@ -240,7 +240,7 @@ def coherence(
 
 We thank the Computational Cognitive Science group at the Donders Center for Cognition (Nijmegen, The Netherlands)
 for useful discussions and feedback, in particular, Laura van de Braak, Olivia Guest and Iris van Rooij. We also thank
-Larkin Liu for their useful feedback as reviewer.
+Larkin Liu for their useful feedback and review.
 
 This project was supported by Netherlands Organization for Scientific Research Gravitation Grant of the
 Language in Interaction consortium 024.001.006, the Radboud School for Artificial Intelligence and the
