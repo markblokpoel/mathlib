@@ -105,8 +105,8 @@ type Item = String
 
 def subsetChoice(
   items: Set[Item],
-  v: (Item => Double),
-  b: ((Item, Item) => Double)
+  v: Item => Double,
+  b: (Item, Item) => Double
 ): Set[Set[Item]] = {
   
   def value(subset: Set[Item]): Double = 
@@ -201,7 +201,7 @@ def coherence(
   val allPossibleTruthValueAssignments = 
     network.vertices.allMappings(Set(true, false))
   val optimalSolutions = 
-    argMax(allPossibleTruthValueAssignments, coh _)
+    argMax(allPossibleTruthValueAssignments, coh)
   optimalSolutions.random.get
 }
 ```
