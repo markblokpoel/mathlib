@@ -70,6 +70,8 @@ simulation results.
 
 # Illustrations
 
+We present illustrate the relationship between simulations implemented in Scala and ```mathlib``` and formal theories.
+
 ## Illustration 1: Subset choice
 
 The following formal theory is taken from the textbook by [@blokpoel_vanrooij:2021]. It specifies people's capacity 
@@ -84,8 +86,10 @@ for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
 selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
-Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{tab:subset} below
-illustrate how the code is easy to read as it maps onto mathematical expressions in the specification.
+Assuming familiarity with the formal theory, the ```mathlib``` implementation and Table \ref{tab:subset} below
+illustrate how to interpret and verify the code relative to the mathematical expressions in the formal theory. In 
+this code illustration, the following functionality is provided by ```mathlib```: ```sum(., .)```, ```argMax(., .)```
+and ```powerset(.)```.
 
 ```scala
 type Item = String
@@ -155,8 +159,10 @@ w((u,v))\text{ if }T(u) \ne T(v)\\
 \end{cases}
 $$
 
-Assuming familiarity with the formal specification, the ```mathlib``` implementation and Table \ref{tab:coherence} below
-illustrate how the code is easy to read as it maps onto mathematical expressions in the specification.
+Assuming familiarity with the formal theory, the ```mathlib``` implementation and Table \ref{tab:coherence} below
+illustrate how to interpret and verify the code relative to the mathematical expressions in the formal theory. In
+this code illustration, the following functionality is provided by ```mathlib```: ```WUnDiGraph```, ```WUnDiEdge```,
+```Node```, ```sum(., .)``` and ```allMappings(.)```.
 
 ```scala
 def coherence(
@@ -214,9 +220,6 @@ def coherence(
 |                                  | _Compute all truth value assignments with maximum coherence._                                                                 |
 | n.a.                             | ```optimalSolutions.random.get```                                                                                             |
 |                                  | _The formal specification is met when any maximum truth value assignment is returned, so we return a random maximum one._     |
-
-
-
 
 # Resources
 
