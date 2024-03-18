@@ -98,7 +98,7 @@ selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(
 Assuming familiarity with the formal theory, the ```mathlib``` implementation and Table \ref{tab:subset} below
 illustrate how to interpret and verify the code relative to the mathematical expressions in the formal theory. In 
 this code illustration, the following functionality is provided by ```mathlib```: ```sum(., .)```, ```argMax(., .)```
-and ```powerset(.)```.
+and ```powerset(.)```. A demo of this code can be found in ```mathlib.demos.SubsetChoice```.
 
 ```scala
 type Item = String
@@ -171,7 +171,8 @@ $$
 Assuming familiarity with the formal theory, the ```mathlib``` implementation and Table \ref{tab:coherence} below
 illustrate how to interpret and verify the code relative to the mathematical expressions in the formal theory. In
 this code illustration, the following functionality is provided by ```mathlib```: ```WUnDiGraph```, ```WUnDiEdge```,
-```Node```, ```sum(., .)``` and ```allMappings(.)```.
+```Node```, ```sum(., .)``` and ```allMappings(.)```. A demo of this code can be found in
+```mathlib.demos.Coherence```.
 
 ```scala
 def coherence(
