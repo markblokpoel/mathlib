@@ -194,7 +194,7 @@ def coherence(
 |                                  | _The truth value assignments are explicitly listed by generating all mappings between vertices and ```Set(true, false)```._ |
 | $Coh^+(T)$                       | ```cohPlus(assignment: Map[Node[String], Boolean]): Double```                                                               |
 |                                  | _Returns the sum of weights of all satisfied positive constraints._                                                         |
-| $Coh^_(T)$                       | ```cohMinus(assignment: Map[Node[String], Boolean]): Double```                                                              |
+| $Coh^-(T)$                       | ```cohMinus(assignment: Map[Node[String], Boolean]): Double```                                                              |
 |                                  | _Returns the sum of weights of all satisfied negative constraints._                                                         |
 | $Coh(T)$                         | ```coh(assignment: Map[Node[String], Boolean]): Double```                                                                   |
 |                                  | _Returns the sum of weights of all satisfied constraints._                                                                  |
