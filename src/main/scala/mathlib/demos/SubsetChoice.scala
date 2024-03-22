@@ -50,11 +50,12 @@ object SubsetChoice {
       items: Set[Item],
       v: Item => Double,
       b: (Item, Item) => Double
-  ): Set[Set[Item]] = {
+  ): Set[Item] = {
     def value(subset: Set[Item]): Double =
       sum(subset, v) + sum(subset.uniquePairs, b)
 
-    argMax(powerset(items), value)
+    val allOptimalSolutions = argMax(powerset(items), value)
+    allOptimalSolutions.random.get
   }
 
 }
