@@ -12,9 +12,6 @@ order: 0
 ![Maven Central](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13)
 [![Scaladoc](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13?label=scaladoc)](https://markblokpoel.com/mathlib/scaladoc/mathlib/)
 
-
-**This is a copy of the companion website main page, please visit [https://www.markblokpoel.com/mathlib](https://www.markblokpoel.com/mathlib).**
-
 ```mathlib``` is a library for Scala supporting functional programming that resembles
 mathematical expressions such as set theory, graph theory and probability theory.
 This library was developed to complement the theory development method outlined
