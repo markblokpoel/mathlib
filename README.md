@@ -4,6 +4,8 @@
 [![license](https://img.shields.io/badge/license-%20GPL--3.0-blue)](https://github.com/markblokpoel/mathlib/blob/master/LICENSE)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.markblokpoel.com%2Fmathlib)](https://www.markblokpoel.com/mathlib)
 ![Maven Central](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13)
+[![Scaladoc](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13?label=scaladoc)](https://markblokpoel.com/mathlib/scaladoc/mathlib/)
+
 
 **This is a copy of the companion website main page, please visit [https://www.markblokpoel.com/mathlib](https://www.markblokpoel.com/mathlib).**
 
@@ -17,7 +19,7 @@ The goal of this library is to facilitate users to implement simulations of thei
 
 * 👓 easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * ✅ easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
-* ❤️ easy to **sustain**, because newer versions of Scala and ```mathlib``` can run old code (backwards compatibility)
+* ❤️ easy to **sustain**, older versions of Scala and mathlib can easily be run on newer machines
 
 ## Using this library
 
