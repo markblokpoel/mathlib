@@ -4,24 +4,28 @@ title: Home
 order: 0
 ---
 
-![mathlib](assets/mathlib-logo-full.png)
+![mathlib](docs/mathlib-logo-full.png)
 
 [![mathlib Scala version support](https://index.scala-lang.org/markblokpoel/mathlib/mathlib/latest.svg)](https://index.scala-lang.org/markblokpoel/mathlib/mathlib)
 [![license](https://img.shields.io/badge/license-%20GPL--3.0-blue)](https://github.com/markblokpoel/mathlib/blob/master/LICENSE)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.markblokpoel.com%2Fmathlib)](https://www.markblokpoel.com/mathlib)
 ![Maven Central](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13)
+[![Scaladoc](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13?label=scaladoc)](https://markblokpoel.com/mathlib/scaladoc/mathlib/)
+
+
+**This is a copy of the companion website main page, please visit [https://www.markblokpoel.com/mathlib](https://www.markblokpoel.com/mathlib).**
 
 ```mathlib``` is a library for Scala supporting functional programming that resembles
 mathematical expressions such as set theory, graph theory and probability theory.
 This library was developed to complement the theory development method outlined
 in the open education book [Theoretical modeling for cognitive science and psychology by
-Blokpoel and van Rooij (2021)<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://computationalcognitivescience.github.io/lovelace/).
+Blokpoel and van Rooij (2021)](https://computationalcognitivescience.github.io/lovelace/).
 
 The goal of this library is to facilitate users to implement simulations of their formal theories. ```mathlib``` and Scala code is:
 
 * 👓 easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * ✅ easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
-* ❤️ easy to **sustain**, because newer versions of Scala and ```mathlib``` can run old code (backwards compatibility)
+* ❤️ easy to **sustain**, older versions of Scala and mathlib can easily be run on newer machines
 
 ## Using this library
 
@@ -29,8 +33,8 @@ For the scope of this documentation, we are going to assume you are familiar wit
 Some helpful links to get you started are:
 
 * [Using IntelliJ to run Scala applications in
-<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app)
-* Use the binder service or a local instance of the Jupyterlab tutorials at [markblokpoel/mathlib-examples<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://github.com/markblokpoel/mathlib-examples)
+](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app)
+* Use the binder service or a local instance of the Jupyterlab tutorials at [markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples)
 
 ### Using this library with ```sbt```
 If you have set up a Scala project with ```sbt```, the Scala built tool, then add the following line to your
@@ -41,7 +45,7 @@ libraryDependencies += "com.markblokpoel" %% "mathlib" % "0.9.0"
 ```
 
 ### Using this library with Almond
-If you have set up a Scala project in jupyter notebooks using [Almond<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://almond.sh/) you can enable the library by
+If you have set up a Scala project in jupyter notebooks using [Almond](https://almond.sh/) you can enable the library by
 adding the following line to a worksheet. 
 
 ```scala
@@ -58,14 +62,14 @@ below show how this is done.
 ## Examples
 
 The Github repository contains a few demos that can be found under
-[mathlib/demos<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://github.com/markblokpoel/mathlib/tree/main/src/main/scala/mathlib/demos). To run and play around
+[mathlib/demos](https://github.com/markblokpoel/mathlib/tree/main/src/main/scala/mathlib/demos). To run and play around
 with these demos, first follow the instructions above for setting up this library. Then, download the scala files from
 the repository and copy them into your Scala project. They can be run as any Scala application, e.g., [run Scala applications in 
-Intellij<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app) or use the binder service of
+Intellij](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app) or use the binder service of
 the tutorials.
 
 You can find extensive tutorials on the basics of Scala and using ```mathlib``` in the 
-[markblokpoel/mathlib-examples<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://github.com/markblokpoel/mathlib-examples) GitHub repository. The tutorials
+[markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples) GitHub repository. The tutorials
 include a link to an online service (binder) where you can try out the library without needing to install anything.
 
 ## Development
@@ -95,6 +99,7 @@ work with future versions of ```mathlib```.
 |&nbsp;|&nbsp;|&nbsp;|&nbsp;|
 | Set theory | | Complete implementation and documentation. | Completed in v0.9.0 |
 | Graph theory | | Complete implementation and documentation for non-hyper graphs. | Completed in v0.9.0 |
+
 
 ## License
 
