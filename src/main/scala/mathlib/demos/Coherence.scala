@@ -58,9 +58,8 @@ object Coherence {
     coherence(network, positiveConstraints).foreach(println)
 
     val size                      = 10
-    val m                         = 2
-    val upperBoundWeight          = 0.5
-    val randomNetwork             = WUnDiGraph.preferentialAttachment(size, m, upperBoundWeight)
+    val numberOfEdges             = 15
+    val randomNetwork             = WUnDiGraph.uniform(size, numberOfEdges)
     val randomPositiveConstraints = randomNetwork.edges.splitAt(randomNetwork.edges.size / 2)._1
     println("Random network example")
     coherence(randomNetwork, randomPositiveConstraints).foreach(println)
