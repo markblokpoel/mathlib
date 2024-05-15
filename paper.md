@@ -50,7 +50,7 @@ Scala using ```mathlib``` is:
 ```mathlib``` supports scholars to write **readable** and **verifiable** code. Writing code is not easy, writing
 code for which we can know that it computes what the specification (i.e., the formal theory) states is even harder.
 Given the critical role of theory and computer simulations in cognitive science, it is important that scholars
-can verify that the code does what the authors intent it to do. This can be facilitated by having a programming language
+can verify that the code does what the authors intend it to do. This can be facilitated by having a programming language
 where the
 syntax and semantics closely matches that of the specification. Since formal theories are specified using mathematical
 notation [@marr:1982; @blokpoel_vanrooij:2021; @guest_martin:2021], functional programming languages bring a lot to the
@@ -60,10 +60,10 @@ the current version (0.9.1) supports set theory and graph theory. In the next se
 illustrate how Scala and ```mathlib``` make code more accessible to verify the relationship between simulation and
 theory.
 
-```mathlib``` and Scala support scholars write **sustainable** code. It is important that
+```mathlib``` and Scala support scholars to write **sustainable** code. It is important that
 academic contributions remain accessible for reflection and critique. This includes simulations that also have
 theoretical import. Simulation results may need to be verified or future scholars may wish to expand upon the work.
-It is not sufficient to archive code, because in practise programming contributions in academia are easily lost because
+It is not sufficient to archive code, because in practice programming contributions in academia are easily lost because
 of incompatibility issues between older software and newer operating systems. Scala (and consequently ```mathlib```)
 runs on the Java Virtual Machine (JVM) and has state-of-the-art versioning. The programmer can specify exactly which
 version of Scala and ```mathlib``` needs to be retrieved to run the code on any system that supports the JVM. Even
@@ -94,7 +94,7 @@ Chapter 4 of the textbook.
 for pairs of items $b:I \times I \rightarrow \mathbb{Z}$.
 
 *Output:* A subset of items $I'\subseteq I$ (or $I'\in\mathcal{P}(I)$) that maximizes the combined value of the
-selected items according, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
+selected items accordingly, i.e., $\arg\max_{I'\in\mathcal{P}(I)}\sum_{i \in I'}v(i) + \sum_{i, j \in I'}b(i,j)$.
 
 Assuming familiarity with the formal theory, the ```mathlib``` implementation and Table \ref{tab:subset} below
 illustrate how to interpret and verify the code relative to the mathematical expressions in the formal theory. In 
@@ -137,14 +137,14 @@ def subsetChoice(
 | $\sum_{i, j \in I'}b(i,j)$            | ```sum(subset.uniquePairs, b)```                                                                                          | 
 |                                       | _Sum of pair-wise item values, where ```uniquePairs``` generates all pairs ```(x, y)``` in ```subset``` with ```x!=y```._ |
 | $\arg\max_{I'\in\mathcal{P}(I)}\dots$ | ```argMax(powerset(items), value)```                                                                                      |
-|                                       | _Returns the element from the powerset of items that maximizes ```value```.                                               |
+|                                       | Returns the element from the powerset of items that maximizes ```value```.                                                |
 
 
 ## Illustration 2: Coherence
 
 Coherence theory [@thagard:1998] aims to explain people's capacity to infer a consistent set of beliefs given 
 constraints between them. For example, the belief 'it rains' may have a negative constraint with 'wearing shorts'. 
-To belief that it rains and not wearing shorts is consistent, but to belief that it rains and to wear shorts is
+To believe that it rains and not wearing shorts is consistent, but to believe that it rains and to wear shorts is
 inconsistent. In case of consistency, the constraint is said to be _satisfied_. Coherence theory conjectures that
 people infer truth-values for their beliefs so as to maximize the sum of weights of all satisfied constraints. For a
 more detailed introduction to Coherence theory, see [@thagard:1998] and Chapter 5 in [@blokpoel_vanrooij:2021]
@@ -153,7 +153,7 @@ more detailed introduction to Coherence theory, see [@thagard:1998] and Chapter 
 
 *Input:* A graph $G=(V,E)$ with vertex set $V$ and edge set $E\subseteq V\times V$ that partitions into positive constraints $C^+$ and negative constraints $C^-$ (i.e., $C^+\cup C^-=E$ and $C^+\cap C^-=\varnothing$) and a weight function $w: E \rightarrow \mathbb{R}$.
 
-*Output:* A truth value assignment $T:V \rightarrow \{true, false\}$ such that $Coh(T)=Coh^+(A,R)+Coh^-(T)$ is maximum. Here,
+*Output:* A truth value assignment $T:V \rightarrow \{true, false\}$ such that $Coh(T)=Coh^+(T)+Coh^-(T)$ is maximum. Here,
 $$
 Coh^+(T)=\displaystyle\sum_{(u,v)\in C^+}
 \begin{cases}
