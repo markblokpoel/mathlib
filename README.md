@@ -14,6 +14,7 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.markblokpoel.com%2Fmathlib)](https://www.markblokpoel.com/mathlib)
 ![Maven Central](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13)
 [![Scaladoc](https://img.shields.io/maven-central/v/com.markblokpoel/mathlib_2.13?label=scaladoc)](https://markblokpoel.com/mathlib/scaladoc/mathlib/)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 ```mathlib``` is a library for Scala supporting functional programming that resembles
 mathematical expressions such as set theory, graph theory and probability theory.
@@ -120,9 +121,14 @@ Mark Blokpoel,
 
 ### Contributing
 
-Thanks for considering contributing to this project. Your help is essential for keeping it great.
+Thanks for considering contributing to this project. We welcome all contributions and feedback,
+your help is essential for keeping it great.
 
-Contributions to this project are released to the public under the project's open source license. Whenever
+Contributions can be made by providing feedback, requests or bug reports through 
+[issues](https://github.com/markblokpoel/mathlib/issues) or by providing updated / extended code via a pull
+request (see below). Please read our [Code of Conduct](code_of_conduct.md) before participating in this community.
+
+Content contributions to this project are released to the public under the project's open source license. Whenever
 you add Content to a repository containing notice of a license, you license that Content under the same terms,
 and you agree that you have the right to license that Content under those terms. If you have a separate
 agreement to license that Content under different terms, such as a contributor license agreement, that
