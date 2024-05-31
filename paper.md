@@ -36,7 +36,8 @@ thought to analytically derive, even when in principle the property can be analy
 ```mathlib``` is a library for Scala [@odersky:2008] supporting functional programming that resembles mathematical 
 expressions such as set theory and graph theory. This library was developed to complement the
 theory development method outlined in the open education book Theoretical modeling for cognitive science and
-psychology by @blokpoel_vanrooij:2021.
+psychology by @blokpoel_vanrooij:2021. To date ```mathlib``` is the only library that facilitates implementing
+computational-level simulations for fully specified formal theories.
 
 The goal of this library is to facilitate users to implement simulations of their formal theories. Code written in
 Scala using ```mathlib``` is:
