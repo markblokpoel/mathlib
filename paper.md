@@ -60,11 +60,13 @@ mathematical concepts and notation to the functional programming language Scala 
 the current version (0.9.1) supports set theory and graph theory. To appreciate the readability of functional code, 
 relative to the formal specification, consider the following two code snippets. Both implement
 the same mathematical expression $\arg\max_{a\in A}f(a)$, where $A$ is a set of strings and $f(.)$ counts the length 
-of each string. Both snippets assume ```scala def f(a: String): Int = a.length``` and the set $A$ is ```words``` to
-comply with default Scala style. A non-functional implementation could look like this, where semantics (i.e., the
+of each string. In both snippets the set $A$ is translated to ```words``` to comply with default Scala style. 
+A non-functional implementation could look like this, where semantics (i.e., the
 meaning or function of the code) is mode difficult to analyze due to its use of mutable variables and a loop.
 
 ```scala
+def f(a: String): Int = a.length
+
 def expression(words: Set[String]): String = {
   var maxLength: Int = 0
   var longestWord: String = ""
@@ -83,6 +85,8 @@ A functional implementation leveraging ```mathlib``` can look like this, which c
 expression in form and function.
 
 ```scala
+def f(a: String): Int = a.length
+
 def expression(words: Set[String]): String = {
   argMax(words, f _)
     .random.get
