@@ -61,13 +61,33 @@ below show how this is done.
 
 ## Examples
 
-The Github repository contains a few demos that can be found under
-[mathlib/demos](https://github.com/markblokpoel/mathlib/tree/main/src/main/scala/mathlib/demos). To run and play around
-with these demos, first follow the instructions above for setting up this library. Then, download the scala files from
+The Github repository contains a few demos that can be found under [mathlib/demos](https://github.com/markblokpoel/mathlib/tree/main/src/main/scala/mathlib/demos). To run and play around with
+these demos there are two options.
+
+*Option 1 (clean project):*  First follow the instructions above for setting up this library. Then, download the scala files from
 the repository and copy them into your Scala project. They can be run as any Scala application,
 e.g., [run Scala applications in
-Intellij](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app) or use the binder service of
-the tutorials.
+Intellij](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app) 
+
+*Option 2 (clone repository):* This option will download the full ```mathlib``` source code and assumes that git, Scala
+and SBT have been installed (see installation instructions 
+[for Scala and SBT here](https://docs.scala-lang.org/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
+and [for git here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)).
+First, clone the GitHub repository:
+```
+$ git clone https://github.com/markblokpoel/mathlib.git
+```
+Open a terminal and ```cd``` into the repository root folder (usually called mathlib):
+```
+$ cd mathlib
+```
+Run a demo using the following command, ```runCoherenceDemo``` can be replaced by ```runVertexCoverDemo```, 
+```runGraphsDemo```, or ```runSubsetChoiceDemo```:
+```
+$ sbt runCoherenceDemo
+```
+
+## Tutorials (work in progress)
 
 You can find extensive tutorials on the basics of Scala and using ```mathlib``` in the
 [markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples) GitHub repository. The tutorials
