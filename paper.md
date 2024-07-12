@@ -62,7 +62,7 @@ relative to the formal specification, consider the following two code snippets. 
 the same mathematical expression $\arg\max_{a\in A}f(a)$, where $A$ is a set of strings and $f(.)$ counts the length 
 of each string. In both snippets the set $A$ is translated to ```words``` to comply with default Scala style. 
 A non-functional implementation could look like this, where semantics (i.e., the
-meaning or function of the code) is mode difficult to analyze due to its use of mutable variables and a loop.
+meaning or function of the code) is more difficult to analyze due to its use of mutable variables and a loop.
 
 ```scala
 def f(a: String): Int = a.length
