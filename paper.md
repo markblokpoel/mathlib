@@ -21,16 +21,16 @@ bibliography: paper.bib
 # Summary
 
 Formal theory and computational modeling are critical in cognitive science and psychology. Formal systems (e.g.,
-set theory, functions, first-order logic, graph theory, etc.) allow
+set theory, functions, first-order logic, graph theory) allow
 scientists to 'conceptually analyze, specify, and formalize intuitions that otherwise remain unexamined'
 [@guest_martin:2021]. They make otherwise underspecified theories precise and open for critical reflection
 [@vanrooij_baggio:2021]. A theory can be formally specified in a computational model using mathematical concepts
-such as set theory, graph theory and probability theory. The specification is often followed by analysis to understand
+such as set theory, graph theory, and probability theory. The specification is often followed by analysis to understand
 precisely what assumptions and consequences the formal theory entails. An important method of analysis is computer
 simulation, which allows scientists to explore complex model behaviours and derive predictions that otherwise cannot
 be analytically derived[^1].
 
-[^1]: Computer simulations can also aid scientists to discover properties of the model that they would not have
+[^1]: Computer simulations can also help scientists discover properties of the model that they would not have
 thought to analytically derive, even when in principle the property can be analytically derived.
 
 ```mathlib``` is a library for Scala [@odersky:2008] supporting functional programming that resembles mathematical
@@ -44,7 +44,7 @@ Scala using ```mathlib``` is:
 
 * easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
 * easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
-* easy to **sustain**, older versions of Scala and ```mathlib``` can easily be run on newer machines
+* easy to **sustain**, as older versions of Scala and ```mathlib``` can easily be run on newer machines
 
 # Statement of need
 
@@ -109,7 +109,7 @@ when newer versions of Scala or ```mathlib``` may potentially break older code, 
 users to easily run, adapt or expand older code.
 
 ```mathlib``` is unique because its design encourages the computational cognitive scientist to write
-readable, verifiable and sustainable code for simulations of formal theories. This is not to say that one cannot
+readable, verifiable, and sustainable code for simulations of formal theories. This is not to say that one cannot
 apply these principles in other languages, but it may require building the mathematical infrastructure that
 ```mathlib``` supports. ```mathlib``` differs from other libraries in that it focuses on
 usability and transparency for simulations of formal theories specifically, whereas other libraries that implement
@@ -122,7 +122,7 @@ and ```mathlib``` and formal theories.
 
 ## Illustration 1: Subset choice
 
-The following formal theory is taken from the textbook by [@blokpoel_vanrooij:2021]. It specifies people's capacity
+The following formal theory is taken from the textbook by @blokpoel_vanrooij:2021. It specifies people's capacity
 to select a subset of items, given the value of individual items and pairs. For more details on this topic, see
 Chapter 4 of the textbook.
 
@@ -284,11 +284,11 @@ def coherence(
 # Acknowledgements
 
 We thank the Computational Cognitive Science group at the Donders Center for Cognition (Nijmegen, The Netherlands)
-for useful discussions and feedback, in particular, Laura van de Braak, Olivia Guest and Iris van Rooij. We also thank the reviewers
-Larkin Liu, Russel Richie and Stephen Mann for their useful feedback which has greatly improved this paper.
+for useful discussions and feedback, in particular, Laura van de Braak, Olivia Guest, and Iris van Rooij. We also thank the reviewers
+Larkin Liu, Russel Richie, and Stephen Mann for their useful feedback which has greatly improved this paper.
 
 This project was supported by Netherlands Organization for Scientific Research Gravitation Grant of the
-Language in Interaction consortium 024.001.006, the Radboud School for Artificial Intelligence and the
+Language in Interaction consortium 024.001.006, the Radboud School for Artificial Intelligence, and the
 Donders Institute, Donders Center for Cognition.
 
 # References
