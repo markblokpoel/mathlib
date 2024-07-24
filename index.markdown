@@ -174,7 +174,8 @@ the [Computational Cognitive Science group<img style="height: 1rem;" src="{{site
 at the Donders Center for Cognition (Nijmegen, The Netherlands) for
 useful discussions and feedback. A special thanks to Laura van de Braak, [Olivia Guest](https://oliviaguest.com/)
 and [Iris van Rooij](https://irisvanrooijcogsci.com/) whose conceptual contributions and support have been invaluable.
-We further thank Max Hinne for helpful pointers on random graph generation.
+We further thank Max Hinne for helpful pointers on random graph generation. We also thank the reviewers
+Larkin Liu, Russel Richie, and Stephen Mann and the editor Daniel Katz for their useful feedback which has greatly improved this paper. 
 
 This project was supported by Netherlands Organization for Scientific Research Gravitation Grant of the [Language in
 Interaction consortium<img style="height: 1rem;" src="{{site.baseurl}}/assets/open-in-new-black.png" />](https://www.languageininteraction.nl/)
