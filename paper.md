@@ -285,7 +285,7 @@ def coherence(
 
 We thank the Computational Cognitive Science group at the Donders Center for Cognition (Nijmegen, The Netherlands)
 for useful discussions and feedback, in particular, Laura van de Braak, Olivia Guest, and Iris van Rooij. We also thank the reviewers
-Larkin Liu, Russel Richie, and Stephen Mann for their useful feedback which has greatly improved this paper.
+Larkin Liu, Russel Richie, and Stephen Mann and the editor Daniel Katz for their useful feedback which has greatly improved this paper. 
 
 This project was supported by Netherlands Organization for Scientific Research Gravitation Grant of the
 Language in Interaction consortium 024.001.006, the Radboud School for Artificial Intelligence, and the
