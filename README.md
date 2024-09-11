@@ -155,7 +155,9 @@ If you contribute to this work, such as by a pull request (PR), please also add 
 [README.md](https://github.com/markblokpoel/mathlib/blob/main/README.md) file in the same PR, ideally with your
 real name, your GitHub username, and your ORCID.
 
-If you use this work, please credit/cite it and the [authors](https://markblokpoel.com/mathlib#authors).
+If you use this work, please credit/cite it and the [authors](https://markblokpoel.com/mathlib#authors):
+
+Blokpoel, M., (2024). mathlib: A Scala package for readable, verifiable and sustainable simulations of formal theory. Journal of Open Source Software, 9(99), 6049, [https://doi.org/10.21105/joss.06049](https://doi.org/10.21105/joss.06049)
 
 ### Submitting a pull request
 
