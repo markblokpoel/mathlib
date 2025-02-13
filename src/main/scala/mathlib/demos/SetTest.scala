@@ -13,7 +13,9 @@ object SetTest {
       (product(Set("a", "b", "aa", "bb", "ccc", "ddd"), len _), 1*1*2*2*3*3),
       (sum(Set(("a", "b"), ("aa", "bb"), ("ccc", "ddd")), len2 _), 2+4+6),
       (product(Set(("a", "b"), ("aa", "bb"), ("ccc", "ddd")), len2 _), 2*4*6),
-      (sum(Set("a","b","aa","bb","ccc", "ddd"), isEven _, len _), 4)
+      (sum(Set("a","b","aa","bb","ccc", "ddd"), isEven _, len _), 4),
+      (product(Set("a","b","aa","bb","cc", "ddd"), isEven _, len _), 8),
     ).foreach(qa => println(f"${qa._1 == qa._2} <- ${qa._1} == ${qa._2}"))
+
   }
 }

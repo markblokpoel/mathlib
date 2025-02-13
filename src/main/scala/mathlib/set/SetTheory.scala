@@ -216,7 +216,7 @@ object SetTheory {
    * @param set
    *   The set of elements.
    * @param b
-   *   A function from pairs in the set to [[scala.Boolean]], only pairs with true value are summed.
+   *   A function from elements in the set to [[scala.Boolean]], only pairs with true value are summed.
    * @param f
    *   A function from elements in the set to elements of type ```T``` that can be added together.
    * @param nso
@@ -319,6 +319,57 @@ object SetTheory {
     */
   def product[A, T](set: Set[(A, A)], f: (A, A) => T)(implicit nso: NumberSetOps[T]): T =
     nso.mulElements(set.toList.map(pair => f(pair._1, pair._2)))
+
+  /** Returns the product of all elements in the set for which ```b``` returns ```true```,
+   *  given a function ```f```.
+   *
+   * For sets with elements of types other than [[scala.Int]], [[scala.Double]] and
+   * [[scala.Float]], one would need to implements a custom [[NumberSetOps]] implicit object. See
+   * the source code of [[IntNumberOps]], [[DoubleNumberOps]] and [[FloatNumberOps]] for examples.
+   * @param set
+   *   The set of elements.
+   * @param b
+   *   A function from elements in the set to [[scala.Boolean]], only pairs with true value are summed.
+   * @param f
+   *   A function from elements in the set to elements of type ```T``` that can be multiplied.
+   * @param nso
+   *   A numeric operator that allows multiplication of the elements of the set, this can be
+   *   omitted for [[scala.Int]], [[scala.Double]] and [[scala.Float]].
+   * @tparam A
+   *   The type of the elements in the set.
+   * @tparam T
+   *   The type of the values returned by ```f```.
+   * @return
+   *   The product of the elements in the set mapped via ```f```.
+   */
+  def product[A, T](set: Set[A], b: A => Boolean, f: A => T)(implicit nso: NumberSetOps[T]): T =
+    nso.mulElements(set.build(b).toList.map(f))
+
+  /** Given a set of pairs (i.e., [[scala.Tuple2]]), this returns the product of all pairs in the
+   * set for which ```b``` returns ```true```, given a function ```f```.
+   *
+   * For sets with tuples of types other than [[scala.Int]], [[scala.Double]] and [[scala.Float]],
+   * one would need to implements a custom [[NumberSetOps]] implicit object. See the source code of
+   * [[IntNumberOps]], [[DoubleNumberOps]] and [[FloatNumberOps]] for examples.
+   * @param set
+   *   The set of pairs of elements.
+   * @param b
+   *   A function from pairs in the set to [[scala.Boolean]], only pairs with true value are summed.
+   * @param f
+   *   A function from pairs in the set to elements of type ```T``` that can be multiplied
+   *   together.
+   * @param nso
+   *   A numeric operator that allows multiplication of the elements of the set, this can be
+   *   omitted for [[scala.Int]], [[scala.Double]] and [[scala.Float]].
+   * @tparam A
+   *   The type of the elements in the pairs of the set.
+   * @tparam T
+   *   The type of the values returned by ```f```.
+   * @return
+   *   The product of the pairs of elements in the set mapped via ```f```.
+   */
+  def product[A, T](set: Set[(A, A)], b: ((A, A)) => Boolean, f: (A, A) => T)(implicit nso: NumberSetOps[T]): T =
+    nso.mulElements(set.build(b).toList.map(pair => f(pair._1, pair._2)))
 
   /** Selects a random elements from the set.
     * @param set
