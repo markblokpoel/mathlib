@@ -84,8 +84,5 @@ object GraphsDemo {
     println("1st order: " + cycleCheck.adjacencyList)
     // Print the 2nd adjacency graph for the checkCycle graph
     println("2nd order: " + cycleCheck.nthAdjacencyList(2))
-    println(cycleCheck.degreeOf(N("a")))
-
-    println(WDiGraph.preferentialAttachment(100, 10).toDOTString)
   }
 }
