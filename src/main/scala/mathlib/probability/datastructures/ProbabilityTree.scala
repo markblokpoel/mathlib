@@ -5,8 +5,8 @@ import mathlib.probability.Distribution
 /**
  * Constructs a tree-representation of the distribution where elements are organized according to their
  * probability mass.
- * @param distribution
- * @tparam A
+ * @param distribution The distribution
+ * @tparam A The parameter
  */
 case class ProbabilityTree[A](distribution: Distribution[A]) {
   private val values = distribution.distribution.keys.toVector
@@ -15,7 +15,7 @@ case class ProbabilityTree[A](distribution: Distribution[A]) {
 
   /**
    * Retrieves the element from the distribution at mass-point  `p`.
-   * @param p
+   * @param p the parameter
    * @return
    */
   def apply(p: Double): A = tree(p)

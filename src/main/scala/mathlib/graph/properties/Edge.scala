@@ -3,19 +3,15 @@ package mathlib.graph.properties
 import mathlib.graph.{Graph, Node}
 
 /** Represents an edge data structure.
-  * @param left
-  *   Left vertex of the edge.
-  * @param right
-  *   Right vertex of the edge.
   * @tparam T
   *   The type of the vertices.
   */
 trait Edge[T <: Node[_]] extends ProtoEdge[T] {
 
   /** Left node in the edge. */
-  val left: T;
+  val left: T
   /** Right node in the edge. */
-  val right: T;
+  val right: T
 
   /** Checks if the edge contains the given vertex.
     * @param vertex

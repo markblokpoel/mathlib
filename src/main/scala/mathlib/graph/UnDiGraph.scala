@@ -240,7 +240,7 @@ case object UnDiGraph {
       if(n + m == size) partialGraph
       else {
         val degrees = partialGraph.adjacencyList
-          .mapValues(_.size) // Get degrees of all vertices
+          .view.mapValues(_.size) // Get degrees of all vertices
         val sumDegrees = degrees.values.sum
         val probabilities = degrees.mapValues(_.doubleValue() / sumDegrees)
         val rnd = Random.nextDouble()

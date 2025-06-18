@@ -18,9 +18,9 @@ import scala.reflect.ClassTag
   */
 trait Graph[T, E <: Edge[Node[T]]] {
   /** The vertices in the graph. */
-  val vertices: Set[Node[T]];
+  val vertices: Set[Node[T]]
   /** The edges in the graph. */
-  val edges: Set[E];
+  val edges: Set[E]
 
   require(
     edges.forall(e => vertices.contains(e.left) && vertices.contains(e.right)),

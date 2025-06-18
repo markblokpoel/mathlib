@@ -484,9 +484,9 @@ object SetTheory {
 
     /** Returns all possible partitions of the set.
       *
-      * For example,  `Set(1, 2, 3).allPartitions ` returns  `Set(Set(Set(3), Set(2), Set(1)),
+      * For example,  `Set(1, 2, 3).allPartitions ` returns  {{{Set(Set(Set(3), Set(2), Set(1)),
       * Set(Set(3), Set(2, 1)), Set(Set(2), Set(3, 1)), Set(Set(3, 2), Set(1)), Set(Set(3, 2,
-      * 1))) `.
+      * 1)))}}}.
       * @return
       *   All possible partitions of the set.
       */
