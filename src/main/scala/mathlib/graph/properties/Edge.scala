@@ -2,7 +2,7 @@ package mathlib.graph.properties
 
 import mathlib.graph.{Graph, Node}
 
-/** Represents an abstract edge data structure.
+/** Represents an edge data structure.
   * @param left
   *   Left vertex of the edge.
   * @param right
@@ -10,13 +10,18 @@ import mathlib.graph.{Graph, Node}
   * @tparam T
   *   The type of the vertices.
   */
-abstract class Edge[T <: Node[_]](val left: T, val right: T) extends ProtoEdge[T] {
+trait Edge[T <: Node[_]] extends ProtoEdge[T] {
+
+  /** Left node in the edge. */
+  val left: T;
+  /** Right node in the edge. */
+  val right: T;
 
   /** Checks if the edge contains the given vertex.
     * @param vertex
     *   The vertex to check.
     * @return
-    *   ```true``` if the vertex is part of this edge, ```false``` otherwise.
+    *    `true ` if the vertex is part of this edge,  `false ` otherwise.
     */
   def contains(vertex: T): Boolean = left == vertex || right == vertex
 
@@ -26,7 +31,7 @@ abstract class Edge[T <: Node[_]](val left: T, val right: T) extends ProtoEdge[T
     * @param vertex
     *   The base vertex.
     * @return
-    *   The neighbor of vertex, wrapped in ```Some(.)```.
+    *   The neighbor of vertex, wrapped in  `Some(.) `.
     */
   def getNeighborOf(vertex: T): Option[T] =
     if (left == vertex) Some(right)

@@ -5,20 +5,13 @@ import mathlib.set.SetTheory.ImplAny
 
 import scala.annotation.tailrec
 
-/** Abstract class representing unweighted graphs.
-  * @param vertices
-  *   The set of vertices of the graph.
-  * @param edges
-  *   The set of edges of the graph.
+/** Trait representing unweighted graphs.
   * @tparam T
   *   The type of nodes in the graph.
   * @tparam E
   *   The type of edges of the graph, must be a subtype of [[properties.Edge]].
   */
-abstract class UnweightedGraph[T, E <: Edge[Node[T]]](
-    override val vertices: Set[Node[T]],
-    override val edges: Set[E]
-) extends Graph[T, E](vertices, edges) {
+abstract class UnweightedGraph[T, E <: Edge[Node[T]]] extends Graph[T, E] {
 
   override def degreeOf(vertex: Node[T]): Int =
     adjacencyList(vertex).size
@@ -91,7 +84,7 @@ abstract class UnweightedGraph[T, E <: Edge[Node[T]]](
     * @param traversingGraph
     *   The (partial) graph with removed edges to track traversal.
     * @return
-    *   ```true``` if the graph contains a cycle, ```false``` otherwise.
+    *    `true` if the graph contains a cycle,  `false` otherwise.
     */
   private def containsCycleRec(
       currentVertex: Node[T],
@@ -121,7 +114,7 @@ abstract class UnweightedGraph[T, E <: Edge[Node[T]]](
 
   /** Recursively checks if the graph contains a cycle.
     * @return
-    *   ```true``` if the graph contains a cycle, ```false``` otherwise.
+    *    `true` if the graph contains a cycle,  `false` otherwise.
     */
   override def containsCycle: Boolean =
     vertices // forall vertices check if it leads to a cycle (in case of forests)

@@ -11,16 +11,16 @@
 **This is a copy of the companion website main page, please visit [https://www.markblokpoel.com/mathlib](https://www.markblokpoel.com/mathlib).**
 
 
-```mathlib``` is a library for Scala supporting functional programming that resembles
+ `mathlib ` is a library for Scala supporting functional programming that resembles
 mathematical expressions such as set theory, graph theory and probability theory.
 This library was developed to complement the theory development method outlined
 in the open education book [Theoretical modeling for cognitive science and psychology by
 Blokpoel and van Rooij (2021)](https://computationalcognitivescience.github.io/lovelace/).
 
-The goal of this library is to facilitate users to implement simulations of their formal theories. ```mathlib``` and
+The goal of this library is to facilitate users to implement simulations of their formal theories.  `mathlib ` and
 Scala code is:
 
-* 👓 easy to **read**, because ```mathlib``` syntax closely resembles mathematical notation
+* 👓 easy to **read**, because  `mathlib ` syntax closely resembles mathematical notation
 * ✅ easy to **verify**, by proving that the code exactly implements the theoretical model (or not)
 * ❤️ easy to **sustain**, older versions of Scala and mathlib can easily be run on newer machines
 
@@ -34,29 +34,29 @@ Some helpful links to get you started are:
 * Use the binder service or a local instance of the Jupyterlab tutorials
   at [markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples)
 
-### Using this library with ```sbt```
+### Using this library with  `sbt `
 
-If you have set up a Scala project with ```sbt```, the Scala built tool, then add the following line to your
-```build.sbt``` file to enable the library.
+If you have set up a Scala project with  `sbt `, the Scala built tool, then add the following line to your
+ `build.sbt ` file to enable the library.
 
-```scala
+ `scala
 libraryDependencies += "com.markblokpoel" %% "mathlib" % "0.9.1"
-```
+ `
 
 ### Using this library with Almond
 
 If you have set up a Scala project in jupyter notebooks using [Almond](https://almond.sh/) you can enable the library by
 adding the following line to a worksheet.
 
-```scala
+ `scala
 import $ivy.`com.markblokpoel::mathlib:0.9.1`
-```
+ `
 
-### Import ```mathlib``` packages
+### Import  `mathlib ` packages
 
-After enabling ```mathlib``` in your project you most likely will want to use some of its components. See the
+After enabling  `mathlib ` in your project you most likely will want to use some of its components. See the
 [development section](#development) below for the available components and their import statements. Adding these
-import statements to a ```.scala``` file will import the component and allow you to write code using it. The examples
+import statements to a  `.scala ` file will import the component and allow you to write code using it. The examples
 below show how this is done.
 
 ## Examples
@@ -69,46 +69,46 @@ the repository and copy them into your Scala project. They can be run as any Sca
 e.g., [run Scala applications in
 Intellij](https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html#run_scala_app) 
 
-*Option 2 (clone repository):* This option will download the full ```mathlib``` source code and assumes that git, Scala
+*Option 2 (clone repository):* This option will download the full  `mathlib ` source code and assumes that git, Scala
 and SBT have been installed (see installation instructions 
 [for Scala and SBT here](https://docs.scala-lang.org/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
 and [for git here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)).
 First, clone the GitHub repository:
-```
+ `
 $ git clone https://github.com/markblokpoel/mathlib.git
-```
-Open a terminal and ```cd``` into the repository root folder (usually called mathlib):
-```
+ `
+Open a terminal and  `cd ` into the repository root folder (usually called mathlib):
+ `
 $ cd mathlib
-```
-Run a demo using the following command, ```runCoherenceDemo``` can be replaced by ```runVertexCoverDemo```, 
-```runGraphsDemo```, or ```runSubsetChoiceDemo```:
-```
+ `
+Run a demo using the following command,  `runCoherenceDemo ` can be replaced by  `runVertexCoverDemo `, 
+ `runGraphsDemo `, or  `runSubsetChoiceDemo `:
+ `
 $ sbt runCoherenceDemo
-```
+ `
 
 ## Tutorials (work in progress)
 
-You can find extensive tutorials on the basics of Scala and using ```mathlib``` in the
+You can find extensive tutorials on the basics of Scala and using  `mathlib ` in the
 [markblokpoel/mathlib-examples](https://github.com/markblokpoel/mathlib-examples) GitHub repository. The tutorials
 include a link to an online service (binder) where you can try out the library without needing to install anything.
 
 ## Development
 
-The current version of ```mathlib``` is v0.9.0 and the following components are complete, fully usable and will remain
-backwards compatible (i.e., code that uses these components will still run with future versions of ```mathlib```).
+The current version of  `mathlib ` is v0.9.0 and the following components are complete, fully usable and will remain
+backwards compatible (i.e., code that uses these components will still run with future versions of  `mathlib `).
 Currently, this library only supports Scala 2 and not Scala 3.
 
-| Component    | ```import``` statement                                                        | Minimum ```mathlib``` and Scala versions |
+| Component    |  `import ` statement                                                        | Minimum  `mathlib ` and Scala versions |
 |--------------|-------------------------------------------------------------------------------|:----------------------------------------:|
-| Set theory   | ```import mathlib.set.SetTheory._```                                          |             v0.9.0 / 2.13.9              |
-| Graph theory | ```import mathlib.graph._```<br/> ```import mathlib.graph.GraphImplicits._``` |             v0.9.0 / 2.13.9              |
+| Set theory   |  `import mathlib.set.SetTheory._ `                                          |             v0.9.0 / 2.13.9              |
+| Graph theory |  `import mathlib.graph._ `<br/>  `import mathlib.graph.GraphImplicits._ ` |             v0.9.0 / 2.13.9              |
 
 ### Roadmap
 
 The following features are currently under development or planned. Any existing code related to these features may
 undergo significant changes in future versions. It may also contain bugs and code based on these features may not
-work with future versions of ```mathlib```.
+work with future versions of  `mathlib `.
 
 | Feature                    | Priority | Description                                                                                                                      | Completion                   |
 |----------------------------|:--------:|----------------------------------------------------------------------------------------------------------------------------------|------------------------------|

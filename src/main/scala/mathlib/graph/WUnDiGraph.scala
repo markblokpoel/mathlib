@@ -9,7 +9,7 @@ import scala.util.Random
 case class WUnDiGraph[T](
     override val vertices: Set[Node[T]],
     override val edges: Set[WUnDiEdge[Node[T]]]
-) extends WeightedGraph[T, WUnDiEdge[Node[T]]](vertices, edges) {
+) extends WeightedGraph[T, WUnDiEdge[Node[T]]] {
   override def +(vertex: Node[T]): WUnDiGraph[T] =
     WUnDiGraph(vertices + vertex, edges)
 

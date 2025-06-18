@@ -3,22 +3,18 @@ package mathlib.graph
 import mathlib.graph.properties.{Edge, ProtoEdge}
 
 /** Represents an undirected edge.
-  * @param left
-  *   Left vertex of the edge.
-  * @param right
-  *   Right vertex of the edge.
   * @tparam T
   *   The type of the vertices.
   */
 case class UnDiEdge[T <: Node[_]](override val left: T, override val right: T)
-    extends Edge[T](left, right)
+    extends Edge[T]
     with ProtoEdge[T] {
 
   /** Checks if this instance can equal that instance.
     * @param that
     *   The instance to check.
     * @return
-    *   ```true``` if ```that``` is of type [[UnDiEdge]]
+    *    `true ` if  `that ` is of type [[UnDiEdge]]
     */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[UnDiEdge[_]]
 
@@ -29,7 +25,7 @@ case class UnDiEdge[T <: Node[_]](override val left: T, override val right: T)
     * @param that
     *   The object to test equivalence to.
     * @return
-    *   ```true``` if that.left == that.left && that.right == that.right or that.left == that.right
+    *    `true ` if that.left == that.left && that.right == that.right or that.left == that.right
     *   && that.right == that.left.
     */
   override def equals(that: Any): Boolean =

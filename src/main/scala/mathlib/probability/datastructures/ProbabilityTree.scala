@@ -14,7 +14,7 @@ case class ProbabilityTree[A](distribution: Distribution[A]) {
   val tree: PTree[A] = constructPTree(values, probabilities, 0.0)
 
   /**
-   * Retrieves the element from the distribution at mass-point {{{p}}}.
+   * Retrieves the element from the distribution at mass-point  `p`.
    * @param p
    * @return
    */

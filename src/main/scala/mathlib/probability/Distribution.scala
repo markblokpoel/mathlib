@@ -68,7 +68,7 @@ case class Distribution[A](domain: Set[A], distribution: Map[A, Double]) {
   def sample: A = pTree(Random.nextDouble() * sum)
 
   /**
-   * Returns an iterator containing {{{n}}} samples.
+   * Returns an iterator containing  `n` samples.
    *
    * @param n
    * @return

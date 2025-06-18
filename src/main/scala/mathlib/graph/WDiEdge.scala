@@ -13,7 +13,7 @@ import mathlib.graph.properties.{Edge, ProtoEdge, WeightedEdge}
   *   The type of the vertices.
   */
 case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, weight: Double)
-    extends Edge[T](left, right)
+    extends Edge[T]
     with WeightedEdge
     with ProtoEdge[T] {
 
@@ -22,8 +22,8 @@ case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, we
     * @param vertex
     *   The base vertex.
     * @return
-    *   The neighbor of vertex wrapped in ```Some(.)``` if vertex is on the left side of the edge,
-    *   or ```None``` otherwise.
+    *   The neighbor of vertex wrapped in  `Some(.) ` if vertex is on the left side of the edge,
+    *   or  `None ` otherwise.
     */
   override def getNeighborOf(vertex: T): Option[T] =
     if (left == vertex) Some(right)
@@ -34,7 +34,7 @@ case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, we
     * @param that
     *   The instance to check.
     * @return
-    * ```true``` if ```that``` is of type [[WDiEdge]]
+    *  `true ` if  `that ` is of type [[WDiEdge]]
     */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WDiEdge[_]]
 
@@ -47,7 +47,7 @@ case class WDiEdge[T <: Node[_]](override val left: T, override val right: T, we
     * @param that
     *   The object to test equivalence to.
     * @return
-    * ```true``` if that.left == that.left && that.right == that.right.
+    *  `true ` if that.left == that.left && that.right == that.right.
     */
   override def equals(that: Any): Boolean =
     that match {

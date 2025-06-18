@@ -25,20 +25,13 @@ case class NodeWeightPair[T](node: Node[T], weight: Double) {
   def +(weight: Double): NodeWeightPair[T] = NodeWeightPair(node, this.weight + weight)
 }
 
-/** Abstract class representing weighted graphs.
-  * @param vertices
-  *   The set of vertices of the graph.
-  * @param edges
-  *   The set of edges of the graph.
+/** Trait representing weighted graphs.
   * @tparam T
   *   The type of nodes in the graph.
   * @tparam E
   *   The type of edges of the graph, must be a subtype of [[properties.WeightedEdge]].
   */
-abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
-    override val vertices: Set[Node[T]],
-    override val edges: Set[E]
-) extends Graph[T, E](vertices, edges) {
+trait WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge] extends Graph[T, E] {
 
   override def degreeOf(vertex: Node[T]): Int =
     adjacencyList(vertex).size
@@ -114,7 +107,7 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
     * @param traversingGraph
     *   The (partial) graph with removed edges to track traversal.
     * @return
-    * ```true``` if the graph contains a cycle, ```false``` otherwise.
+    *  `true ` if the graph contains a cycle,  `false ` otherwise.
     */
   private def containsCycleRec(
       currentVertex: Node[T],
@@ -145,7 +138,7 @@ abstract class WeightedGraph[T, E <: Edge[Node[T]] with WeightedEdge](
   /** Recursively checks if the graph contains a cycle.
     *
     * @return
-    * ```true``` if the graph contains a cycle, ```false``` otherwise.
+    *  `true ` if the graph contains a cycle,  `false ` otherwise.
     */
   override def containsCycle: Boolean =
     vertices // forall vertices check if it leads to a cycle (in case of forests)

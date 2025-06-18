@@ -16,7 +16,7 @@ import scala.reflect.ClassTag
 case class DiHyperGraph[T](
     override val vertices: Set[Node[T]],
     override val edges: Set[DiHyperEdge[Node[T]]]
-) extends HyperGraph[T, DiHyperEdge[Node[T]]](vertices, edges) {
+) extends HyperGraph[T, DiHyperEdge[Node[T]]] {
   override def +(vertex: Node[T]): DiHyperGraph[T] =
     DiHyperGraph(vertices + vertex, edges)
 

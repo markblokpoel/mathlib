@@ -6,20 +6,22 @@ import mathlib.set.SetTheory.ImplSet
 import scala.annotation.tailrec
 import scala.reflect.ClassTag
 
-/** This abstract class represent the base of all graphs (excluding hyper graphs).
+/** This trait represent the base of all graphs (excluding hyper graphs).
   *
-  * For any graph, each vertex in every edge must be in the the set of vertices, otherwise an
+  * For any graph, each vertex in every edge must be in the set of vertices, otherwise an
   * exception will be thrown.
-  * @param vertices
-  *   The set of vertices of the graph.
-  * @param edges
-  *   The set of edges of the graph.
+
   * @tparam T
   *   The type of nodes in the graph.
   * @tparam E
   *   The type of edges of the graph, must be a subtype of [[properties.Edge]].
   */
-abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edges: Set[E]) {
+trait Graph[T, E <: Edge[Node[T]]] {
+  /** The vertices in the graph. */
+  val vertices: Set[Node[T]];
+  /** The edges in the graph. */
+  val edges: Set[E];
+
   require(
     edges.forall(e => vertices.contains(e.left) && vertices.contains(e.right)),
     "Cannot form graph, the following edges contain vertices not passed to the constructor: "
@@ -130,19 +132,19 @@ abstract class Graph[T, E <: Edge[Node[T]]](val vertices: Set[Node[T]], val edge
 
   /** Tests if the graph contains a cycle.
     * @return
-    *   ```true``` if the graph contains a cycle, ```false``` otherwise.
+    *    `true ` if the graph contains a cycle,  `false ` otherwise.
     */
   def containsCycle: Boolean
 
   /** Tests if the graph contains any vertices.
     * @return
-    *   ```true``` if the graph contains no vertices, ```false``` otherwise.
+    *    `true ` if the graph contains no vertices,  `false ` otherwise.
     */
   def isEmpty: Boolean = vertices.isEmpty
 
   /** Tests if the graph contains any edges.
     * @return
-    *   ```true``` if the graph no edges, ```false``` otherwise.
+    *    `true ` if the graph no edges,  `false ` otherwise.
     */
   def noEdges: Boolean = edges.isEmpty
 

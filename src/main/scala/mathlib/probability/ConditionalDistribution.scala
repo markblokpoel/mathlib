@@ -3,17 +3,17 @@ package mathlib.probability
 import Implicits._
 
 /**
- * Implements a generic conditional probability distribution for two variables: {{{pr(V1|V2)}}}.
+ * Implements a generic conditional probability distribution for two variables:  `pr(V1|V2)`.
  * The probabilities are represented by Double for increased accuracy.
- * @param domainV1 The domain of variable 1 {{{V1}}}.
- * @param domainV2 The domain of variable 2 {{{V2}}}.
+ * @param domainV1 The domain of variable 1  `V1`.
+ * @param domainV2 The domain of variable 2  `V2`.
  * @param distribution The probabilities for each value in the domain.
  * @tparam A The type of variable 1.
  * @tparam B The type of variable 2.
  */
 case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], distribution: Map[(A, B), Double]) {
   /**
-   * Recommended usage: {{{pr(a | b}}}.
+   * Recommended usage:  `pr(a | b`.
    * @param conditional
    * @return The probability of the conditional.
    */
@@ -28,7 +28,7 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
   def pr(conditional: B): Distribution[A] = this * domainV2.singleValueDistribution(conditional) / prConditional(conditional)
 
   /**
-   * Computes the probability for {{{V1=value}}} by marginalizing over all possible values of {{{V2}}}.
+   * Computes the probability for  `V1=value` by marginalizing over all possible values of  `V2`.
    * @param value
    * @return
    */
@@ -37,7 +37,7 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
   }
 
   /**
-   * Computes the probability for {{{V2=conditional}}} by marginalizing over all possible values of {{{V1}}}.
+   * Computes the probability for  `V2=conditional` by marginalizing over all possible values of  `V1`.
    * @param conditional
    * @return
    */
@@ -46,21 +46,21 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
   }
 
   /**
-   * Computes the marginal probability for all values of {{{V1}}} by marginalizing over all possible values of {{{V2}}}.
+   * Computes the marginal probability for all values of  `V1` by marginalizing over all possible values of  `V2`.
    * @return
    */
   def marginalDistribution: Distribution[A] =
     Distribution(domainV1, domainV1.map(value => value -> prValue(value)).toMap)
 
   /**
-   * Computes the marginal probability for all values of {{{V2}}} by marginalizing over all possible values of {{{V1}}}.
+   * Computes the marginal probability for all values of  `V2` by marginalizing over all possible values of  `V1`.
    * @return
    */
   def marginalLikelihood: Distribution[B] =
     Distribution(domainV2, domainV2.map(value => value -> prConditional(value)).toMap)
 
   /**
-   * Computes the de-normalized posterior distribution of {{{V1}}} given a priors distribution over {{{V2}}}.
+   * Computes the de-normalized posterior distribution of  `V1` given a priors distribution over  `V2`.
    * @param prior
    * @return
    */
@@ -124,8 +124,8 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
   }
 
   /**
-   * Computes the posterior probability given a value for {{{V1}}} and a prior distribution over {{{V2}}}
-   * via conditionalization. Recommended usage: {{{pr(v1 | Distribution(V2))}}}
+   * Computes the posterior probability given a value for  `V1` and a prior distribution over  `V2`
+   * via conditionalization. Recommended usage:  `pr(v1 | Distribution(V2))`
    * @param conditional
    * @return
    */
@@ -134,7 +134,7 @@ case class ConditionalDistribution[A, B](domainV1: Set[A], domainV2: Set[B], dis
       .fold(0.0)((acc: Double, p: Double) => acc + p)
 
   /**
-   * Computes the inverse distribution using Bayes' rule given a prior distribution over {{{V2}}}. The
+   * Computes the inverse distribution using Bayes' rule given a prior distribution over  `V2`. The
    * distribution is normalized using the marginal likelihood.
    * @param prior
    * @return

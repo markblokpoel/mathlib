@@ -18,7 +18,7 @@ import scala.util.Random
 case class UnDiGraph[T](
     override val vertices: Set[Node[T]],
     override val edges: Set[UnDiEdge[Node[T]]]
-) extends UnweightedGraph[T, UnDiEdge[Node[T]]](vertices, edges) {
+) extends UnweightedGraph[T, UnDiEdge[Node[T]]] {
 
   override def +(vertex: Node[T]): UnDiGraph[T] =
     UnDiGraph(vertices + vertex, edges)
