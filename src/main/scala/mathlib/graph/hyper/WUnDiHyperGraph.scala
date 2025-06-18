@@ -6,17 +6,17 @@ import mathlib.graph.Node
 import scala.reflect.ClassTag
 
 /** Represents a weighted undirected hyper graph.
- * @param vertices
- *   The vertices in the hyper graph.
- * @param edges
- *   The set of hyper edges in the hyper graph.
- * @tparam T
- *   The type of the vertices.
- */
+  * @param vertices
+  *   The vertices in the hyper graph.
+  * @param edges
+  *   The set of hyper edges in the hyper graph.
+  * @tparam T
+  *   The type of the vertices.
+  */
 case class WUnDiHyperGraph[T](
     override val vertices: Set[Node[T]],
     override val edges: Set[WUnDiHyperEdge[Node[T]]]
-) extends HyperGraph[T, WUnDiHyperEdge[Node[T]]](vertices, edges) {
+) extends HyperGraph[T, WUnDiHyperEdge[Node[T]]] {
   override def +(vertex: Node[T]): WUnDiHyperGraph[T] =
     WUnDiHyperGraph(vertices + vertex, edges)
 
@@ -56,54 +56,55 @@ case class WUnDiHyperGraph[T](
 }
 
 case object WUnDiHyperGraph {
+
   /** Creates a weighted undirected hyper graph without edges from a set of vertices.
-   * @param vertices
-   * A set of vertices.
-   * @tparam T
-   * The type of the weighted undirected graph vertices.
-   * @return
-   * A weighted undirected hyper graph of type T with only the vertices.
-   */
+    * @param vertices
+    *   A set of vertices.
+    * @tparam T
+    *   The type of the weighted undirected graph vertices.
+    * @return
+    *   A weighted undirected hyper graph of type T with only the vertices.
+    */
   def apply[T](vertices: Set[Node[T]]): WUnDiHyperGraph[T] = WUnDiHyperGraph.empty + vertices
 
   /** Creates a weighted undirected hyper graph from a set of hyper edges.
-   *
-   * Will automatically add the vertices from the edges, without explicitly passing them to the
-   * constructor.
-   * @param edges
-   * The set of hyper edges.
-   * @tparam T
-   * The type of the weighted undirected hyper graph vertices.
-   * @tparam X
-   * A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
-   * @return
-   * A weighted undirected hyper graph of type T.
-   */
+    *
+    * Will automatically add the vertices from the edges, without explicitly passing them to the
+    * constructor.
+    * @param edges
+    *   The set of hyper edges.
+    * @tparam T
+    *   The type of the weighted undirected hyper graph vertices.
+    * @tparam X
+    *   A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
+    * @return
+    *   A weighted undirected hyper graph of type T.
+    */
   def apply[T, X: ClassTag](edges: Set[WUnDiHyperEdge[Node[T]]]): WUnDiHyperGraph[T] =
     WUnDiHyperGraph.empty + edges
 
   /** Creates an empty weighted undirected hyper graph of type T.
-   * @tparam T
-   * The type of the weighted undirected hyper graph vertices.
-   * @return
-   * An empty weighted undirected hyper graph of type T.
-   */
+    * @tparam T
+    *   The type of the weighted undirected hyper graph vertices.
+    * @return
+    *   An empty weighted undirected hyper graph of type T.
+    */
   def empty[T]: WUnDiHyperGraph[T] = WUnDiHyperGraph(Set[Node[T]](), Set[WUnDiHyperEdge[Node[T]]]())
 
   /** Creates a weighted undirected hyper graph from a set of base values and a set of hyper edges.
-   *
-   * Will map base values to the [[Node]] wrapper and then construct the undirected hyper graph.
-   * @param vertices
-   * The set of base values representing the vertices.
-   * @param edges
-   * The set of hyper edges.
-   * @tparam T
-   * The type of the weighted undirected hyper graph vertices.
-   * @tparam X
-   * A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
-   * @return
-   * A weighted undirected hyper graph.
-   */
+    *
+    * Will map base values to the [[Node]] wrapper and then construct the undirected hyper graph.
+    * @param vertices
+    *   The set of base values representing the vertices.
+    * @param edges
+    *   The set of hyper edges.
+    * @tparam T
+    *   The type of the weighted undirected hyper graph vertices.
+    * @tparam X
+    *   A [[scala.reflect.ClassTag]] to prevent type erasure of the edges.
+    * @return
+    *   A weighted undirected hyper graph.
+    */
   def apply[T, X: ClassTag](
       vertices: Set[T],
       edges: Set[WUnDiHyperEdge[Node[T]]]

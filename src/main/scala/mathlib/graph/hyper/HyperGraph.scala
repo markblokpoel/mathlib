@@ -6,19 +6,18 @@ import mathlib.graph.properties.HyperEdge
 import scala.reflect.ClassTag
 
 /** Represents an abstract hyper graph.
-  * @param vertices
-  *   The vertices in the hyper graph.
-  * @param edges
-  *   The set of hyper edges in the hyper graph.
   * @tparam T
   *   The type of the vertices.
   * @tparam E
   *   The type of the hyper edges.
   */
-abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
-    val vertices: Set[Node[T]],
-    val edges: Set[E]
-) {
+trait HyperGraph[T, E <: HyperEdge[Node[T]]] {
+
+  /** The vertices in the hyper graph. */
+  val vertices: Set[Node[T]]
+
+  /** The set of hyper edges in the hyper graph. */
+  val edges: Set[E]
 
   /** Adds a vertex to the hyper graph.
     * @param vertex
@@ -121,13 +120,13 @@ abstract class HyperGraph[T, E <: HyperEdge[Node[T]]](
 
   /** Tests if the hyper graph contains any vertices.
     * @return
-    * ```true``` if the hyper graph contains no vertices, ```false``` otherwise.
+    *  `true ` if the hyper graph contains no vertices,  `false ` otherwise.
     */
   def isEmpty: Boolean = vertices.isEmpty
 
   /** Tests if the hyper graph contains any edges.
     * @return
-    * ```true``` if the hyper graph no edges, ```false``` otherwise.
+    *  `true ` if the hyper graph no edges,  `false ` otherwise.
     */
   def noEdges: Boolean = edges.isEmpty
 }

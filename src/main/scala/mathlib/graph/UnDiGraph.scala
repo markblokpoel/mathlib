@@ -18,7 +18,7 @@ import scala.util.Random
 case class UnDiGraph[T](
     override val vertices: Set[Node[T]],
     override val edges: Set[UnDiEdge[Node[T]]]
-) extends UnweightedGraph[T, UnDiEdge[Node[T]]](vertices, edges) {
+) extends UnweightedGraph[T, UnDiEdge[Node[T]]] {
 
   override def +(vertex: Node[T]): UnDiGraph[T] =
     UnDiGraph(vertices + vertex, edges)
@@ -240,7 +240,7 @@ case object UnDiGraph {
       if(n + m == size) partialGraph
       else {
         val degrees = partialGraph.adjacencyList
-          .mapValues(_.size) // Get degrees of all vertices
+          .view.mapValues(_.size) // Get degrees of all vertices
         val sumDegrees = degrees.values.sum
         val probabilities = degrees.mapValues(_.doubleValue() / sumDegrees)
         val rnd = Random.nextDouble()

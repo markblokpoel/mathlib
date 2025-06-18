@@ -14,17 +14,17 @@ import mathlib.graph.properties.{HyperEdge, ProtoEdge, WeightedEdge}
   *   The type of the vertices that belong to this edge.
   */
 case class WDiHyperEdge[T <: Node[_]](
-    left: Set[T],
-    right: Set[T],
+    override val left: Set[T],
+    override val right: Set[T],
     override val weight: Double
-) extends HyperEdge[T](left, right)
+) extends HyperEdge[T]
     with WeightedEdge {
 
   /** Checks if this instance can equal that instance.
     * @param that
     *   The instance to check.
     * @return
-    * ```true``` if ```that``` is of type [[WDiHyperEdge]]
+    *  `true ` if  `that ` is of type [[WDiHyperEdge]]
     */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WDiHyperEdge[_]]
 
@@ -32,7 +32,7 @@ case class WDiHyperEdge[T <: Node[_]](
     * @param that
     *   The object to test equivalence to.
     * @return
-    * ```true``` if that.left == that.left && that.right == that.right, ignoring the weight of the
+    *  `true ` if that.left == that.left && that.right == that.right, ignoring the weight of the
     * hyper edges.
     */
   override def equals(that: Any): Boolean =

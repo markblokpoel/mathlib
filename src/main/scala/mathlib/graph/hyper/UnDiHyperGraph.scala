@@ -16,7 +16,7 @@ import scala.reflect.ClassTag
 case class UnDiHyperGraph[T](
     override val vertices: Set[Node[T]],
     override val edges: Set[UnDiHyperEdge[Node[T]]]
-) extends HyperGraph[T, UnDiHyperEdge[Node[T]]](vertices, edges) {
+) extends HyperGraph[T, UnDiHyperEdge[Node[T]]] {
   override def +(vertex: Node[T]): UnDiHyperGraph[T] =
     UnDiHyperGraph(vertices + vertex, edges)
 

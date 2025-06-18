@@ -11,15 +11,15 @@ import mathlib.graph.properties.{Edge, ProtoEdge}
   *   The type of the vertices.
   */
 case class DiEdge[T <: Node[_]](override val left: T, override val right: T)
-    extends Edge[T](left, right)
+    extends Edge[T]
     with ProtoEdge[T] {
 
   /** Gets the neighbor of vertex, respecting directionality.
     * @param vertex
     *   The base vertex.
     * @return
-    *   The neighbor of vertex wrapped in ```Some(.)``` if vertex is on the left side of the edge,
-    *   or ```None``` otherwise.
+    *   The neighbor of vertex wrapped in  `Some(.) ` if vertex is on the left side of the edge,
+    *   or  `None ` otherwise.
     */
   override def getNeighborOf(vertex: T): Option[T] =
     if (left == vertex) Some(right)
@@ -30,7 +30,7 @@ case class DiEdge[T <: Node[_]](override val left: T, override val right: T)
    * @param that
    * The instance to check.
    * @return
-   * ```true``` if ```that``` is of type [[DiEdge]]
+   *  `true ` if  `that ` is of type [[DiEdge]]
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[DiEdge[_]]
 
@@ -38,7 +38,7 @@ case class DiEdge[T <: Node[_]](override val left: T, override val right: T)
    * @param that
    * The object to test equivalence to.
    * @return
-   * ```true``` if that.left == that.left && that.right == that.right.
+   *  `true ` if that.left == that.left && that.right == that.right.
    */
   override def equals(that: Any): Boolean =
     that match {

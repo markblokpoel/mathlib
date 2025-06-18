@@ -14,7 +14,7 @@ import mathlib.graph.properties.{Edge, ProtoEdge, WeightedEdge}
   *   The type of the vertices.
   */
 case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, weight: Double)
-    extends Edge[T](left, right)
+    extends Edge[T]
     with WeightedEdge
     with ProtoEdge[T] {
 
@@ -23,7 +23,7 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     * @param that
     *   The instance to check.
     * @return
-    * ```true``` if ```that``` is of type [[WUnDiEdge]]
+    *  `true ` if  `that ` is of type [[WUnDiEdge]]
     */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WUnDiEdge[_]]
 
@@ -36,7 +36,7 @@ case class WUnDiEdge[T <: Node[_]](override val left: T, override val right: T, 
     * @param that
     *   The object to test equivalence to.
     * @return
-    *   ```true``` if that.left == that.left && that.right == that.right or that.left == that.right
+    *    `true ` if that.left == that.left && that.right == that.right or that.left == that.right
     *   && that.right == that.left.
     */
   override def equals(that: Any): Boolean =
