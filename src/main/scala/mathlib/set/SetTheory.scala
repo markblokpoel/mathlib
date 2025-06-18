@@ -555,10 +555,10 @@ object SetTheory {
 
     /** Returns all possible one-to-many mappings from elementsin  `set ` to  `coDomain `.
       *
-      * For example,  `Set(1, 2, 3).allMappings(Set("a", "b")) ` returns  `HashSet(Map(1 -> b, 2
+      * For example,  `Set(1, 2, 3).allMappings(Set("a", "b")) ` returns {{{HashSet(Map(1 -> b, 2
       * -> b, 3 -> b), Map(1 -> a, 2 -> b, 3 -> a), Map(1 -> b, 2 -> a, 3 -> b), Map(1 -> b, 2 -> b,
       * 3 -> a), Map(1 -> a, 2 -> a, 3 -> a), Map(1 -> a, 2 -> b, 3 -> b), Map(1 -> b, 2 -> a, 3 ->
-      * a), Map(1 -> a, 2 -> a, 3 -> b)) `.
+      * a), Map(1 -> a, 2 -> a, 3 -> b))}}}.
       * @param coDomain
       *   The set of elements representing the co-domain.
       * @tparam B
