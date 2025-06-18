@@ -5,6 +5,8 @@ Main steps to publish this project, use sbt from terminal to allow for password 
 3. sonatypeBundleRelease
 */
 
+import xerial.sbt.Sonatype.sonatypeCentralHost
+
 ThisBuild / organization := "com.markblokpoel"
 ThisBuild / organizationName := "markblokpoel"
 ThisBuild / organizationHomepage := Some(url("https://www.markblokpoel.com"))
@@ -36,7 +38,7 @@ ThisBuild / pomIncludeRepository := { _ => false }
 Global / excludeLintKeys += pomIncludeRepository
 
 ThisBuild / publishTo := sonatypePublishToBundle.value
-ThisBuild / sonatypeCredentialHost := "oss.sonatype.org"
+ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
 ThisBuild / sonatypeRepository := "https://oss.sonatype.org/service/local"
 ThisBuild / sonatypeSessionName := "[sbt-sonatype] ${name.value}-${scalaBinaryVersion.value}-${version.value}"
 
