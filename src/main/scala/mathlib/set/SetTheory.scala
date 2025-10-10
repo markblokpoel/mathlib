@@ -588,7 +588,7 @@ object SetTheory {
       * @return
       *   A set of all possible pairs.
       */
-    def pairs: Set[(A, A)] = for (x <- set; y <- set) yield (x, y)
+    def pairs: Set[(A, A)] = permutations2
 
     /** Returns a set of all possible unique pairs.
       *
@@ -600,11 +600,17 @@ object SetTheory {
 
     /** Returns a set of all possible pairs, assuming that (a, b) equals (b, a).
       *
-      * The pairs are represented by sets of size two.
+      * The pairs are represented by tuples.
       * @return
       *   A set of all possible pairs, assuming no ordering on the elements in pairs.
       */
-    def unorderedPairs: Set[Set[A]] = for (x <- set; y <- set) yield Set(x, y)
+    def unorderedPairs: Set[(A, A)] =
+      (for (x <- set; y <- set) yield Set(x, y))
+        .map(p => {
+          val s = p.toSeq
+          if(s.size == 1) (s(0), s(0))
+          else (s(0), s(1))
+        })
 
     /** Returns a set of all possible unique pairs, assuming that (a, b) equals (b, a).
       *
@@ -612,7 +618,7 @@ object SetTheory {
       * @return
       *   A set of all possible pairs, assuming no ordering on the elements in pairs.
       */
-    def unorderedUniquePairs: Set[Set[A]] = for (x <- set; y <- set if x != y) yield Set(x, y)
+    def unorderedUniquePairs: Set[(A, A)] = combinations2
 
     // TODO Write scaladoc
     def combinations(n: Int): Set[Set[A]] = set.toList.combinations(n).map(_.toSet).toSet

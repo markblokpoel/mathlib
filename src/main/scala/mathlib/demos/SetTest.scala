@@ -23,10 +23,13 @@ object SetTest {
 
     val s = Set(1,2,3)
     Seq(
-      s.combinations3,
+      s.unorderedUniquePairs,
+      s.combinations2,
+      s.pairs,
+      s.permutations2,
       s x s x Set("a","b") x s,
-      s.permutations3,
-      (s x s x s)
+      s x s x s,
+      s.unorderedPairs
     ).foreach(println)
   }
 }
