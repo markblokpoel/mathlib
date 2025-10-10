@@ -20,5 +20,13 @@ object SetTest {
       (product(Set(("a","aa"),("b","bb"), ("cc", "cc"), ("ddd", "ddd")), sameLen _, len2 _), (2+2)*(3+3)),
     ).foreach(qa => println(f"${qa._1 == qa._2} <- ${qa._1} == ${qa._2}"))
 
+
+    val s = Set(1,2,3)
+    Seq(
+      s.combinations3,
+      s x s x Set("a","b") x s,
+      s.permutations3,
+      (s x s x s)
+    ).foreach(println)
   }
 }
