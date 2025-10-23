@@ -1,6 +1,6 @@
-ThisBuild / version := "0.9.2-SNAPSHOT"
+ThisBuild / version := "0.9.3"
 ThisBuild / organization := "com.markblokpoel"
-ThisBuild / scalaVersion := "2.13.9"
+ThisBuild / scalaVersion := "2.13.16"
 
 lazy val runCoherenceDemo = taskKey[Unit]("Run Coherence demonstration.")
 lazy val runVertexCoverDemo = taskKey[Unit]("Run VertexCover demonstration.")
