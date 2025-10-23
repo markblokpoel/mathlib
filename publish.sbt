@@ -4,7 +4,6 @@ Main steps to publish this project, use sbt from terminal to allow for password 
 2. publishSigned
 3. sonatypeBundleRelease
 */
-
 import xerial.sbt.Sonatype.sonatypeCentralHost
 
 ThisBuild / organization := "com.markblokpoel"
@@ -29,7 +28,7 @@ ThisBuild / developers := List(
 
 ThisBuild / description := "mathlib is a library supporting functional programming that closely resembles mathematical notation."
 ThisBuild / licenses := List(
-  "GNU General Public License v3.0" -> new URL("https://github.com/markblokpoel/mathlib/blob/master/LICENSE")
+  "GNU General Public License v3.0" -> new URL("https://github.com/markblokpoel/mathlib/blob/main/LICENSE")
 )
 ThisBuild / homepage := Some(url("https://github.com/markblokpoel/mathlib"))
 
@@ -37,8 +36,9 @@ ThisBuild / homepage := Some(url("https://github.com/markblokpoel/mathlib"))
 ThisBuild / pomIncludeRepository := { _ => false }
 Global / excludeLintKeys += pomIncludeRepository
 
-ThisBuild / publishTo := sonatypePublishToBundle.value
 ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
+ThisBuild / publishTo := sonatypePublishToBundle.value
+ThisBuild / sonatypeProfileName := "com.markblokpoel"
 ThisBuild / sonatypeRepository := "https://oss.sonatype.org/service/local"
 ThisBuild / sonatypeSessionName := "[sbt-sonatype] ${name.value}-${scalaBinaryVersion.value}-${version.value}"
 
